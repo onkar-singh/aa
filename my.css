@@ -1,0 +1,113 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#html33 #odid {display: none;}
+td {padding: 0!important;width: 60px;}
+td input{text-align: center;}
+#alltab{
+    
+    padding: 0.18em 0.5em;margin: 0px 0px;
+    
+}
+#alltab span div {    
+  border-radius: 10px;
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 6px 0;}
+#alltab span:hover *{background-color:#9C27B0}
+
+:fullscreen{
+  background-color: #ffffff;
+}
+#oder,#full ,.w3-panel>.w3-button {margin: 0px;padding: 0.6em 1em;}
+* {touch-action: manipulation;}
+
+table, th, td {border: 1px solid black;border-collapse: collapse;}
+
+.w3-panel table td{padding:5px!important;font-weight:600}
+
+tbody th {font-weight: 600;}
+tbody td input{font-weight: 600;}
+
+#tb .w3-quarter.w3-tag {
+    width: 100px;
+    margin: 15px 1.4% 0;
+    font-size: 1.4em;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #tb * {
+    visibility: visible;
+  }
+  #tb {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+@media print {
+#tb {
+    
+     justify-content:center;
+     align-items:center;
+     height:100%;
+     }
+    #tb{
+      height:100%;
+      width:100%;
+/*       margin-left:150px; */
+    }
+ 
+}
+
+@media print {
+    .pb {
+        clear: both;
+        page-break-after: always;
+    }
+}
+
+table th .nm {
+    border: 1px solid;
+    display: inline-block;
+    padding: 0px 8px;
+}
+.w3-panel tbody tr {border: 1px solid #000;}
+
+span.w3-button.w3-display-topright {
+    position: fixed;
+    margin: 0 1.2em 0 0;
+}
+
+.w3-modal-content.w3-card-4 {border-radius: 24px;}
+.w3-modal{
+ -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+#oderli li.w3-display-container {font-weight: 600;}
+
+   #tblom1 {width: 100%;}
+#tblom1  tbody tr:first-child{color:blue;background: #ffdfdd;}
+ #tblom1 td {
+  text-align: center;
+  font-weight: 600;
+}
+
+#tblom1 {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.delt{color: #8fbc8f;}
