@@ -44,17 +44,21 @@ function delod () {
  
   }
 
-} else {alert('Bhai oder select ker pahle !!')}}
+} else {alert('Bhai order select ker pahle !!')}}
 var pk8;
 function editod(tp) {
-    
- pk8=tp.id.split('b')[1];//alert(pk8)
 
-    let ht=document.getElementById(pk8).parentElement.innerText.split('\n')[0].split(' ')[2];
+  pk8=tp.id.split('b')[1];// order id od34
+  st.collection('ods').doc(pk8).get().then(doc => {
+    let ht=doc.cn;
+
     //console.log(ht)
     document.getElementById('frt').innerHTML="<strong>"+ht+"</strong>";
-    if(document.getElementById(pk8).parentElement.querySelector('.gst55')){document.getElementById('gst').checked=true;}
+    if(doc.gst){document.getElementById('gst').checked=true;}
 
+    // console.log(doc.it)
+  })
+ 
 document.querySelectorAll('#id01 #tblom1 tbody').forEach(kjhu)
 
 function kjhu(v) {//alert(v.id);document.getElementById('frt').innerText=.innerText.split('\n')[0].split(' ')[2];
