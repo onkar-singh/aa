@@ -10,24 +10,24 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
                 allowTaint: true,
                 useCORS: true
             }).then(function (canvas) {
-                var anchorTag = document.createElement("a");
-                document.body.appendChild(anchorTag);
-                //document.getElementById("previewImg").appendChild(canvas);
-            //const d = new Date();
+
             var ji33=document.getElementById("u13").innerText;
-               //console.log(kli);
                let po5;
                if(kli){po5='-GST'}else{po5=''}
-                //anchorTag.download = d.getFullYear().toString().substr(-2)+(d.getMonth()+1)+'D'+d.getDate()+ji33+".jpg";
-                anchorTag.download = zxc+'-'+ji33+po5+".jpg";
-                
-               anchorTag.href = canvas.toDataURL();
-                anchorTag.target = '_blank';
-                anchorTag.click();
-                anchorTag.remove();
+               downl(canvas.toDataURL(),zxc+'-'+ji33+po5+'.jpg');
             });
        document.getElementById("html33").style.width='';
        newc();clickCounter();document.getElementById('gst').checked=0;
-
            
     });
+    
+function downl(imgurl,imgnm){
+let htl="<a id='link55' href='"+imgurl+"' download='"+imgnm+"'>hjhj</a>";
+let iframe = document.createElement('iframe');
+document.body.appendChild(iframe);
+iframe.contentWindow.document.open();
+iframe.contentWindow.document.write(htl);
+iframe.contentWindow.document.getElementById('link55').click();
+iframe.contentWindow.document.close();
+iframe.remove();
+}
