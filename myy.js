@@ -1,5 +1,5 @@
 if(!localStorage.fromod){localStorage.setItem('fromod','1')}
-
+alert('hi from new setup');
 function resetd () {
  var odcount=1+Number(localStorage.clickcount)-Number(localStorage.fromod);
  if(odcount){
