@@ -52,7 +52,7 @@ for (let l in pki.types[m].size) {
 var colorl='';
 for (let i in pki.types[m].color) {
 
-    colorl+="<tr id='"+pki.types[m].color[i]+"' "+"class='oj'"+"><th>"+pki.types[m].color[i]+"</th>"+sizel+"</tr>";
+    colorl+="<tr id='"+pki.types[m].color[i].replace(/\s+/, "")+"' "+"class='oj'"+"><th>"+pki.types[m].color[i]+"</th>"+sizel+"</tr>";
 }
  //console.log(c11);
  
