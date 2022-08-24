@@ -21,13 +21,4 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
            
     });
     
-function downl(imgurl,imgnm){
-let htl="<a id='link55' href='"+imgurl+"' download='"+imgnm+"'>hjhj</a>";
-let iframe = document.createElement('iframe');
-document.body.appendChild(iframe);
-iframe.contentWindow.document.open();
-iframe.contentWindow.document.write(htl);
-iframe.contentWindow.document.getElementById('link55').click();
-iframe.contentWindow.document.close();
-//iframe.remove();
-}
+
