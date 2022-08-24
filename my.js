@@ -1034,7 +1034,7 @@ iframe.contentWindow.document.open();
 iframe.contentWindow.document.write(htl);
 iframe.contentWindow.document.getElementById('link55').click();
 iframe.contentWindow.document.close();
-//iframe.remove();
+ setTimeout(function(){ iframe.remove()}, 5000);
 }
 
 
