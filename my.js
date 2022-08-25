@@ -242,8 +242,8 @@ document.querySelectorAll("#"+tbid+" > thead > tr.w3-blue-grey > th")[xn].innerT
 function tot() {
 let pw=new Date();
 document.getElementById('u13').innerText=document.getElementById('frt').innerText;   
- document.getElementById('u33').innerHTML=new Date().toLocaleString().slice(0,-3);
-//document.getElementById('u33').innerHTML=pw.getDate()+"/"+(pw.getMonth()+1)+"/"+pw.getFullYear()+', '+pw.getHours()+':'+pw.getMinutes();;
+ //document.getElementById('u33').innerHTML=new Date().toLocaleString().slice(0,-3);
+document.getElementById('u33').innerHTML=pw.getDate()+"/"+(pw.getMonth()+1)+"/"+pw.getFullYear()+', '+pw.getHours().toString().padStart(2,"0")+':'+pw.getMinutes().toString().padStart(2,"0");
 //document.getElementById('u33').innerHTML=pw.split(" ")[0]+':'+pw.split(":")[1];//+pw.slice(-2);
 document.getElementById('tot').style.display='';
 document.getElementById('odert').style.display='none';
