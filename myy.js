@@ -12,7 +12,7 @@ function resetd () {
          localStorage.setItem('fromod',1+Number(localStorage.clickcount));
 document.getElementById('tre6').innerHTML='';
 document.getElementById('p781').click();
-        },800)
+        },2500)
 
     }
 }else{alert("No data to download ")}
@@ -32,7 +32,7 @@ function delod () {
   
 })
  st.collection('ods').doc(r).update({
-  tot: '0',it:{},gst:false
+  tot: 0,it:{},gst:false
 })
    .then(response => {
     selod5={};
@@ -107,7 +107,7 @@ zsr.tot = Number(tot55);
 zsr.gst = document.getElementById('gst').checked;
 zsr.dt = document.getElementById('u33').innerText.split(',')[0]; 
 zsr.it = od; 
- console.log('json:',zsr)
+ //console.log('json:',zsr)
 st.collection('ods').doc(pk8).set(zsr)
  .then(response => {
     document.getElementById("html33").style.width='455px';

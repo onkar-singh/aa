@@ -732,7 +732,7 @@ zsr.tot = Number(document.getElementById('u23').innerText.split('-')[1]);
 zsr.gst = document.getElementById('gst').checked;
 zsr.dt = document.getElementById('u33').innerText.split(',')[0]; 
 zsr.it = od; 
- console.log('json:',zsr)
+ //console.log('json:',zsr)
  //var obj = {a: 123, b: "4 5 6"};
 // var data5 = "text/json;charset=utf-8," + encodeURIComponent('od'+(Number(zxc)+1)+'='+JSON.stringify(zsr));
 
