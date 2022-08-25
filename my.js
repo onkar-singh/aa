@@ -783,7 +783,7 @@ function stockm() {
 function indb() {
 
  document.getElementById('gstall').style.display='block';
-document.getElementById('gstall').innerHTML="<div class='w3-bar w3-blue-gray'><div class='w3-bar-item w3-button w3-border-right' onclick='delod()'>Delete</div><div id='cout6' class='w3-bar-item w3-button w3-border-right'>Total</div><div onclick='resetd()' class='w3-bar-item w3-button w3-border-right'>Reset</div></div>"+"<div id='tre6'><ul id='oderli' class='w3-ul w3-border w3-hoverable'><ul></div>";
+document.getElementById('gstall').innerHTML="<div class='w3-bar w3-blue-gray'><div class='w3-bar-item w3-button w3-border-right' onclick='delod()'>Delete</div><div id='cout6' class='w3-bar-item w3-button w3-border-right'>Total</div><div onclick='resetd()' class='w3-bar-item w3-button w3-border-right'>Reset</div><div class='w3-bar-item w3-button w3-border-right' onclick='pint()'>Pin</div><div class='w3-bar-item w3-button w3-border-right' onclick='unpin()'>Unpin</div></div>"+"<div id='tre6'><ul id='oderli' class='w3-ul w3-border w3-hoverable'><ul></div>";
 for (let hy = (Number(zxc)); hy > 0; hy--) {
         st.collection('ods').doc('od'+hy).get().then(doc=> {
 let ifz;
@@ -812,6 +812,13 @@ document.getElementById('oderli').innerHTML+="<li class='w3-display-container "+
  }
 else{alert("No data to count total ")}
 })
+//JSON.parse()
+selod5=JSON.parse(localStorage.pin)
+
+setTimeout(function(){pint();selod5={};},300)
+
+
+
 }
 var clickh=0;
 function opodli(b) {
@@ -1038,3 +1045,45 @@ iframe.contentWindow.document.close();
 }
 
 
+  
+// pin 
+
+// var moveItem=function(){};
+function pint() {
+  if(!localStorage.pin){localStorage.setItem('pin','{}')}
+  for (const t in selod5) {
+  let px=document.getElementById(t);
+  let xm=Array.from(px.parentNode.parentNode.children).indexOf(px.parentNode);
+
+  moveItem(xm-1,0);
+  px.parentNode.style.background='#ffeb3b';
+  document.getElementById(t).checked=false;
+ // console.log(xm)
+  }
+  let mer5 = {...JSON.parse(localStorage.pin), ...selod5};
+  localStorage.setItem('pin',JSON.stringify(mer5))//JSON.stringify(mer5)//JSON.parse()
+  selod5={}
+}
+var moveItem = (from, to) => {
+  const aul=document.getElementById('oderli');
+  const items = [...aul.querySelectorAll('li')];
+  if (to > items.length - 1 || to < 0) return;
+  
+  const item = items[from];
+  if (!item) return;
+  
+  aul.removeChild(item);
+  aul.insertBefore(item, aul.children[to]);
+}
+
+function unpin(){
+  for (const t in selod5) {
+    let px1=document.getElementById(t);
+    px1.parentNode.style.background='';
+   let mk5=JSON.parse(localStorage.pin);
+   delete mk5[t];
+    localStorage.setItem('pin',JSON.stringify(mk5));
+  document.getElementById(t).checked=false;
+  }
+  selod5={};
+}
