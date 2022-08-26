@@ -207,6 +207,7 @@ function oderc(y) {
 
 function inclick(zx) {
  //macin();
+ console.log(Number(zx.value))
  let tbid=zx.parentElement.parentElement.parentElement.parentElement.id;
 
  let xn=Array.from(zx.parentNode.parentNode.children).indexOf(zx.parentNode);
@@ -224,6 +225,7 @@ for (let i = 2; i < pk1.length; i++) {
  let ihj2=document.querySelectorAll("#"+tbid+" > thead > tr.w3-red > th")[0].innerText;
  //console.log('kjkj',ihj2,ihj1.querySelector('th').innerText,ihj,zx.value);
  let ihjk=Number(zx.value);
+//  
  stork(ihj2,ihj1.querySelector('th').innerText,ihj,ihjk);
  //console.log(od);
 document.querySelectorAll("#"+tbid+" > thead > tr.w3-blue-grey > th")[xn].innerText=jk;
@@ -287,6 +289,8 @@ document.querySelector('#tot table tbody').innerHTML=sd0;
 
 // store in od var 
  function stork(t,c,s,v) { // type color size value
+  //console.log(v);
+  if(v!=0){
    if (t in od){//alert('type available') // check type available
                   
        if (c in od[t]){//alert('color available') // check color available
@@ -303,6 +307,15 @@ document.querySelector('#tot table tbody').innerHTML=sd0;
   od[t][c][s]=v; // add value
   
    }
+  }else{
+    // remove zero value and empty color
+    //console.log(od[t][c][s],v);
+    delete od[t][c][s]
+    //console.log((Object.keys(od[t][c]).length === 0))
+   if(Object.keys(od[t][c]).length === 0){delete od[t][c]}
+   if(Object.keys(od[t]).length === 0){delete od[t]}
+
+  }
  }
 // end stork
 
@@ -783,7 +796,7 @@ function stockm() {
 function indb() {
 
  document.getElementById('gstall').style.display='block';
-document.getElementById('gstall').innerHTML="<div class='w3-bar w3-blue-gray'><div class='w3-bar-item w3-button w3-border-right' onclick='delod()'>Delete</div><div id='cout6' class='w3-bar-item w3-button w3-border-right'>Total</div><div onclick='resetd()' class='w3-bar-item w3-button w3-border-right'>Reset</div><div class='w3-bar-item w3-button w3-border-right' onclick='pint()'>Pin</div><div class='w3-bar-item w3-button w3-border-right' onclick='unpin()'>Unpin</div></div>"+"<div id='tre6'><ul id='oderli' class='w3-ul w3-border w3-hoverable'><ul></div>";
+document.getElementById('gstall').innerHTML="<div class='w3-bar w3-blue-gray'><div class='w3-bar-item w3-button w3-border-right' onclick='delod()'>Delete</div><div id='cout6' class='w3-bar-item w3-button w3-border-right'>Total</div><div onclick='resetd()' class='w3-bar-item w3-button w3-border-right'>Reset</div><div class='w3-bar-item w3-button w3-border-right' onclick='pint()'>Pin</div><div class='w3-bar-item w3-button w3-border-right' onclick='unpin()'>Unpin</div></div>"+"<div id='tre6'><ul id='oderli' class='w3-ul w3-border w3-hoverable'></ul></div>";
 for (let hy = (Number(zxc)); hy > 0; hy--) {
         st.collection('ods').doc('od'+hy).get().then(doc=> {
 let ifz;
@@ -831,8 +844,9 @@ function opodli(b) {
      clickh+=1;
 if(clickh % 2 == 0) {
  
-document.getElementById('my55').remove();
-document.getElementById('aa5').remove();
+  //if(document.getElementById('my55')){}
+  if(document.getElementById('aa5')){document.getElementById('my55').remove();document.getElementById('aa5').remove()}
+  //b.click();
 }else{if(!document.getElementById('my55')){b.parentElement.insertAdjacentHTML('afterend', "<div id='aa5' style='font-weight: 600'><div class='w3-small w3-button w3-border-right w3-dark-grey' id='b"+qwe5+"' onclick='editod(this)'>Edit</div></div>"+"<div id='my55'>Sample Div</div>")}
      odtbl(doc.it,'tblom1','my55'); 
      }
@@ -1000,7 +1014,7 @@ function omak(n,i,a){
 })
 }
 
-// expot tabletocsv
+// export tabletocsv
  function tabletcsv(table_id,oderno,separator = ',') {
     // Select rows from table_id
     var rows = document.querySelectorAll('table#' + table_id + ' tr');
@@ -1055,7 +1069,7 @@ function pint() {
   let px=document.getElementById(t);
   let xm=Array.from(px.parentNode.parentNode.children).indexOf(px.parentNode);
 
-  moveItem(xm-1,0);
+  moveItem(xm,0);
   px.parentNode.style.background='#ffeb3b';
   document.getElementById(t).checked=false;
  // console.log(xm)
