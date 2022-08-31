@@ -3,7 +3,10 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
 
        document.getElementById("btn_convert").addEventListener("click", function() {
        document.getElementById("alltab").click();
-       stort();stry(); corj();savsto();//gentbls();
+       stort();stry(); corj();
+       sinsh(zsr,'0');
+       savsto();//gentbls();
+
        document.getElementById("html33").style.width='455px';
         html2canvas(document.getElementById("html33"),
             {

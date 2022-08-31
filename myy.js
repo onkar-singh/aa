@@ -107,7 +107,8 @@ zsr.tot = Number(tot55);
 zsr.gst = document.getElementById('gst').checked;
 zsr.dt = document.getElementById('u33').innerText.split(',')[0]; 
 zsr.it = od; 
- //console.log('json:',zsr)
+//console.log('json:',zsr)
+ sinsh(zsr,'1');
 st.collection('ods').doc(pk8).set(zsr)
  .then(response => {
     document.getElementById("html33").style.width='455px';
