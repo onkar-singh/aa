@@ -1112,6 +1112,7 @@ function unpin(){
 function sinsh(v,g) {
   let pkl5=localStorage.gr5; 
   let cu5 = 'https://script.google.com/macros/s/'+pkl5+'/dev?t55='+g+'&nm5='+JSON.stringify(v);  
-  window.open(cu5 , '_blank'); 
+  let popw=window.open(cu5 , '_blank'); 
+  setTimeout(function() { popw.close();}, 3000);
   //location.href='https://script.google.com/macros/s/'+pkl5+'/dev?t55='+g+'&nm5='+JSON.stringify(v); 
    }
