@@ -120,8 +120,8 @@ st.collection('ods').doc(pk8).set(zsr)
             var ji33=document.getElementById("u13").innerText;
                let po5;
                if(kli){po5='-GST'}else{po5=''}
-              // downl(canvas.toDataURL(),zxc+'-'+ji33+po5+'.jpg');
-              localStorage.setItem('imgf',canvas.toDataURL()+',,,'+zxc+'-'+ji33+po5+'.jpg')
+               downl(canvas.toDataURL(),zxc+'-'+ji33+po5+'.jpg');
+             // localStorage.setItem('imgf',canvas.toDataURL()+',,,'+zxc+'-'+ji33+po5+'.jpg')
             
             });
        document.getElementById("html33").style.width='';

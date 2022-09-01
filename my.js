@@ -1114,7 +1114,7 @@ function sinsh(v,g) {
   let netb1 = 'https://script.google.com/macros/s/'+pkl5+'/dev?t55='+g+'&nm5='+JSON.stringify(v);  
 
   let myWindow1=window.open(netb1 , '_blank'); // script
-  let myWindow2=window.open(location.href , '_blank');  // webapp
+  //let myWindow2=window.open(location.href , '_blank');  // webapp
 
   let readyStateCheckInterval = setInterval(function() {
     if (myWindow1.document.readyState === "complete") {
@@ -1122,7 +1122,7 @@ function sinsh(v,g) {
         setTimeout(function() {
            myWindow1.close();
            //window.close();
-          }, 3000);
+          }, 1000);
     }
 }, 50);
 
