@@ -17,7 +17,9 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
             var ji33=document.getElementById("u13").innerText;
                let po5;
                if(kli){po5='-GST'}else{po5=''}
-               downl(canvas.toDataURL(),zxc+'-'+ji33+po5+'.jpg');
+              // downl(canvas.toDataURL(),zxc+'-'+ji33+po5+'.jpg');
+              localStorage.setItem('imgf',canvas.toDataURL()+',,,'+zxc+'-'+ji33+po5+'.jpg')
+            
             });
        document.getElementById("html33").style.width='';
        newc();clickCounter();document.getElementById('gst').checked=0;
