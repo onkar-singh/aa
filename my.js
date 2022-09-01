@@ -1120,7 +1120,8 @@ function sinsh(v,g) {
     if (myWindow1.document.readyState === "complete") {
         clearInterval(readyStateCheckInterval);
         setTimeout(function() {
-           myWindow1.close();window.close();
+           myWindow1.close();
+           //window.close();
           }, 3000);
     }
 }, 50);
