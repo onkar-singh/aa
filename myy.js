@@ -27,6 +27,8 @@ function delod () {
    let r=Object.keys(selod5)[Object.keys(selod5).length-1];
    st.collection('ods').doc(r).get().then(doc => {
     od=doc.it;
+    let an5=doc;an5.tot=0;an5.it={};an5.gst=false;
+    sinsh(an5,'1');
      stort(-1);
     od={};
   
