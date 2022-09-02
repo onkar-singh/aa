@@ -1,70 +1,58 @@
-<script src="https://apis.google.com/js/api.js"></script>
-<script>
-  /**
-   * Sample JavaScript code for sheets.spreadsheets.values.batchUpdate
-   * See instructions for running APIs Explorer code samples locally:
-   * https://developers.google.com/explorer-help/code-samples#javascript
-   */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app"></div>
+    <button id="btn">Click Me</button>
+    <button id="btn2">Add Row</button>
 
-  function authenticate() {
-    return gapi.auth2.getAuthInstance()
-        .signIn({scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/spreadsheets"})
-        .then(function() { console.log("Sign-in successful"); },
-              function(err) { console.error("Error signing in", err); });
-  }
-  function loadClient() {
-    gapi.client.setApiKey("AIzaSyDwUaLoRqS6QL96qLncT_xgoF8faQsyoRc");
-    return gapi.client.load("https://sheets.googleapis.com/$discovery/rest?version=v4")
-        .then(function() { console.log("GAPI client loaded for API"); },
-              function(err) { console.error("Error loading GAPI client for API", err); });
-  }
-  // Make sure the client is loaded and sign-in is complete before calling this method.
-  function execute() {
-    return gapi.client.sheets.spreadsheets.values.batchUpdate({
-      "spreadsheetId": "1312sJCNLitqaDvwl-DnLlFL9C5dj_Bsx5uLqmfHnYa4",
-      "resource": {
-        "valueInputOption": "USER_ENTERED",
-        "data": [
-          {
-            "range": "Sheet1!A1:A4",
-            "majorDimension": "COLUMNS",
-            "values": [
-              [
-                "Item",
-                "Wheel",
-                "Door",
-                "Engine"
-              ]
-            ]
-          },
-          {
-            "range": "Sheet1!B1:D2",
-            "majorDimension": "ROWS",
-            "values": [
-              [
-                "Cost",
-                "Stocked",
-                "Ship Date"
-              ],
-              [
-                "$20.50",
-                "4",
-                "3/1/2016"
-              ]
-            ]
-          }
-        ]
-      }
-    })
-        .then(function(response) {
-                // Handle the results here (response.result has the parsed body).
-                console.log("Response", response);
-              },
-              function(err) { console.error("Execute error", err); });
-  }
-  gapi.load("client:auth2", function() {
-    gapi.auth2.init({client_id: "218699623863-til131n9f53locvkn43vpbdtd8jdtqoa.apps.googleusercontent.com"});
-  });
+    <script>
+function testGS(){
+
+    const url = "https://script.google.com/macros/s/AKfycbyDUaoqEXGIkIAbmIpvStDOjg8qr6obGkURL_GYWPCIiktyl7NS_6WJAbRycQl-CclIjg/exec?key=AIzaSyAlGUI2hKuNq7LgZQlnc0oAbaHuNj0e340";
+
+
+    fetch(url)
+        .then(d => d.json())
+        .then(d => {
+            document.getElementById("app").textContent = d[0].status;
+        });
+
+}
+
+
+function addGS(){
+
+    const url = "https://script.google.com/macros/s/AKfycbyDUaoqEXGIkIAbmIpvStDOjg8qr6obGkURL_GYWPCIiktyl7NS_6WJAbRycQl-CclIjg/exec";
+
+
+    fetch(url,{
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'no-cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        redirect: 'follow', // manual, *follow, error
+        //referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify({first:"Jake",phone:"312-000-1212", last:"Newperson"}) // body data type must match "Content-Type" header
+      });
+
+}
+
+document.getElementById("btn2").addEventListener("click",addGS);
+
+document.getElementById("btn").addEventListener("click",testGS);
+
+
+
+
 </script>
-<button onclick="authenticate().then(loadClient)">authorize and load</button>
-<button onclick="execute()">execute</button>
+
+</body>
+</html>
