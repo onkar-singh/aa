@@ -11,7 +11,7 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
     var shod1='{p:'+'0'+',od:{'+JSON.stringify(zsr)+'}}';
     
 console.log(shod1)
-    fetch('https://script.google.com/macros/sAKfycbzY-C41tnCr5ZhYcyMz52Ph36ioppXGdRFfBg97aUlLyV7NoKyuDA2ytNTusTh2BynJ/exec',{
+    fetch('https://script.google.com/macros/s/AKfycbzY-C41tnCr5ZhYcyMz52Ph36ioppXGdRFfBg97aUlLyV7NoKyuDA2ytNTusTh2BynJ/exec',{
         method: 'POST', 
         mode: 'no-cors', 
         cache: 'no-cache', 
