@@ -1124,6 +1124,7 @@ function unpin(){
 
 
 /// sync
+if (!localStorage.pend) {localStorage.setItem("pend", '{}')}
 var vk3=JSON.parse(localStorage.getItem('pend'));
 if(!(Object.keys(vk3).length === 0)){
     for (let r in vk3) {
@@ -1138,7 +1139,7 @@ st.collection('ods').doc(r).get().then(doc => {
 }
 
 
-if (!localStorage.pend) {localStorage.setItem("pend", '{}')}
+
 function sinsh(ph5,p){
 let url ='https://script.google.com/macros/s/'+localStorage.gr5+'/exec';
     var shod={p:p, ...ph5};
