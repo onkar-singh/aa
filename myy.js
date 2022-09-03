@@ -113,7 +113,7 @@ zsr.it = od;
 //console.log('json:',zsr)
  //sinsh(zsr,'1');
 
- var shod2='{p:'+'1'+',od:{'+JSON.stringify(zsr)+'}}';
+ var shod2='{p:'+'1'+',od:'+JSON.stringify(zsr)+'}';
  alert(shod2)
      fetch('https://script.google.com/macros/s/AKfycbzY-C41tnCr5ZhYcyMz52Ph36ioppXGdRFfBg97aUlLyV7NoKyuDA2ytNTusTh2BynJ/exec',{
          method: 'POST', 
