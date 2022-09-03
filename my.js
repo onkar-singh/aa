@@ -1142,7 +1142,8 @@ st.collection('ods').doc(r).get().then(doc => {
 
 function sinsh(ph5,p){
 var url ='https://script.google.com/macros/s/'+localStorage.gr5+'/exec';
-    var shod={p:p, ...ph5};
+//https://script.google.com/macros/s/AKfycbzQsPpCFnDbXPkb3ArAbIo3NrLdbYI6qJIo8G9xmyTFaQ7Dsyq6fNOQTvjjZulpYix5fQ/exec
+    var shod={p:p,od:{...ph5}};
 console.log(shod, url)
     fetch(url,{
         method: 'POST', 
@@ -1160,7 +1161,7 @@ console.log(shod, url)
 .catch((error) => {
   console.log('error',shod);
         let kl=JSON.parse(localStorage.getItem('pend'));
-        kl['od'+shod.id]=shod.id;
+        kl['od'+shod.od.id]=shod.id;
         localStorage.setItem("pend", JSON.stringify(kl));  
 
 });
