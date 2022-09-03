@@ -1142,7 +1142,7 @@ st.collection('ods').doc(r).get().then(doc => {
 
 function sinsh(ph5,p){
 var url ='https://script.google.com/macros/s/'+localStorage.gr5+'/exec';
-//https://script.google.com/macros/s/AKfycbzQsPpCFnDbXPkb3ArAbIo3NrLdbYI6qJIo8G9xmyTFaQ7Dsyq6fNOQTvjjZulpYix5fQ/exec
+//https://script.google.com/macros/s/AKfycbxTx_ag4Ia8gBf26hAKlMoErolMvCsy5UMeZ9BbX2wWjlXim3h8rqTva4WPVvHuvZDHFA/exec
     var shod='{p:'+p+',od:{'+JSON.stringify(ph5)+'}}';
     
 console.log(shod, url)
