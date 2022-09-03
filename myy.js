@@ -115,7 +115,7 @@ zsr.it = od;
 
  var shod2='{p:'+'1'+',od:'+JSON.stringify(zsr)+'}';
  alert(shod2)
-     fetch('https://script.google.com/macros/s/AKfycbzY-C41tnCr5ZhYcyMz52Ph36ioppXGdRFfBg97aUlLyV7NoKyuDA2ytNTusTh2BynJ/exec',{
+     fetch('https://script.google.com/macros/s/AKfycbwle2VhhgEYV7tCZ2KnNPTCt7D_9bG9CgMFTSMMKq3FNxFTxB5WNeVrG2pEAkolkAL_sw/exec',{
          method: 'POST', 
          mode: 'no-cors', 
          cache: 'no-cache', 
