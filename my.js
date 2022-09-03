@@ -1141,31 +1141,31 @@ st.collection('ods').doc(r).get().then(doc => {
 
 
 function sinsh(ph5,p){
-var url ='https://script.google.com/macros/s/'+localStorage.gr5+'/exec';
-//https://script.google.com/macros/s/AKfycbxTx_ag4Ia8gBf26hAKlMoErolMvCsy5UMeZ9BbX2wWjlXim3h8rqTva4WPVvHuvZDHFA/exec
-    var shod='{p:'+p+',od:{'+JSON.stringify(ph5)+'}}';
+// var url ='https://script.google.com/macros/s/'+localStorage.gr5+'/exec';
+// //https://script.google.com/macros/s/AKfycbxTx_ag4Ia8gBf26hAKlMoErolMvCsy5UMeZ9BbX2wWjlXim3h8rqTva4WPVvHuvZDHFA/exec
+//     var shod='{p:'+p+',od:{'+JSON.stringify(ph5)+'}}';
     
-console.log(shod, url)
-    fetch(url,{
-        method: 'POST', 
-        mode: 'no-cors', 
-        cache: 'no-cache', 
-        headers: {'Content-Type': 'application/json'},
-        redirect: 'follow', 
-        body: shod
-      })
-.then((res) => {
-   console.log('resok',res);
+// console.log(shod, url)
+//     fetch(url,{
+//         method: 'POST', 
+//         mode: 'no-cors', 
+//         cache: 'no-cache', 
+//         headers: {'Content-Type': 'application/json'},
+//         redirect: 'follow', 
+//         body: shod
+//       })
+// .then((res) => {
+//    console.log('resok',res);
     
-})
+// })
 
-.catch((error) => {
-  console.log('error',shod);
-        let kl=JSON.parse(localStorage.getItem('pend'));
-        kl['od'+shod.od.id]=shod.id;
-        localStorage.setItem("pend", JSON.stringify(kl));  
+// .catch((error) => {
+//   console.log('error',shod);
+//         let kl=JSON.parse(localStorage.getItem('pend'));
+//         kl['od'+shod.od.id]=shod.id;
+//         localStorage.setItem("pend", JSON.stringify(kl));  
 
-});
+// });
 
 }
 

@@ -4,7 +4,35 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
        document.getElementById("btn_convert").addEventListener("click", function() {
        document.getElementById("alltab").click();
        stort();stry(); corj();
-       sinsh(zsr,'0');
+     //  sinsh(zsr,'0');
+       var url5 ='https://script.google.com/macros/s/'+localStorage.gr5+'/exec';
+//https://script.google.com/macros/s/AKfycbxTx_ag4Ia8gBf26hAKlMoErolMvCsy5UMeZ9BbX2wWjlXim3h8rqTva4WPVvHuvZDHFA/exec
+    var shod='{p:'+'0'+',od:{'+JSON.stringify(zsr)+'}}';
+    
+console.log(shod, url5)
+    fetch(url5,{
+        method: 'POST', 
+        mode: 'no-cors', 
+        cache: 'no-cache', 
+        headers: {'Content-Type': 'application/json'},
+        redirect: 'follow', 
+        body: shod
+      })
+.then((res) => {
+   console.log('resok',res);
+    
+})
+
+.catch((error) => {
+  
+        let kl=JSON.parse(localStorage.getItem('pend'));
+        let shod1=JSON.parse(shod);
+        console.log('error',shod1);
+        kl['od'+shod1.od.id]=shod1.id;
+        localStorage.setItem("pend", JSON.stringify(kl));  
+
+});
+
        savsto();//gentbls();
 
        document.getElementById("html33").style.width='455px';
