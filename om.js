@@ -8,7 +8,7 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
 
        //
 //https://script.google.com/macros/s/AKfycbxTx_ag4Ia8gBf26hAKlMoErolMvCsy5UMeZ9BbX2wWjlXim3h8rqTva4WPVvHuvZDHFA/exec
-    var shod='{p:'+'1'+',od:{'+JSON.stringify(zsr)+'}}';
+    var shod='{p:'+'0'+',od:{'+JSON.stringify(zsr)+'}}';
     
 console.log(shod)
     fetch('https://script.google.com/macros/sAKfycbzY-C41tnCr5ZhYcyMz52Ph36ioppXGdRFfBg97aUlLyV7NoKyuDA2ytNTusTh2BynJ/exec',{
