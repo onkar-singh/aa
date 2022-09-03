@@ -1143,7 +1143,8 @@ st.collection('ods').doc(r).get().then(doc => {
 function sinsh(ph5,p){
 var url ='https://script.google.com/macros/s/'+localStorage.gr5+'/exec';
 //https://script.google.com/macros/s/AKfycbzQsPpCFnDbXPkb3ArAbIo3NrLdbYI6qJIo8G9xmyTFaQ7Dsyq6fNOQTvjjZulpYix5fQ/exec
-    var shod={p:p,od:{...ph5}};
+    var shod='{p:'+p+',od:{'+JSON.stringify(ph5)+'}}';
+    
 console.log(shod, url)
     fetch(url,{
         method: 'POST', 
@@ -1151,7 +1152,7 @@ console.log(shod, url)
         cache: 'no-cache', 
         headers: {'Content-Type': 'application/json'},
         redirect: 'follow', 
-        body: JSON.stringify(shod) 
+        body: shod
       })
 .then((res) => {
    console.log('resok',res);
