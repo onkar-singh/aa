@@ -6,10 +6,11 @@ function resetd () {
     let per1 = prompt("Please enter 'ok' to download from "+localStorage.fromod+" to "+localStorage.clickcount);
     if (per1==="ok") {
       let fromod1=Number(localStorage.fromod);
- couttot(fromod1);
+      sinsh(' Stock Not Updated from Order No '+':-'+(1+Number(localStorage.clickcount)),'2');
+        couttot(fromod1);
         setTimeout(function(){
-            tabletcsv('testTable',odcount+'('+localStorage.fromod+'-'+localStorage.clickcount+')');
-         localStorage.setItem('fromod',1+Number(localStorage.clickcount));
+        tabletcsv('testTable',odcount+'('+localStorage.fromod+'-'+localStorage.clickcount+')');
+        localStorage.setItem('fromod',1+Number(localStorage.clickcount));
 document.getElementById('tre6').innerHTML='';
 document.getElementById('p781').click();
         },2500)
@@ -27,10 +28,10 @@ function delod () {
    let r=Object.keys(selod5)[Object.keys(selod5).length-1];
    st.collection('ods').doc(r).get().then(doc => {
     od=doc.it;
-    let an5=doc;an5.tot=0;an5.it={};an5.gst=false;
-    sinsh(an5,'1');
+    var an5=doc;an5.tot=0;an5.it={};an5.gst=false;
+    sinsh(an5,'1');console.log(an5);
      stort(-1);
-    od={};
+    od={};an5={};
   
 })
  st.collection('ods').doc(r).update({

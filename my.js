@@ -1103,30 +1103,68 @@ function unpin(){
 }
 
 // save in sheet
+
 // function sinsh(v,g) {
 //   let pkl5=localStorage.gr5; 
-//   let cu5 = window.location.href;    
-//   window.open(cu5 , '_blank'); 
-//   location.href='https://script.google.com/macros/s/'+pkl5+'/dev?t55='+g+'&nm5='+JSON.stringify(v); 
-//    }
-function sinsh(v,g) {
-  let pkl5=localStorage.gr5; 
-  let netb1 = 'https://script.google.com/macros/s/'+pkl5+'/dev?t55='+g+'&nm5='+JSON.stringify(v);  
+//   let netb1 = 'https://script.google.com/macros/s/'+pkl5+'/dev?t55='+g+'&nm5='+JSON.stringify(v);  
 
-  let myWindow1=window.open(netb1 , '_blank'); // script
-  //let myWindow2=window.open(location.href , '_blank');  // webapp
+//   let myWindow1=window.open(netb1 , '_blank'); // script
+//   //let myWindow2=window.open(location.href , '_blank');  // webapp
 
-  let readyStateCheckInterval = setInterval(function() {
-    if (myWindow1.document.readyState === "complete") {
-        clearInterval(readyStateCheckInterval);
-        setTimeout(function() {
-           myWindow1.close();
-           //window.close();
-          }, 1000);
-    }
-}, 50);
+//   let readyStateCheckInterval = setInterval(function() {
+//     if (myWindow1.document.readyState === "complete") {
+//         clearInterval(readyStateCheckInterval);
+//         setTimeout(function() {
+//            myWindow1.close();
+//            //window.close();
+//           }, 1000);
+//     }
+//      }, 50);
+// }
 
-   }
+if (!localStorage.pend) {localStorage.setItem("pend", '{}')}
+function sinsh(ph5,p){
+let url ='https://script.google.com/macros/s/'+localStorage.gr5+'/exec';
+    var shod={p:p, ...ph5};
+
+    fetch(url,{
+        method: 'POST', 
+        mode: 'no-cors', 
+        cache: 'no-cache', 
+        headers: {'Content-Type': 'application/json'},
+        redirect: 'follow', 
+        body: JSON.stringify(shod) 
+      })
+.then((res) => {
+   console.log('resok',res);
+    
+})
+
+.catch((error) => {
+  console.log('error',shod);
+        let kl=JSON.parse(localStorage.getItem('pend'));
+        kl['od'+shod.id]=shod.id;
+        localStorage.setItem("pend", JSON.stringify(kl));  
+
+});
+
+}
+
+
+/// sync
+var vk3=JSON.parse(localStorage.getItem('pend'));
+if(!(Object.keys(vk3).length === 0)){
+    for (let r in vk3) {
+       // console.log(r);
+st.collection('ods').doc(r).get().then(doc => {
+  console.log('sync:',r);
+    sinsh(doc,'0');
+    delete vk3[r];
+
+})
+ }
+}
+
 
 
 
