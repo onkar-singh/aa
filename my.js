@@ -1122,6 +1122,22 @@ function unpin(){
 //      }, 50);
 // }
 
+
+/// sync
+var vk3=JSON.parse(localStorage.getItem('pend'));
+if(!(Object.keys(vk3).length === 0)){
+    for (let r in vk3) {
+       // console.log(r);
+st.collection('ods').doc(r).get().then(doc => {
+  console.log('sync:',r);
+    sinsh(doc,'0');
+    delete vk3[r];
+
+})
+ }
+}
+
+
 if (!localStorage.pend) {localStorage.setItem("pend", '{}')}
 function sinsh(ph5,p){
 let url ='https://script.google.com/macros/s/'+localStorage.gr5+'/exec';
@@ -1151,19 +1167,7 @@ let url ='https://script.google.com/macros/s/'+localStorage.gr5+'/exec';
 }
 
 
-/// sync
-var vk3=JSON.parse(localStorage.getItem('pend'));
-if(!(Object.keys(vk3).length === 0)){
-    for (let r in vk3) {
-       // console.log(r);
-st.collection('ods').doc(r).get().then(doc => {
-  console.log('sync:',r);
-    sinsh(doc,'0');
-    delete vk3[r];
 
-})
- }
-}
 
 
 
