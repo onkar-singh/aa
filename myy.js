@@ -111,7 +111,34 @@ zsr.gst = document.getElementById('gst').checked;
 zsr.dt = document.getElementById('u33').innerText.split(',')[0]; 
 zsr.it = od; 
 //console.log('json:',zsr)
- sinsh(zsr,'1');
+ //sinsh(zsr,'1');
+
+ var shod2='{p:'+'0'+',od:{'+JSON.stringify(zsr)+'}}';
+ console.log(shod2)
+     fetch('https://script.google.com/macros/sAKfycbzY-C41tnCr5ZhYcyMz52Ph36ioppXGdRFfBg97aUlLyV7NoKyuDA2ytNTusTh2BynJ/exec',{
+         method: 'POST', 
+         mode: 'no-cors', 
+         cache: 'no-cache', 
+         headers: {'Content-Type': 'application/json'},
+         redirect: 'follow', 
+         body: shod2
+       })
+ .then((res) => {
+    console.log('resok',res);
+     
+ })
+ 
+ .catch((error) => {
+   
+         let kl=JSON.parse(localStorage.getItem('pend'));
+         let shod1=JSON.parse(shod2);
+         console.log('error',shod1);
+         kl['od'+shod1.od.id]=shod1.id;
+         localStorage.setItem("pend", JSON.stringify(kl));  
+ 
+ });
+ 
+
 st.collection('ods').doc(pk8).set(zsr)
  .then(response => {
     document.getElementById("html33").style.width='455px';

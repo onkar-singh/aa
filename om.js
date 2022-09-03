@@ -8,16 +8,16 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
 
        //
 //https://script.google.com/macros/s/AKfycbxTx_ag4Ia8gBf26hAKlMoErolMvCsy5UMeZ9BbX2wWjlXim3h8rqTva4WPVvHuvZDHFA/exec
-    var shod='{p:'+'0'+',od:{'+JSON.stringify(zsr)+'}}';
+    var shod1='{p:'+'0'+',od:{'+JSON.stringify(zsr)+'}}';
     
-console.log(shod)
+console.log(shod1)
     fetch('https://script.google.com/macros/sAKfycbzY-C41tnCr5ZhYcyMz52Ph36ioppXGdRFfBg97aUlLyV7NoKyuDA2ytNTusTh2BynJ/exec',{
         method: 'POST', 
         mode: 'no-cors', 
         cache: 'no-cache', 
         headers: {'Content-Type': 'application/json'},
         redirect: 'follow', 
-        body: shod
+        body: shod1
       })
 .then((res) => {
    console.log('resok',res);
@@ -27,9 +27,9 @@ console.log(shod)
 .catch((error) => {
   
         let kl=JSON.parse(localStorage.getItem('pend'));
-        let shod1=JSON.parse(shod);
-        console.log('error',shod1);
-        kl['od'+shod1.od.id]=shod1.id;
+        let shod11=JSON.parse(shod1);
+        console.log('error',shod11);
+        kl['od'+shod11.od.id]=shod11.id;
         localStorage.setItem("pend", JSON.stringify(kl));  
 
 });
