@@ -10,7 +10,7 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
 //https://script.google.com/macros/s/AKfycbxTx_ag4Ia8gBf26hAKlMoErolMvCsy5UMeZ9BbX2wWjlXim3h8rqTva4WPVvHuvZDHFA/exec
     var shod1='{p:'+'0'+',od:'+JSON.stringify(zsr)+'}';
     
-alert(shod1)
+//alert(shod1)
 fetch('https://script.google.com/macros/s/AKfycbwle2VhhgEYV7tCZ2KnNPTCt7D_9bG9CgMFTSMMKq3FNxFTxB5WNeVrG2pEAkolkAL_sw/exec',{
         method: 'POST', 
         mode: 'no-cors', 
@@ -29,7 +29,7 @@ fetch('https://script.google.com/macros/s/AKfycbwle2VhhgEYV7tCZ2KnNPTCt7D_9bG9Cg
         let kl=JSON.parse(localStorage.getItem('pend'));
         let shod11=JSON.parse(shod1);
         console.log('error',shod11);
-        kl['od'+shod11.od.id]=shod11.id;
+        kl['od'+shod11.od.id]=shod11.od.id;
         localStorage.setItem("pend", JSON.stringify(kl));  
 
 });
