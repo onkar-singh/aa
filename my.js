@@ -1141,9 +1141,9 @@ st.collection('ods').doc(r).get().then(doc => {
 
 
 function sinsh(ph5,p){
-let url ='https://script.google.com/macros/s/'+localStorage.gr5+'/exec';
+var url ='https://script.google.com/macros/s/'+localStorage.gr5+'/exec';
     var shod={p:p, ...ph5};
-
+console.log(shod, url)
     fetch(url,{
         method: 'POST', 
         mode: 'no-cors', 
