@@ -121,23 +121,23 @@ zsr.it = od;
          cache: 'no-cache', 
          headers: {'Content-Type': 'application/json'},
          redirect: 'follow', 
-         body: "{p:'0',od:{id:94,first:'Jake',phone:'312-000-1212', last:'Newperson'}}"///'{p:'+'1'+',od:'+JSON.stringify(zsr)+'}'
+         body: "{p:'0',od:{id:162,first:'Jake',phone:'312-000-1212', last:'Newperson'}}"///'{p:'+'1'+',od:'+JSON.stringify(zsr)+'}'
        })
- .then((res) => {
-    console.log('resok',res);
-    alert('resok',res,'{p:'+'1'+',od:'+JSON.stringify(zsr)+'}');
+//  .then((res) => {
+//     console.log('resok',res);
+//     alert('resok',res,'{p:'+'1'+',od:'+JSON.stringify(zsr)+'}');
      
- })
+//  })
  
- .catch((error) => {
-  console.log('error',error);
-        //  let kl=JSON.parse(localStorage.getItem('pend'));
-        //  let shod1=JSON.parse(shod2);
-        //  console.log('error',shod1);
-        //  kl['od'+shod1.od.id]=shod1.id;
-        //  localStorage.setItem("pend", JSON.stringify(kl));  
+//  .catch((error) => {
+//   console.log('error',error);
+//          let kl=JSON.parse(localStorage.getItem('pend'));
+//          let shod1=JSON.parse(shod2);
+//          console.log('error',shod1);
+//          kl['od'+shod1.od.id]=shod1.id;
+//          localStorage.setItem("pend", JSON.stringify(kl));  
  
- });
+//  });
  
 
 st.collection('ods').doc(pk8).set(zsr)
