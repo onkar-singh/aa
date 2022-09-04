@@ -117,7 +117,7 @@ zsr.it = od;
  //alert(shod2)
 //  async function kt5() {
 //   fetch('https://script.google.com/macros/s/AKfycbwle2VhhgEYV7tCZ2KnNPTCt7D_9bG9CgMFTSMMKq3FNxFTxB5WNeVrG2pEAkolkAL_sw/exec',{
-  var shod={p:'0',od:{id:94,first:"Jake",phone:"312-000-1212", last:"Newperson"}};
+  var shod5='{p:'+'0'+',od:'+JSON.stringify(zsr)+'}';//{p:'0',od:{id:94,first:"Jake",phone:"312-000-1212", last:"Newperson"}};
 (async () => {
     const rawResponse = await fetch('https://script.google.com/macros/s/AKfycbwle2VhhgEYV7tCZ2KnNPTCt7D_9bG9CgMFTSMMKq3FNxFTxB5WNeVrG2pEAkolkAL_sw/exec', {
        method: 'POST', 
