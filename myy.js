@@ -1,5 +1,5 @@
 if(!localStorage.fromod){localStorage.setItem('fromod','1')}
-
+//alert('hi')
 function resetd () {
  var odcount=1+Number(localStorage.clickcount)-Number(localStorage.fromod);
  if(odcount){
@@ -29,7 +29,32 @@ function delod () {
    st.collection('ods').doc(r).get().then(doc => {
     od=doc.it;
     var an5=doc;an5.tot=0;an5.it={};an5.gst=false;
-    sinsh(an5,'1');console.log(an5);
+   
+       const shod11={"p":"1","od":{...an5}};
+(async () => {
+    const rawResponse = fetch('https://script.google.com/macros/s/AKfycbzA-xgTRtmhBb7KQagFoX-o63oDz0JYfN0a8P22Y1Su5ZM_rWIhkkGcjS8PzUyS5Y-XdA/exec', {
+       method: 'POST', 
+        mode: 'no-cors', 
+        cache: 'no-cache', 
+        headers: {'Content-Type': 'application/json'},
+        redirect: 'follow', 
+        body:JSON.stringify(shod11) 
+      })
+    rawResponse.then((response) => {
+  console.log(response)
+     })
+        .catch((error) => {
+         console.log('error',error);
+        let kl=JSON.parse(localStorage.getItem('pend'));
+        kl['od'+shod11.od.id]=shod11.od.id;
+        localStorage.setItem("pend", JSON.stringify(kl));  
+
+});
+})();
+       
+       
+       
+       console.log(an5);
      stort(-1);
     od={};an5={};
   
@@ -114,23 +139,34 @@ zsr.it = od;
  //sinsh(zsr,'1');
 
  //var shod2='{p:'+'1'+',od:'+JSON.stringify(zsr)+'}';
+    // {p:'0',od:{...zsr};
  //alert(shod2)
 //  async function kt5() {
 //   fetch('https://script.google.com/macros/s/AKfycbwle2VhhgEYV7tCZ2KnNPTCt7D_9bG9CgMFTSMMKq3FNxFTxB5WNeVrG2pEAkolkAL_sw/exec',{
-  var shod5='{p:'+'0'+',od:'+JSON.stringify(zsr)+'}';//{p:'0',od:{id:94,first:"Jake",phone:"312-000-1212", last:"Newperson"}};
+ // var shod5='{p:'+"'0'"+',od:'+JSON.stringify(zsr)+'}';//{p:'0',od:{id:94,first:"Jake",phone:"312-000-1212", last:"Newperson"}};
+ /// "{p:'0',od:{id:162,first:'Jake',phone:'312-000-1212', last:'Newperson'}}"///'{p:'+'1'+',od:'+JSON.stringify(zsr)+'}'   
+    //alert('jhj',JSON.stringify(shod51));
+const shod1={"p":"1","od":{...zsr}};
 (async () => {
-    const rawResponse = await fetch('https://script.google.com/macros/s/AKfycbwle2VhhgEYV7tCZ2KnNPTCt7D_9bG9CgMFTSMMKq3FNxFTxB5WNeVrG2pEAkolkAL_sw/exec', {
+    const rawResponse = fetch('https://script.google.com/macros/s/AKfycbzA-xgTRtmhBb7KQagFoX-o63oDz0JYfN0a8P22Y1Su5ZM_rWIhkkGcjS8PzUyS5Y-XdA/exec', {
        method: 'POST', 
         mode: 'no-cors', 
         cache: 'no-cache', 
         headers: {'Content-Type': 'application/json'},
         redirect: 'follow', 
-        body:JSON.stringify(shod5)/// "{p:'0',od:{id:162,first:'Jake',phone:'312-000-1212', last:'Newperson'}}"///'{p:'+'1'+',od:'+JSON.stringify(zsr)+'}'
+        body:JSON.stringify(shod1) 
       })
-      const content = await rawResponse;
+    rawResponse.then((response) => {
+  console.log(response)
+     })
+        .catch((error) => {
+         console.log('error',error);
+        let kl=JSON.parse(localStorage.getItem('pend'));
+        kl['od'+shod1.od.id]=shod1.od.id;
+        localStorage.setItem("pend", JSON.stringify(kl));  
 
-      console.log(content);
-    })();
+});
+})();
     
    
 //  .then((res) => {
@@ -175,5 +211,6 @@ document.getElementById("p781").click();
     console.log('There was an error, do something else.')
   })
 }
+
 
 

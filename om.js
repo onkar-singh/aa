@@ -6,33 +6,27 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
        stort();stry(); corj();
      //  sinsh(zsr,'0');
 
-       //
-//https://script.google.com/macros/s/AKfycbxTx_ag4Ia8gBf26hAKlMoErolMvCsy5UMeZ9BbX2wWjlXim3h8rqTva4WPVvHuvZDHFA/exec
-    var shod1='{p:'+'0'+',od:'+JSON.stringify(zsr)+'}';
-    
-//alert(shod1)
-fetch('https://script.google.com/macros/s/AKfycbwle2VhhgEYV7tCZ2KnNPTCt7D_9bG9CgMFTSMMKq3FNxFTxB5WNeVrG2pEAkolkAL_sw/exec',{
-        method: 'POST', 
-        mode: 'no-cors', 
-        cache: 'no-cache', 
-        headers: {'Content-Type': 'application/json'},
-        redirect: 'follow', 
-        body: shod1
-      })
-.then((res) => {
-   console.log('resok',res);
-    
-})
-
-.catch((error) => {
-  
-        let kl=JSON.parse(localStorage.getItem('pend'));
-        let shod11=JSON.parse(shod1);
-        console.log('error',shod11);
-        kl['od'+shod11.od.id]=shod11.od.id;
-        localStorage.setItem("pend", JSON.stringify(kl));  
-
-});
+     const shod0={"p":"0","od":{...zsr}};
+     (async () => {
+         const rawResponse = fetch('https://script.google.com/macros/s/AKfycbzA-xgTRtmhBb7KQagFoX-o63oDz0JYfN0a8P22Y1Su5ZM_rWIhkkGcjS8PzUyS5Y-XdA/exec', {
+            method: 'POST', 
+             mode: 'no-cors', 
+             cache: 'no-cache', 
+             headers: {'Content-Type': 'application/json'},
+             redirect: 'follow', 
+             body:JSON.stringify(shod0) 
+           })
+         rawResponse.then((response) => {
+       console.log(response,shod0)
+          })
+             .catch((error) => {
+              console.log('error',error);
+             let kl=JSON.parse(localStorage.getItem('pend'));
+             kl['od'+shod0.od.id]=shod0.od.id;
+             localStorage.setItem("pend", JSON.stringify(kl));  
+     
+     });
+     })();
 
        savsto();//gentbls();
 
