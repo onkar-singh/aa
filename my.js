@@ -1134,7 +1134,7 @@ st.collection('ods').doc(r).get().then(doc => {
   //sinsh(doc,'0');
 
     delete vk35[r];
-
+    localStorage.setItem("pend", JSON.stringify(vk35))
 })
  }
 }
