@@ -6,8 +6,31 @@ function resetd () {
     let per1 = prompt("Please enter 'ok' to download from "+localStorage.fromod+" to "+localStorage.clickcount);
     if (per1==="ok") {
       let fromod1=Number(localStorage.fromod);
-      sinsh(' Stock Not Updated from Order No '+':-'+(1+Number(localStorage.clickcount)),'2');
+      //sinsh(' Stock Not Updated from Order No '+':-'+(1+Number(localStorage.clickcount)),'2');
         couttot(fromod1);
+        const shod2={"p":"2","od":' Stock Not Updated from Order No '+':-'+(1+Number(localStorage.clickcount)};
+(async () => {
+    const rawResponse = await fetch('https://script.google.com/macros/s/AKfycbzA-xgTRtmhBb7KQagFoX-o63oDz0JYfN0a8P22Y1Su5ZM_rWIhkkGcjS8PzUyS5Y-XdA/exec', {
+       method: 'POST', 
+        mode: 'no-cors', 
+        cache: 'no-cache', 
+        headers: {'Content-Type': 'application/json'},
+        redirect: 'follow', 
+        body:JSON.stringify(shod2) 
+      })
+    rawResponse.then((response) => {
+  console.log(response)
+     })
+        .catch((error) => {
+         console.log('error',error);
+        let kl=JSON.parse(localStorage.getItem('pend'));
+        kl['od'+shod2.od.id]=shod2.od.id;
+        localStorage.setItem("pend", JSON.stringify(kl));  
+
+});
+})();
+       
+
         setTimeout(function(){
         tabletcsv('testTable',odcount+'('+localStorage.fromod+'-'+localStorage.clickcount+')');
         localStorage.setItem('fromod',1+Number(localStorage.clickcount));
