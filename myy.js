@@ -126,8 +126,7 @@ zsr.it = od;
       })
     }
     kt5().then(
-      function(value) {alert(value)},
-      function(error) {alert(error);}
+      alert('value',"{p:'0',od:{id:162,first:'Jake',phone:'312-000-1212', last:'Newperson'}}")
       
     );
    
