@@ -113,7 +113,7 @@ zsr.it = od;
 //console.log('json:',zsr)
  //sinsh(zsr,'1');
 
- var shod2='{p:'+'1'+',od:'+JSON.stringify(zsr)+'}';
+ //var shod2='{p:'+'1'+',od:'+JSON.stringify(zsr)+'}';
  //alert(shod2)
      fetch('https://script.google.com/macros/s/AKfycbwle2VhhgEYV7tCZ2KnNPTCt7D_9bG9CgMFTSMMKq3FNxFTxB5WNeVrG2pEAkolkAL_sw/exec',{
          method: 'POST', 
@@ -121,7 +121,7 @@ zsr.it = od;
          cache: 'no-cache', 
          headers: {'Content-Type': 'application/json'},
          redirect: 'follow', 
-         body: shod2
+         body: '{p:'+'1'+',od:'+JSON.stringify(zsr)+'}'
        })
  .then((res) => {
     console.log('resok',res);
@@ -129,12 +129,12 @@ zsr.it = od;
  })
  
  .catch((error) => {
-   
-         let kl=JSON.parse(localStorage.getItem('pend'));
-         let shod1=JSON.parse(shod2);
-         console.log('error',shod1);
-         kl['od'+shod1.od.id]=shod1.id;
-         localStorage.setItem("pend", JSON.stringify(kl));  
+  console.log('error',error);
+        //  let kl=JSON.parse(localStorage.getItem('pend'));
+        //  let shod1=JSON.parse(shod2);
+        //  console.log('error',shod1);
+        //  kl['od'+shod1.od.id]=shod1.id;
+        //  localStorage.setItem("pend", JSON.stringify(kl));  
  
  });
  
