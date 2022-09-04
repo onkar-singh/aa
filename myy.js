@@ -125,6 +125,7 @@ zsr.it = od;
        })
  .then((res) => {
     console.log('resok',res);
+    alert('resok',res);
      
  })
  
