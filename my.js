@@ -1125,14 +1125,15 @@ function unpin(){
 
 /// sync
 if (!localStorage.pend) {localStorage.setItem("pend", '{}')}
-var vk3=JSON.parse(localStorage.getItem('pend'));
-if(!(Object.keys(vk3).length === 0)){
-    for (let r in vk3) {
+var vk35=JSON.parse(localStorage.getItem('pend'));
+if(!(Object.keys(vk35).length === 0)){
+    for (let r in vk35) {
        // console.log(r);
 st.collection('ods').doc(r).get().then(doc => {
   console.log('sync:',r);
-    sinsh(doc,'0');
-    delete vk3[r];
+  //sinsh(doc,'0');
+
+    delete vk35[r];
 
 })
  }
