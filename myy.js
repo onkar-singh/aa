@@ -115,14 +115,22 @@ zsr.it = od;
 
  //var shod2='{p:'+'1'+',od:'+JSON.stringify(zsr)+'}';
  //alert(shod2)
-     fetch('https://script.google.com/macros/s/AKfycbwle2VhhgEYV7tCZ2KnNPTCt7D_9bG9CgMFTSMMKq3FNxFTxB5WNeVrG2pEAkolkAL_sw/exec',{
-         method: 'POST', 
-         mode: 'no-cors', 
-         cache: 'no-cache', 
-         headers: {'Content-Type': 'application/json'},
-         redirect: 'follow', 
-         body: "{p:'0',od:{id:162,first:'Jake',phone:'312-000-1212', last:'Newperson'}}"///'{p:'+'1'+',od:'+JSON.stringify(zsr)+'}'
-       })
+ async function kt5() {
+  fetch('https://script.google.com/macros/s/AKfycbwle2VhhgEYV7tCZ2KnNPTCt7D_9bG9CgMFTSMMKq3FNxFTxB5WNeVrG2pEAkolkAL_sw/exec',{
+        method: 'POST', 
+        mode: 'no-cors', 
+        cache: 'no-cache', 
+        headers: {'Content-Type': 'application/json'},
+        redirect: 'follow', 
+        body: "{p:'0',od:{id:162,first:'Jake',phone:'312-000-1212', last:'Newperson'}}"///'{p:'+'1'+',od:'+JSON.stringify(zsr)+'}'
+      })
+    }
+    kt5().then(
+      function(value) {alert(value)},
+      function(error) {alert(error);}
+      
+    );
+   
 //  .then((res) => {
 //     console.log('resok',res);
 //     alert('resok',res,'{p:'+'1'+',od:'+JSON.stringify(zsr)+'}');
