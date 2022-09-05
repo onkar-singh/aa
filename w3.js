@@ -423,3 +423,24 @@ w3.displayObject = function (id, data) {
 //       }
 //   }
 // }, 50);
+
+
+async function sendd(urld, d9,pd) {
+  const resp = await fetch(urld, {
+    method: 'POST',
+    mode: 'no-cors',
+    cache: 'no-cache',
+    headers: { 'Content-Type': 'application/json' },
+    redirect: 'follow',
+    body: d9
+  })
+    .then(function (res) {
+      console.log('data send',res)
+    })
+    .catch((error) => {
+      console.log('error', error);
+      let kl=JSON.parse(localStorage.getItem('pend2'));
+      kl[pd]=d9;
+      localStorage.setItem("pend2", JSON.stringify(kl));  
+    });
+}
