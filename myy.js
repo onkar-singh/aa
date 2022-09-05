@@ -36,7 +36,7 @@ function delod () {
    
        const shod11={"p":"1","od":{...an5}};
 (async () => {
-    const rawResponse = await fetch('https://script.google.com/macros/s/AKfycbzA-xgTRtmhBb7KQagFoX-o63oDz0JYfN0a8P22Y1Su5ZM_rWIhkkGcjS8PzUyS5Y-XdA/exec', {
+    const rawResponse = await fetch(urli, {
        method: 'POST', 
         mode: 'no-cors', 
         cache: 'no-cache', 
@@ -152,7 +152,7 @@ zsr.it = od;
     //alert('jhj',JSON.stringify(shod51));
 const shod1={"p":"1","od":{...zsr}};
 (async () => {
-    const rawResponse = await fetch('https://script.google.com/macros/s/AKfycbzA-xgTRtmhBb7KQagFoX-o63oDz0JYfN0a8P22Y1Su5ZM_rWIhkkGcjS8PzUyS5Y-XdA/exec', {
+    const rawResponse = await fetch(urli, {
        method: 'POST', 
         mode: 'no-cors', 
         cache: 'no-cache', 

