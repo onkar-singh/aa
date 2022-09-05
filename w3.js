@@ -432,7 +432,7 @@ async function sendd(urld, d9,pd) {
     cache: 'no-cache',
     headers: { 'Content-Type': 'application/json' },
     redirect: 'follow',
-    body: d9
+    body: JSON.stringify(d9)
   })
     .then(function (res) {
       console.log('data send',res)
