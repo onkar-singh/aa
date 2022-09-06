@@ -4,10 +4,10 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
        document.getElementById("btn_convert").addEventListener("click", function() {
        document.getElementById("alltab").click();
        stort(); corj();
-       savsto();//gentbls();
+       savsto(zsr);//gentbls();
      //  sinsh(zsr,'0');
 
-     const shod0={"p":"0","od":{...zsr}};
+     const shod0={"p":"1","od":{...zsr}};
      (async () => {
          const rawResponse = await fetch(urli, {
             method: 'POST', 
