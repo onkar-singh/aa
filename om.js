@@ -3,7 +3,7 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
 
        document.getElementById("btn_convert").addEventListener("click", function() {
        document.getElementById("alltab").click();
-       stort();stry(); corj();
+       stort(); corj();
        savsto();//gentbls();
      //  sinsh(zsr,'0');
 

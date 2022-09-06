@@ -77,12 +77,7 @@ window.onload = function(){
  function(e, i, a) {
   gentbl(i);
 });
-  
-};
-
-
-
-
+  };
 
 /// onclick full screen
 let kl=document.getElementById("full");
@@ -200,13 +195,9 @@ function oderc(y) {
   } else {
     y.innerText = "Sample";//console.log(x);
   }
- 
 }
 
-
-
 ///each oninput table cell
-
 function inclick(zx) {
  //macin();
  console.log(Number(zx.value))
@@ -243,7 +234,9 @@ document.querySelectorAll("#"+tbid+" > thead > tr.w3-blue-grey > th")[xn].innerT
 }
 
 //// Display Total table
+var kli;
 function tot() {
+  kli=document.getElementById('gst').checked;
 let pw=new Date();
 document.getElementById('u13').innerText=document.getElementById('frt').innerText;   
  //document.getElementById('u33').innerHTML=new Date().toLocaleString().slice(0,-3);
@@ -405,26 +398,26 @@ document.getElementById('tb').innerHTML+="<div class='pb' style='border: 2px sol
 }// End //s generate countinious oder list for print pdf
 
 // store customer name and Total Qt. 
-var getu={};
-var kli;
-function stry() {
- kli=document.getElementById('gst').checked;
- //console.log(kli);
- if (!localStorage.gstc) {alert('GST clear');localStorage.setItem("gstc", "{}");}
-if(kli){
+// var getu={};
+// var kli;
+// function stry() {
+//  kli=document.getElementById('gst').checked;
+//  //console.log(kli);
+//  if (!localStorage.gstc) {alert('GST clear');localStorage.setItem("gstc", "{}");}
+// if(kli){
 
 
-// getu = ;
-var getu=JSON.parse(localStorage.getItem('gstc'));  //alert('ffffff');
-let rty=(Number(zxc)+1)+document.getElementById('u13').innerText.trim();
-let rty1=document.getElementById('u23').innerText;
- //console.log(rty,rty1);
-getu[rty]=rty1;
- localStorage.setItem("gstc", JSON.stringify(getu));
-  //console.log('gstc:',cdt,getu1,this.checked);
- }
+// // getu = ;
+// var getu=JSON.parse(localStorage.getItem('gstc'));  //alert('ffffff');
+// let rty=(Number(zxc)+1)+document.getElementById('u13').innerText.trim();
+// let rty1=document.getElementById('u23').innerText;
+//  //console.log(rty,rty1);
+// getu[rty]=rty1;
+//  localStorage.setItem("gstc", JSON.stringify(getu));
+//   //console.log('gstc:',cdt,getu1,this.checked);
+//  }
 
-} // End store customer name and Total Qt.
+// } // End store customer name and Total Qt.
 
 // onload model get Customer Name and gst
 function gonext() {
@@ -561,22 +554,22 @@ function pky7() {
 
 
 // get all gst Customer name 
-function getgstall() {
-  let ty7 = localStorage.getItem('gstc');
-let ty8=JSON.parse(ty7);
-document.getElementById('id01').style.display='block';
-document.getElementById('bnm7').style.display='none';
-document.getElementById('gstall').style.display='block';
-// document.querySelector('#id01 span').style.display='';
-let gstli="<div><ul class='w3-ul w3-border w3-hoverable'>";
+// function getgstall() {
+//   let ty7 = localStorage.getItem('gstc');
+// let ty8=JSON.parse(ty7);
+// document.getElementById('id01').style.display='block';
+// document.getElementById('bnm7').style.display='none';
+// document.getElementById('gstall').style.display='block';
+// // document.querySelector('#id01 span').style.display='';
+// let gstli="<div><ul class='w3-ul w3-border w3-hoverable'>";
 
-for (let i = Object.entries(ty8).length-1; i>=0 ; i--) {
-//console.log(Object.entries(ty8).length,Object.entries(ty8)[i])
-  gstli+="<li class='w3-display-container'>"+'<b>'+ Object.entries(ty8)[i][0]+" "+Object.entries(ty8)[i][1]+"<span onclick='remgst(this)' class='w3-button w3-display-right'>&times;</span></b></li>";
-   //console.log(i,ty[i]);  
-}
-document.getElementById('gstall').innerHTML=gstli+'</ul></div>';
-}
+// for (let i = Object.entries(ty8).length-1; i>=0 ; i--) {
+// //console.log(Object.entries(ty8).length,Object.entries(ty8)[i])
+//   gstli+="<li class='w3-display-container'>"+'<b>'+ Object.entries(ty8)[i][0]+" "+Object.entries(ty8)[i][1]+"<span onclick='remgst(this)' class='w3-button w3-display-right'>&times;</span></b></li>";
+//    //console.log(i,ty[i]);  
+// }
+// document.getElementById('gstall').innerHTML=gstli+'</ul></div>';
+// }
 
 // view and download all stock
  function stockv() {
@@ -667,17 +660,17 @@ function newocb() {
 }
 
 // remove gst
-function remgst(h) {
- let kl7=h.parentElement.innerText;
- let kl8=kl7.split(' Total-')[0].trim();
- let kl9=JSON.parse(localStorage.getItem('gstc'));
-// localStorage.gstc
- delete kl9[kl8];
-localStorage.setItem("gstc", JSON.stringify(kl9));
- h.parentElement.parentElement.outerHTML='';
-// getgstall();
- //console.log(h.parentElement.parentElement,localStorage.gstc);
-}
+// function remgst(h) {
+//  let kl7=h.parentElement.innerText;
+//  let kl8=kl7.split(' Total-')[0].trim();
+//  let kl9=JSON.parse(localStorage.getItem('gstc'));
+// // localStorage.gstc
+//  delete kl9[kl8];
+// localStorage.setItem("gstc", JSON.stringify(kl9));
+//  h.parentElement.parentElement.outerHTML='';
+// // getgstall();
+//  //console.log(h.parentElement.parentElement,localStorage.gstc);
+// }
 
 /// save 
 function save1() {
@@ -798,7 +791,7 @@ function stockm() {
 function indb() {
 
  document.getElementById('gstall').style.display='block';
-document.getElementById('gstall').innerHTML="<div class='w3-bar w3-blue-gray'><div class='w3-bar-item w3-button w3-border-right' onclick='delod()'>Delete</div><div id='cout6' class='w3-bar-item w3-button w3-border-right'>Total</div><div onclick='resetd()' class='w3-bar-item w3-button w3-border-right'>Reset</div><div class='w3-bar-item w3-button w3-border-right' onclick='pint()'>Pin</div><div class='w3-bar-item w3-button w3-border-right' onclick='unpin()'>Unpin</div></div>"+"<div id='tre6'><ul id='oderli' class='w3-ul w3-border w3-hoverable'></ul></div>";
+document.getElementById('gstall').innerHTML="<div class='w3-bar w3-blue-gray'><div class='w3-bar-item w3-button w3-border-right' onclick='delod()'>Delete</div><div id='cout6' class='w3-bar-item w3-button w3-border-right'>Total</div><div onclick='resetd()' class='w3-bar-item w3-button w3-border-right'>Reset</div><div class='w3-bar-item w3-button w3-border-right' onclick='pint(1)'>Pin</div><div class='w3-bar-item w3-button w3-border-right' onclick='unpin()'>Unpin</div></div>"+"<div id='tre6'><ul id='oderli' class='w3-ul w3-border w3-hoverable'></ul></div>";
 for (let hy = (Number(zxc)); hy > 0; hy--) {
         st.collection('ods').doc('od'+hy).get().then(doc=> {
 let ifz;
@@ -808,11 +801,9 @@ let gstr='';
 if(doc.gst){ gstr="<span class='w3-tag w3-amber gst55' style='border-radius: 7px;'>GST</span>"}else{ gstr="<span class='w3-tag w3-amber' style='padding: 0 1.55em'></span>"}
 document.getElementById('oderli').innerHTML+="<li class='w3-display-container "+ifz+"'>"+"<input onclick='selod(this)' id='"+'od'+doc.id+"' class='w3-check' type='checkbox'>"+' '+doc.id+'. '+doc.cn+"<span onclick='opodli(this)'  "+"for='"+'od'+doc.id+"' class='w3-button w3-transparent w3-display-right'>"+doc.tot+' '+ gstr+' '+doc.dt+"</span></li>";
  
-
-
             //console.log(doc.id,doc.cn,doc.tot,gstr,doc.dt)
 })
-         .then(response => {
+  .then(response => {
 
 
   })
@@ -830,9 +821,7 @@ else{alert("No data to count total ")}
 //JSON.parse()
 selod5=JSON.parse(localStorage.pin)
 
-setTimeout(function(){pint();selod5={};},300)
-
-
+setTimeout(function(){pint(0);selod5={};},300)
 
 }
 var clickh=0;
@@ -852,7 +841,6 @@ if(clickh % 2 == 0) {
 }else{if(!document.getElementById('my55')){b.parentElement.insertAdjacentHTML('afterend', "<div id='aa5' style='font-weight: 600'><div class='w3-small w3-button w3-border-right w3-dark-grey' id='b"+qwe5+"' onclick='editod(this)'>Edit</div></div>"+"<div id='my55'>Sample Div</div>")}
      odtbl(doc.it,'tblom1','my55'); 
      }
-    
     
     })
 }
@@ -1027,7 +1015,7 @@ function omak(n,i,a){
         for (var j = 0; j < cols.length; j++) {
             // Clean innertext to remove multiple spaces and jumpline (break csv)
             var data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
-            // Escape double-quote with double-double-quote (see https://stackoverflow.com/questions/17808511/properly-escape-a-double-quote-in-csv)
+
             data = data.replace(/"/g, '""');
             // Push escaped string
             row.push('"' + data + '"');
@@ -1063,14 +1051,13 @@ iframe.contentWindow.document.close();
 
   
 // pin 
-
 // var moveItem=function(){};
-function pint() {
-  if(!localStorage.pin){localStorage.setItem('pin','{}')}
+if(!localStorage.pin){localStorage.setItem('pin','{}')}
+function pint(v) {
   for (const t in selod5) {
   let px=document.getElementById(t);
   let xm=Array.from(px.parentNode.parentNode.children).indexOf(px.parentNode);
-
+  //console.log(xm,px)
   moveItem(xm,0);
   px.parentNode.style.background='#ffeb3b';
   document.getElementById(t).checked=false;
@@ -1080,7 +1067,8 @@ function pint() {
   localStorage.setItem('pin',JSON.stringify(mer5))//JSON.stringify(mer5)//JSON.parse()
   selod5={};
   let vkz5={ p: "3", od:{...JSON.parse(localStorage.pin)}};
-  sendd(urli,vkz5,'pins');
+  if(v===1){sendd(urli,vkz5,'pins')}
+  
 }
 var moveItem = (from, to) => {
   const aul=document.getElementById('oderli');
@@ -1145,36 +1133,6 @@ st.collection('ods').doc(r).get().then(doc => {
  }
 }
 
-
-
-function sinsh(ph5,p){
-// var url ='https://script.google.com/macros/s/'+localStorage.gr5+'/exec';
-// //https://script.google.com/macros/s/AKfycbxTx_ag4Ia8gBf26hAKlMoErolMvCsy5UMeZ9BbX2wWjlXim3h8rqTva4WPVvHuvZDHFA/exec
-//     var shod='{p:'+p+',od:{'+JSON.stringify(ph5)+'}}';
-    
-// console.log(shod, url)
-//     fetch(url,{
-//         method: 'POST', 
-//         mode: 'no-cors', 
-//         cache: 'no-cache', 
-//         headers: {'Content-Type': 'application/json'},
-//         redirect: 'follow', 
-//         body: shod
-//       })
-// .then((res) => {
-//    console.log('resok',res);
-    
-// })
-
-// .catch((error) => {
-//   console.log('error',shod);
-//         let kl=JSON.parse(localStorage.getItem('pend'));
-//         kl['od'+shod.od.id]=shod.id;
-//         localStorage.setItem("pend", JSON.stringify(kl));  
-
-// });
-
-}
 
 
 
