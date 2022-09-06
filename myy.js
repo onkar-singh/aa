@@ -217,4 +217,13 @@ document.getElementById("p781").click();
 }
 
 
+// godown selected
+godown5=()=>{
+let ge5 = document.getElementById("gsel");
+let ovalue=ge5.options[e.selectedIndex].value;
+//e.options[2].selected=true
 
+
+document.querySelector('#gall input[type="radio"]:checked').value
+
+}

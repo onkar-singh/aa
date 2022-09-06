@@ -755,11 +755,10 @@ zsr.it = od;
 
 //save each odered stock
  var st = new Localbase('st');
-function savsto() {
+function savsto(v) {
 
  st.collection('ods')
-  .add(zsr, 'od'+(Number(zxc)+1))
-  
+  .add(v, 'od'+(Number(zxc)+1))
   .then(response => {
     console.log('Add successful')
   })
