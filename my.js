@@ -783,7 +783,7 @@ function savsto(v) {
 function stockm() {
  document.getElementById('p78').style.display='block'
  document.getElementById('bnm7').style.display='none';
- setTimeout(function () {document.getElementById('p781').click()}, 80);
+ setTimeout(function () {document.getElementById('p781').click()}, 150);
  //document.getElementById('p781').click()
 }
 
@@ -812,8 +812,8 @@ document.getElementById('oderli').innerHTML+="<li class='w3-display-container "+
   })
    //console.log(oderli)
 } 
-
-setTimeout(function(){selod5=JSON.parse(localStorage.pin);pint(0);selod5={};console.log('onkar')},80);
+selod5=JSON.parse(localStorage.pin);
+setTimeout(function(){pint(0);selod5={};console.log('onkar')},350);
 
 document.getElementById('cout6').addEventListener("click", function() {
  let fromod1=Number(localStorage.fromod);
