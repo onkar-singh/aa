@@ -783,16 +783,18 @@ function savsto(v) {
 function stockm() {
  document.getElementById('p78').style.display='block'
  document.getElementById('bnm7').style.display='none';
- setTimeout(function () {document.getElementById('p781').click()}, 150);
-
+ setTimeout(function () {document.getElementById('p781').click()}, 80);
+ //document.getElementById('p781').click()
 }
 
 function indb() {
 
  document.getElementById('gstall').style.display='block';
 document.getElementById('gstall').innerHTML="<div class='w3-bar w3-blue-gray'><div class='w3-bar-item w3-button w3-border-right' onclick='delod()'>Delete</div><div id='cout6' class='w3-bar-item w3-button w3-border-right'>Total</div><div onclick='resetd()' class='w3-bar-item w3-button w3-border-right'>Reset</div><div class='w3-bar-item w3-button w3-border-right' onclick='pint(1)'>Pin</div><div class='w3-bar-item w3-button w3-border-right' onclick='unpin()'>Unpin</div></div>"+"<div id='tre6'><ul id='oderli' class='w3-ul w3-border w3-hoverable'></ul></div>";
-for (let hy = (Number(zxc)); hy > 0; hy--) {
-        st.collection('ods').doc('od'+hy).get().then(doc=> {
+let lod5=(Number(localStorage.clickcount));
+
+for (let hy = lod5; hy > 0; hy--) {
+st.collection('ods').doc('od'+hy).get().then(doc=> {
 let ifz;
 if(Number(doc.tot)){ifz="ndelt"}else{ifz="delt"}
 
@@ -804,25 +806,23 @@ document.getElementById('oderli').innerHTML+="<li class='w3-display-container "+
 })
   .then(response => {
 
-
   })
   .catch(error => {
     console.log('There was an error, do something else.')
   })
-    //console.log(oderli)
-}
-   document.getElementById('cout6').addEventListener("click", function() {
+   //console.log(oderli)
+} 
+
+setTimeout(function(){selod5=JSON.parse(localStorage.pin);pint(0);selod5={};console.log('onkar')},80);
+
+document.getElementById('cout6').addEventListener("click", function() {
  let fromod1=Number(localStorage.fromod);
- if(1+Number(localStorage.clickcount)-Number(localStorage.fromod)){ couttot(fromod1)
- }
-else{alert("No data to count total ")}
+ if(1+Number(localStorage.clickcount)-Number(localStorage.fromod)){ couttot(fromod1)}
+  else{alert("No data to count total ")}
 })
-//JSON.parse()
-selod5=JSON.parse(localStorage.pin)
-
-setTimeout(function(){pint(0);selod5={};},300)
 
 }
+
 var clickh=0;
 function opodli(b) {
     //console.log(b.getAttribute("for"));
