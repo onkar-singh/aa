@@ -783,7 +783,7 @@ function savsto(v) {
 function stockm() {
  document.getElementById('p78').style.display='block'
  document.getElementById('bnm7').style.display='none';
- setTimeout(function () {document.getElementById('p781').click()}, 150);
+ setTimeout(function () {document.getElementById('p781').click()}, 100);
  //document.getElementById('p781').click()
 }
 
