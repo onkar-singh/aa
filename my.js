@@ -462,6 +462,7 @@ Object.keys(od).forEach(function(t) {
 function omprint() {
  // document.title+=zxc+',';
  // window.print();
+if(Object.keys(selod5).length){
  var st = new Localbase('st');
 ///console.log(selod5);
 
@@ -543,6 +544,7 @@ Object.keys(jk).forEach(function(t) {
 
  for (let u in selod5) {document.getElementById(u).checked=false;}
  selod5={};
+}else{alert('Kya timepass ker raha h!\nPahle order select ker le')}
 }
 
 function pky7() {
