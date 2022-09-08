@@ -572,76 +572,88 @@ function pky7() {
 // }
 
 // view and download all stock
- function stockv() {
-let tfv17="<button class='w3-button w3-blue' id='wer7'>Export</button><button class='w3-button w3-blue' id='wer8'>Reset</button><button class='w3-button w3-blue' id='wer9'>Edit</button><button onclick='save1()' class='w3-button w3-blue' id='wer10'>Save</button><div class='w3-panel' style='padding: 0;margin: 0'><table id='testTable' class='w3-table-all w3-bordered w3-centered w3-striped w3-border test' style='color:#000'><tr class='w3-green'><th>Type</th><th>Color</th><th>Size</th><th>QT.</th></tr>";
-//document.getElementById('gstall').innerHTML='';
-document.getElementById('id01').style.display='block';
-document.getElementById('bnm7').style.display='none';
-document.getElementById('gstall').style.display='block';
-// document.querySelector('#id01 span').style.display='';
+//  function stockv() {
+// let tfv17="<button class='w3-button w3-blue' id='wer7'>Export</button><button class='w3-button w3-blue' id='wer8'>Reset</button><button class='w3-button w3-blue' id='wer9'>Edit</button><button onclick='save1()' class='w3-button w3-blue' id='wer10'>Save</button><div class='w3-panel' style='padding: 0;margin: 0'><table id='testTable' class='w3-table-all w3-bordered w3-centered w3-striped w3-border test' style='color:#000'><tr class='w3-green'><th>Type</th><th>Color</th><th>Size</th><th>QT.</th></tr>";
+// //document.getElementById('gstall').innerHTML='';
+// document.getElementById('id01').style.display='block';
+// document.getElementById('bnm7').style.display='none';
+// document.getElementById('gstall').style.display='block';
+// // document.querySelector('#id01 span').style.display='';
 
-var ods={};
-let retrievedObject = localStorage.getItem('ods');
-ods=JSON.parse(retrievedObject)
-//console.log('lllloooolllll: ', ods);
+// var ods={};
+// let retrievedObject = localStorage.getItem('ods');
+// ods=JSON.parse(retrievedObject)
+// //console.log('lllloooolllll: ', ods);
 
-var tfv27='';
-Object.keys(ods).forEach(function(t) {
-  //  type loop
- Object.keys(ods[t]).forEach(function(c) {
-  // color loop
-   Object.keys(ods[t][c]).forEach(function(s) {
-    // size loop
-   // ods[t][c][s];
-    tfv27+="<tr><td>"+t+"</td><td>"+c+"</td><td>"+s+"</td><td>"+ods[t][c][s]+"</td></tr>";
- // console.log( t,c,s, ods[t][c][s]); 
-  });
- });
-});
+// var tfv27='';
+// Object.keys(ods).forEach(function(t) {
+//   //  type loop
+//  Object.keys(ods[t]).forEach(function(c) {
+//   // color loop
+//    Object.keys(ods[t][c]).forEach(function(s) {
+//     // size loop
+//    // ods[t][c][s];
+//     tfv27+="<tr><td>"+t+"</td><td>"+c+"</td><td>"+s+"</td><td>"+ods[t][c][s]+"</td></tr>";
+//  // console.log( t,c,s, ods[t][c][s]); 
+//   });
+//  });
+// });
 
-document.getElementById('gstall').innerHTML=tfv17+tfv27+'</table></div>';
-  let oj= document.querySelectorAll('#testTable tr td:last-child');
-  let jk7=0; function mrt(v){jk7+=Number(v.innerText)}
-  oj.forEach(mrt)
-  document.querySelector('#testTable tr th:last-child').innerHTML='Qt. '+jk7;
+// document.getElementById('gstall').innerHTML=tfv17+tfv27+'</table></div>';
+//   let oj= document.querySelectorAll('#testTable tr td:last-child');
+//   let jk7=0; function mrt(v){jk7+=Number(v.innerText)}
+//   oj.forEach(mrt)
+//   document.querySelector('#testTable tr th:last-child').innerHTML='Qt. '+jk7;
   
- document.getElementById('wer7').onclick= function () {
-  let bn9=document.querySelectorAll("#testTable > tbody > tr > td:nth-child(1)");
-bn9.forEach(fgh7);
-function fgh7(v) {
-  let cbv=v.innerText;
-   v.innerText=typep7[cbv];
-}
- tabletcsv('testTable','L-Until.'+localStorage.clickcount);stockv();
- }
-  // Reset localStorage.ods 
- document.getElementById('wer8').onclick= function () {
-    let per = prompt("Please enter 'ok' to reset all data");
-  if (per==="ok") {
-   //console.log('fgrfrrr',per);
-   tabletcsv('testTable');
- localStorage.setItem("ods", JSON.stringify(ods1));
- document.getElementById('gstall').innerHTML='';
-  stockv(); 
-  }
- }
-// Edit stock and save
-document.getElementById('wer9').onclick=function () {
-// console.log(this.parentElement);
- document.getElementById('wer9').setAttribute('style', 'background:red!important');
- od={};
-document.querySelectorAll('#testTable tr').forEach(ust);
-function ust(it, i, ar) {
- ar[i].onclick=function () {
-// let z7=this.parentElement;
-  this.style.color="blue";
-  this.style.background="yellow";
-   this.querySelector("td:last-child").contentEditable=true; 
- }
-}}
+//  document.getElementById('wer7').onclick= function () {
+//   let bn9=document.querySelectorAll("#testTable > tbody > tr > td:nth-child(1)");
+// bn9.forEach(fgh7);
+// function fgh7(v) {
+//   let cbv=v.innerText;
+//    v.innerText=typep7[cbv];
+// }
+//  tabletcsv('testTable','L-Until.'+localStorage.clickcount);stockv();
+//  }
+//   // Reset localStorage.ods 
+//  document.getElementById('wer8').onclick= function () {
+//     let per = prompt("Please enter 'ok' to reset all data");
+//   if (per==="ok") {
+//    //console.log('fgrfrrr',per);
+//    tabletcsv('testTable');
+//  localStorage.setItem("ods", JSON.stringify(ods1));
+//  document.getElementById('gstall').innerHTML='';
+//   stockv(); 
+//   }
+//  }
+// // Edit stock and save
+// document.getElementById('wer9').onclick=function () {
+// // console.log(this.parentElement);
+//  document.getElementById('wer9').setAttribute('style', 'background:red!important');
+//  od={};
+// document.querySelectorAll('#testTable tr').forEach(ust);
+// function ust(it, i, ar) {
+//  ar[i].onclick=function () {
+// // let z7=this.parentElement;
+//   this.style.color="blue";
+//   this.style.background="yellow";
+//    this.querySelector("td:last-child").contentEditable=true; 
+//  }
+// }}
   
-}// End view and download all stock
+// }// End view and download all stock
 
+// remove gst
+// function remgst(h) {
+//  let kl7=h.parentElement.innerText;
+//  let kl8=kl7.split(' Total-')[0].trim();
+//  let kl9=JSON.parse(localStorage.getItem('gstc'));
+// // localStorage.gstc
+//  delete kl9[kl8];
+// localStorage.setItem("gstc", JSON.stringify(kl9));
+//  h.parentElement.parentElement.outerHTML='';
+// // getgstall();
+//  //console.log(h.parentElement.parentElement,localStorage.gstc);
+// }
 
 
 // for Total download new
@@ -659,18 +671,7 @@ function newocb() {
  newc();
 }
 
-// remove gst
-// function remgst(h) {
-//  let kl7=h.parentElement.innerText;
-//  let kl8=kl7.split(' Total-')[0].trim();
-//  let kl9=JSON.parse(localStorage.getItem('gstc'));
-// // localStorage.gstc
-//  delete kl9[kl8];
-// localStorage.setItem("gstc", JSON.stringify(kl9));
-//  h.parentElement.parentElement.outerHTML='';
-// // getgstall();
-//  //console.log(h.parentElement.parentElement,localStorage.gstc);
-// }
+
 
 /// save 
 function save1() {
@@ -790,7 +791,7 @@ function stockm() {
 function indb() {
 
  document.getElementById('gstall').style.display='block';
-document.getElementById('gstall').innerHTML="<div class='w3-bar w3-blue-gray'><div class='w3-bar-item w3-button w3-border-right' onclick='delod()'>Delete</div><div id='cout6' class='w3-bar-item w3-button w3-border-right'>Total</div><div onclick='resetd()' class='w3-bar-item w3-button w3-border-right'>Reset</div><div class='w3-bar-item w3-button w3-border-right' onclick='pint(1)'>Pin</div><div class='w3-bar-item w3-button w3-border-right' onclick='unpin()'>Unpin</div></div>"+"<div id='tre6'><ul id='oderli' class='w3-ul w3-border w3-hoverable'></ul></div>";
+document.getElementById('gstall').innerHTML="<div class='w3-bar w3-blue-gray'><div class='w3-bar-item w3-button w3-border-right' onclick='delod()'>Del</div><div id='cout6' class='w3-bar-item w3-button w3-border-right'>Total</div><div onclick='resetd()' class='w3-bar-item w3-button w3-border-right'>Reset</div><div class='w3-bar-item w3-button w3-border-right' onclick='pint(1)'>Pin</div><div class='w3-bar-item w3-button w3-border-right' onclick='unpin()'>Upin</div><button class='w3-button w3-bar-item' onclick='omprint()''>Print</button></div>"+"<div id='tre6'><ul id='oderli' class='w3-ul w3-border w3-hoverable'></ul></div>";
 let lod5=(Number(localStorage.clickcount));
 
 for (let hy = lod5; hy > 0; hy--) {
@@ -832,8 +833,6 @@ var clickh=0;
 function opodli(b) {
     //console.log(b.getAttribute("for"));
     op5= JSON.parse(localStorage.pin);
-
-  
     let qwe5=b.getAttribute("for");
     st.collection('ods').doc(qwe5).get().then(doc=> {
       //  console.log("data:",uio=doc.it)
@@ -859,10 +858,11 @@ if((clickh % 2 == 0)) {
     if((op5.hasOwnProperty(b.getAttribute("for"))&&(op5[b.getAttribute("for")])===b.getAttribute("for"))){
      // alert('note1')
     }else{//alert('note2')
+      if(document.getElementById('inp5')){
       document.getElementById('inp5').value=op5[b.getAttribute("for")]
     
-    
-    }},50);
+      }
+    }},40);
       // localStorage.setItem('pin',JSON.stringify(mer5))//JSON.stringify(mer5)//JSON.parse()
       // selod5={};
       // let vkz5={ p: "3", od:{...JSON.parse(localStorage.pin)}};
