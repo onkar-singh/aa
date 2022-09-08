@@ -1,13 +1,10 @@
- if (window.performance) {
-  //console.info("window.performance works fine on this browser");
-}
-//console.info(performance.navigation.type);
-if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
- console.log( "This page is reloaded" );
- window.location.href = location.origin+location.pathname;
-} else {
-  console.log( "This page is not reloaded");
-}
+
+// if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+//  console.log( "This page is reloaded" );
+//  window.location.href = location.origin+location.pathname;
+// } else {
+//   console.log( "This page is not reloaded");
+// }
 var selod5={};
 var pd2;
 
@@ -16,9 +13,9 @@ var od={};var zxc=0; if (localStorage.clickcount) {zxc=localStorage.clickcount;}
 //if (!localStorage.gstc) {localStorage.setItem("gstc", "{}");}
 var urli = "https://script.google.com/macros/s/"+localStorage.gr5+"/exec";
 var ods1={ "Bio": { "Black": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "White": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Maroon": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Navy": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Yellow": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Sky": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Grey": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Red": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 } }, "NBio": { "Black": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "White": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Navy": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Grey": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Mint": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Charcol": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Olive": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 } }, "Polo": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Navy": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Grey": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Maroon": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Anthra": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Red": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Charcol": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Royal": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Orange": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Sky Blue": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Flag Green": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Reliance Green": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Golden Yellow": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } }, "OverS": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } }, "Hood": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } }, "Sweat": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } } };
-if (!localStorage.ods) {localStorage.setItem('pend2','{}');}
-if (!localStorage.ods) {localStorage.setItem("ods", JSON.stringify(ods1));}
-if (!localStorage.ods) {localStorage.setItem('fromod', '1');}
+if (!localStorage.pend2) {localStorage.setItem('pend2','{}');}
+//if (!localStorage.ods) {localStorage.setItem("ods", JSON.stringify(ods1));}
+if (!localStorage.fromod) {localStorage.setItem('fromod', '1');}
 var pki={"types":[{"type":"Bio","color":["Black","White","Maroon","Navy","Yellow","Sky","Grey","Red"],"size":[36,38,40,42,44,46],"price":155},{"type":"NBio","color":["Black","White","Navy","Grey","Mint","Charcol","Olive"],"size":[36,38,40,42,44,46],"price":105},{"type":"Polo","color":["Black","White","Navy","Grey","Maroon","Anthra","Red","Charcol","Royal","Orange","Sky Blue","Flag Green","Reliance Green","Golden Yellow"],"size":["XS","S","M","L","XL","XXL"],"price":190},{"type":"OverS","color":["Black","White"],"size":["XS","S","M","L","XL","XXL"],"price":190},{"type":"Hood","color":["Black","White"],"size":["XS","S","M","L","XL","XXL"],"price":190},{"type":"Sweat","color":["Black","White"],"size":["XS","S","M","L","XL","XXL"],"price":190}]};
 // console.log(pki.types[0]);
 // console.log(pki.types[0].type);
@@ -341,7 +338,7 @@ function clewr(v, i, a) {
 document.getElementById('id01').style.display='block';
  document.getElementById('incn').value='';
  document.getElementById('gst1').checked=0;
- od={}; zsr={};ods={};
+ od={}; zsr={};//ods={};
 }
 
 // clickCounter for customer id
@@ -435,44 +432,41 @@ document.title='A';
 document.title+=zxc+'-';
 
 // Total stock store in localStorage
-var ods={};
-function stort(z) {
+// var ods={};
+// function stort(z) {
  
-let retrievedObject = localStorage.getItem('ods');
- ods=JSON.parse(retrievedObject)
-//console.log('retrievedObject: ', ods);
+// let retrievedObject = localStorage.getItem('ods');
+//  ods=JSON.parse(retrievedObject)
+// //console.log('retrievedObject: ', ods);
 
-Object.keys(od).forEach(function(t) {
-  //  type loop
- Object.keys(od[t]).forEach(function(c) {
-  // color loop
-   Object.keys(od[t][c]).forEach(function(s) {
-    // size loop
-    if(z===1){ods[t][c][s]=od[t][c][s];}
-     if(z===(-1)){ods[t][c][s]-=od[t][c][s];}
-    else{ods[t][c][s]+=od[t][c][s];}
-    localStorage.setItem('ods', JSON.stringify(ods));
- // console.log( t,c,s, od[t][c][s]); 
-  });
- });
-}); 
-}// End Total stock store in localStorage
+// Object.keys(od).forEach(function(t) {
+//   //  type loop
+//  Object.keys(od[t]).forEach(function(c) {
+//   // color loop
+//    Object.keys(od[t][c]).forEach(function(s) {
+//     // size loop
+//     if(z===1){ods[t][c][s]=od[t][c][s];}
+//      if(z===(-1)){ods[t][c][s]-=od[t][c][s];}
+//     else{ods[t][c][s]+=od[t][c][s];}
+//     localStorage.setItem('ods', JSON.stringify(ods));
+//  // console.log( t,c,s, od[t][c][s]); 
+//   });
+//  });
+// }); 
+// }// End Total stock store in localStorage
 
 // Print
 function omprint() {
  // document.title+=zxc+',';
  // window.print();
 if(Object.keys(selod5).length){
- var st = new Localbase('st');
 ///console.log(selod5);
-
     var myW;var tyu5;
-
 document.getElementById('uyt4').innerHTML='';
   myW = window.open("", "_blank");
   myW.document.body.setAttribute('onclick','print()');
 myW.document.body.innerHTML+="<style>table tbody:last-child {display:none}div {padding: 5px;margin: 5px 0;overflow: auto;font-size: 18px;font-family: sans-serif;font-weight: 600;}table, th, td {border: 1px solid black;border-collapse: collapse;text-align: center;font-weight: 600;}#tblom1 {width: 100%;}#tblom1  tbody tr:first-child{color:blue;background: #ffdfdd;}</style><div id='my56'></div>";
-
+let st = new Localbase('st');
 for (const p in selod5) {
  // console.log(`${property}: ${object[property]}`);
 st.collection('ods').doc(p).get().then(doc => {
@@ -493,8 +487,8 @@ var sd1=document.querySelector('#'+or+' #'+b);
 Object.keys(jk).forEach(function(t) {
   //  type loop
   if((t==='Bio')||(t==='NBio')){
-    sd1.innerHTML+="<tbody id='"+t.replace(/\s+/, "")+"' style='border: none; border-style: dashed; border-width: 2px'><tr> <th>"+typep7[t]+"</th> <th>36</th> <th>38</th> <th>40</th> <th>42</th> <th>44</th> <th>46</th> </tr></tbody><table><tr><td style='border: none; background: white'><br></td></tr></table>";
-  }else{sd1.innerHTML+="<tbody id='"+t.replace(/\s+/, "")+"' style='border: none; border-style: dashed; border-width: 2px'><tr> <th>"+typep7[t]+"</th> <th>XS</th> <th>S</th> <th>M</th> <th>L</th> <th>XL</th> <th>XXL</th> </tr></tbody><table><tr><td style='border: none; background: white'><br></td></tr></table>";
+    sd1.innerHTML+="<tbody id='"+t.replace(/\s+/, "")+"' style=''><tr> <th>"+typep7[t]+"</th> <th>36</th> <th>38</th> <th>40</th> <th>42</th> <th>44</th> <th>46</th> </tr></tbody><table><tr><td style='border: none; background: white'><br></td></tr></table>";
+  }else{sd1.innerHTML+="<tbody id='"+t.replace(/\s+/, "")+"' style=''><tr> <th>"+typep7[t]+"</th> <th>XS</th> <th>S</th> <th>M</th> <th>L</th> <th>XL</th> <th>XXL</th> </tr></tbody><table><tr><td style='border: none; background: white'><br></td></tr></table>";
 }
   
  Object.keys(jk[t]).forEach(function(c) {
@@ -676,20 +670,21 @@ function newocb() {
 
 
 /// save 
-function save1() {
+// function save1() {
  
- let bn7=document.querySelectorAll("#testTable tr [contentEditable]");
-bn7.forEach(bhjk);
-function bhjk(v, i, a) {
- //console.log(v,i,a);
- let vb7=v.parentElement.innerText;
- let vb8=vb7.split("\t");
- //console.log(vb8);
- stork(vb8[0],vb8[1],vb8[2],Number(vb8[3]));
-//s console.log(od);
-}
-stort(1);stockv();ods={};
-}
+//  let bn7=document.querySelectorAll("#testTable tr [contentEditable]");
+// bn7.forEach(bhjk);
+// function bhjk(v, i, a) {
+//  //console.log(v,i,a);
+//  let vb7=v.parentElement.innerText;
+//  let vb8=vb7.split("\t");
+//  //console.log(vb8);
+//  stork(vb8[0],vb8[1],vb8[2],Number(vb8[3]));
+// //s console.log(od);
+// }
+// //stort(1);
+// stockv();ods={};
+// }
 
 // var time = new Date();
 // console.log(
@@ -757,19 +752,19 @@ zsr.it = od;
 
 
 //save each odered stock
- var st = new Localbase('st');
-function savsto(v) {
+// var st = new Localbase('st');
+// function savsto(v) {
 
- st.collection('ods')
-  .add(v, 'od'+(Number(zxc)+1))
-  .then(response => {
-    console.log('Add successful')
-  })
-  .catch(error => {
-    console.log('There was an error')
-  })
+//  st.collection('ods')
+//   .add(v, 'od'+(Number(zxc)+1))
+//   .then(response => {
+//     console.log('Add successful')
+//   })
+//   .catch(error => {
+//     console.log('There was an error')
+//   })
  
-}
+// }
 
 // get document by key
 // st.collection('ods').doc('od97').get().then(document => {console.log(document)})
@@ -796,6 +791,7 @@ document.getElementById('gstall').innerHTML="<div class='w3-bar w3-blue-gray'><d
 
 async function getods() {
   try {
+    let st = new Localbase('st');
     let allods1 = await st.collection('ods').get();
     let doc = await allods1;
     
@@ -834,6 +830,7 @@ function chnot(v) {
 var clickh=0;
 function opodli(b) {
     //console.log(b.getAttribute("for"));
+    let st = new Localbase('st');
     op5= JSON.parse(localStorage.pin);
     let qwe5=b.getAttribute("for");
     st.collection('ods').doc(qwe5).get().then(doc=> {
@@ -939,10 +936,10 @@ function selod(h) {
  // count total and make table
 //alert('',xc)
    function couttot(xc) {  
+    let st = new Localbase('st');
   pd2={ "Bio": { "Black": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "White": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Maroon": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Navy": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Yellow": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Sky": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Grey": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Red": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 } }, "NBio": { "Black": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "White": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Navy": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Grey": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Mint": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Charcol": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Olive": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 } }, "Polo": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Navy": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Grey": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Maroon": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Anthra": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Red": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Charcol": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Royal": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Orange": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Sky Blue": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Flag Green": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Reliance Green": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Golden Yellow": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } }, "OverS": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } }, "Hood": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } }, "Sweat": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } } };
  let tyn5=Number(localStorage.clickcount);
- let st = new Localbase('st');
-    var doc5;
+ var doc5;
 for (let v = xc; v <= tyn5; v++) {   
 
 st.collection('ods').doc('od'+v).get().then(doc => {
@@ -995,11 +992,11 @@ Object.keys(pd2).forEach(function(t) {
   // color loop
    Object.keys(pd2[t][c]).forEach(function(s) {
     // size loop
-   // ods[t][c][s];
+   
     if(!(pd2[t][c][s]===0)){
      qt5+=pd2[t][c][s];
     tfv27+="<tr><td>"+typep7[t]+"</td><td>"+c+"</td><td>"+s+"</td><td>"+pd2[t][c][s]+"</td></tr>";}
- // console.log( t,c,s, ods[t][c][s]); 
+ // console.log( t,c,s, od[t][c][s]); 
   });
  });
 });
@@ -1148,9 +1145,10 @@ function unpin(){
 if (!localStorage.pend) {localStorage.setItem("pend", '{}')}
 var vk35=JSON.parse(localStorage.getItem('pend'));
 if(!(Object.keys(vk35).length === 0)){
+  let st1 = new Localbase('st');
     for (let r in vk35) {
        // console.log(r);
-st.collection('ods').doc(r).get().then(doc => {
+st1.collection('ods').doc(r).get().then(doc => {
   console.log('sync:',r);
   //sinsh(doc,'0');
 

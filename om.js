@@ -4,8 +4,18 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
        document.getElementById("btn_convert").addEventListener("click", function() {
        document.getElementById("alltab").click();
        stort(); corj();
-       savsto(zsr);//gentbls();
-     //  sinsh(zsr,'0');
+       //savsto(zsr);//gentbls();
+     
+     async function addod() {
+        let st = new Localbase('st');
+        let result=await st.collection('ods').add(zsr,'od'+(Number(zxc)+1));
+        let result1=await result;
+        console.log(result1,'added');
+      }
+      addod().catch(error => {
+          console.log('Error in addod:',error);
+        })
+      
 
      const shod0={"p":"1","od":{...zsr}};
      (async () => {
@@ -17,11 +27,11 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
              redirect: 'follow', 
              body:JSON.stringify(shod0) 
            })
-         rawResponse.then((response) => {
-       console.log(response,shod0)
+         rawResponse.then((res) => {
+       console.log(res,shod0)
           })
              .catch((error) => {
-              console.log('error',error);
+              console.log('error in od post',error);
              let kl=JSON.parse(localStorage.getItem('pend'));
              kl['od'+shod0.od.id]=shod0.od.id;
              localStorage.setItem("pend", JSON.stringify(kl));  

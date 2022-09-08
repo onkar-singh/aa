@@ -27,9 +27,11 @@ document.getElementById('p781').click();
 //color: #8fbc8f;
 function delod () {
  if(Object.entries(selod5)[0]){
-  let text = "Press OK to delete or Cancel.";
+  let r=Object.keys(selod5)[Object.keys(selod5).length-1];
+  let text = "Want to delete? order No."+r.split('od')[1];
   if (confirm(text) == true) {
-   let r=Object.keys(selod5)[Object.keys(selod5).length-1];
+  // let r=Object.keys(selod5)[Object.keys(selod5).length-1];
+   let st = new Localbase('st');
    st.collection('ods').doc(r).get().then(doc => {
     od=doc.it;
     var an5=doc;an5.tot=0;an5.it={};an5.gst=false;
@@ -55,14 +57,12 @@ function delod () {
 
 });
 })();
-       
-       
-       
        console.log(an5);
-     stort(-1);
+    // stort(-1);
     od={};an5={};
   
 })
+
  st.collection('ods').doc(r).update({
   tot: 0,it:{},gst:false
 })
@@ -79,7 +79,7 @@ function delod () {
 } else {alert('Bhai order select ker pahle !!')}}
 var pk8;
 function editod(tp) {
-
+  let st = new Localbase('st');
   pk8=tp.id.split('b')[1];// order id od34
   st.collection('ods').doc(pk8).get().then(doc => {
     let ht=doc.cn;
@@ -116,7 +116,7 @@ function kjhu(v) {//alert(v.id);document.getElementById('frt').innerText=.innerT
     }
     
 }
- stort(-1);
+// stort(-1);
 document.getElementById('id01').style.display='';
 document.querySelector("div.bar button.tablink[onclick]").click();
  document.getElementById('btn_convert').style.display='none';
@@ -130,7 +130,7 @@ function updateod() {
  // console.log(pk8,od);
 var po5;
 if(document.getElementById('gst').checked){po5='-GST'}else{po5=''}
-  stort();
+  //stort();
  document.getElementById('alltab').click();
  let id55=pk8.split('od')[1];let tot55=document.getElementById('u23').innerText.split('-')[1];
 zsr.id = Number(id55);
@@ -189,7 +189,7 @@ const shod1={"p":"1","od":{...zsr}};
  
 //  });
  
-
+let st = new Localbase('st');
 st.collection('ods').doc(pk8).set(zsr)
  .then(response => {
     document.getElementById("html33").style.width='455px';
