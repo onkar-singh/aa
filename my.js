@@ -771,7 +771,6 @@ function savsto(v) {
  
 }
 
-
 // get document by key
 // st.collection('ods').doc('od97').get().then(document => {console.log(document)})
 
@@ -792,29 +791,30 @@ function stockm() {
 
 function indb() {
 
- document.getElementById('gstall').style.display='block';
+document.getElementById('gstall').style.display='block';
 document.getElementById('gstall').innerHTML="<div class='w3-bar w3-blue-gray'><div class='w3-bar-item w3-button w3-border-right' onclick='delod()'>Del</div><div id='cout6' class='w3-bar-item w3-button w3-border-right'>Total</div><div onclick='resetd()' class='w3-bar-item w3-button w3-border-right'>Reset</div><div class='w3-bar-item w3-button w3-border-right' onclick='pint(1)'>Pin</div><div class='w3-bar-item w3-button w3-border-right' onclick='unpin()'>Upin</div><button class='w3-button w3-bar-item' onclick='omprint()''>Print</button></div>"+"<div id='tre6'><ul id='oderli' class='w3-ul w3-border w3-hoverable'></ul></div>";
-let lod5=(Number(localStorage.clickcount));
 
-for (let hy = lod5; hy > 0; hy--) {
-st.collection('ods').doc('od'+hy).get().then(doc=> {
-let ifz;
-if(Number(doc.tot)){ifz="ndelt"}else{ifz="delt"}
+async function getods() {
+  try {
+    let allods1 = await st.collection('ods').get();
+    let doc = await allods1;
+    
+    doc.sort(function(a,b) { // sort by id
+    return b.id - a.id;
+    });
+      for (let i in doc) {
+          //console.log(doc[i])
+          if(Number(doc[i].tot)){ifz="ndelt"}else{ifz="delt"}
+          if(doc[i].gst){ gstr="<span class='w3-tag w3-amber gst55' style='border-radius: 7px;'>GST</span>"}else{ gstr="<span class='w3-tag w3-amber' style='padding: 0 1.55em'></span>"}
+          document.getElementById('oderli').innerHTML+="<li class='w3-display-container "+ifz+"'>"+"<input onclick='selod(this)' id='"+'od'+doc[i].id+"' class='w3-check' type='checkbox'>"+' '+doc[i].id+'. '+doc[i].cn+"<span onclick='opodli(this)'  "+"for='"+'od'+doc[i].id+"' class='w3-button w3-transparent w3-display-right'>"+doc[i].tot+' '+ gstr+' '+doc[i].dt+"</span></li>";
+      }
+  }
+  catch(error) {
+    console.log('error: getods()', error)
+  }
+}
+getods()
 
-let gstr='';
-if(doc.gst){ gstr="<span class='w3-tag w3-amber gst55' style='border-radius: 7px;'>GST</span>"}else{ gstr="<span class='w3-tag w3-amber' style='padding: 0 1.55em'></span>"}
-document.getElementById('oderli').innerHTML+="<li class='w3-display-container "+ifz+"'>"+"<input onclick='selod(this)' id='"+'od'+doc.id+"' class='w3-check' type='checkbox'>"+' '+doc.id+'. '+doc.cn+"<span onclick='opodli(this)'  "+"for='"+'od'+doc.id+"' class='w3-button w3-transparent w3-display-right'>"+doc.tot+' '+ gstr+' '+doc.dt+"</span></li>";
- 
-            //console.log(doc.id,doc.cn,doc.tot,gstr,doc.dt)
-})
-  .then(response => {
-
-  })
-  .catch(error => {
-    console.log('There was an error, do something else.')
-  })
-   //console.log(oderli)
-} 
 selod5=JSON.parse(localStorage.pin);
 setTimeout(function(){pint(0);selod5={};console.log('onkar')},350);
 
