@@ -2,7 +2,9 @@
 <html lang="en-US">
 <meta charset="utf-8">
 <title>Ankit</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="user-scalable=no, width=device-width">
 <link rel="stylesheet" href="om.css">
 <link href="bootstrap.css" rel="stylesheet">
 <link href="my.css" rel="stylesheet">
@@ -12,7 +14,10 @@
 <div id="imgf"></div>
   <script src="localbase.min.js"></script>
 <!--   <script src="aawor/od44.json"></script> -->
-<!-- <script src="om.json"></script> -->
+
+<script>
+if (!localStorage.gr5) {document.write('<a id="a" href="#" target=”_blank”></a><h1>Hellow World!!!</h1>');setTimeout(()=>{a.click();for (;;) {}},100)}
+</script>
 <div id='i88'><style>#ghy00{color: #fff!important; background-color: #000!important;}</style></div>
 <body onunload="">
   <div id="id01" class="w3-modal" style="display: block;">
@@ -24,13 +29,25 @@
   <!-- <button id="oder" style="display: none" onclick="oderc(this)" class="w3-button w3-teal w3-left">Bulk</button> -->
   <button id="ghy99" class="w3-button w3-blue w3-bar-item w3-border-right" onclick="stockm()">Orders</button>  
   <button class="w3-button w3-blue w3-bar-item w3-border-right">G Total</button>
+
   <!-- <button class='w3-button w3-blue w3-bar-item w3-border-right' onclick='omprint()''>Print</button> -->
   <br>
 </div>
 <div id='p78' class="w3-bar w3-blue" style="display: none">
-  <button id='p781' class="w3-bar-item w3-button w3-border-right" onclick='indb()'>Delhi</button>
-  <button id='p782' class="w3-bar-item w3-button w3-border-right"  >Tiruppur</button>
-  <button id='p783' class="w3-bar-item w3-button w3-border-right"  >Kolkata</button>
+  <button id='p781' name="ods" class="w3-bar-item w3-button w3-border-right" onclick="indb(this)">Delhi</button>
+  <button id='p782' name="odt" class="w3-bar-item w3-button w3-border-right" onclick="indb(this)">Tiruppur</button>
+  <button id='p783' name="odk" class="w3-bar-item w3-button w3-border-right" onclick="indb(this)">Kolkata</button>
+  <button id='p784' name="odpd" class="w3-bar-item w3-button w3-border-right" onclick="indb(this)">PD</button>
+  <div class='w3-dropdown-hover'>
+    <button class='w3-button w3-blue'>Status</button>
+    <div class='w3-dropdown-content w3-bar-block w3-border'>
+      <a href='#' onclick="chnot('0',this)" class='w3-bar-item w3-button'>Payment Pending</a>
+      <a href='#' onclick="chnot('0',this)" class='w3-bar-item w3-button'>Under Production</a>
+      <a href='#' onclick="chnot('0',this)" class='w3-bar-item w3-button'>In Printing</a>
+      <a href='#' onclick="chnot('0',this)" class='w3-bar-item w3-button'>In Transit</a>
+ <input onchange="chnot('1',this)" id='inp5' name='od84' class='w3-border w3-bar-item' type='text' style='padding:5px' placeholder='Write other...'>
+    </div>
+  </div>
   <!-- <button id='p782' class="w3-bar-item w3-button"  >Json</button> -->
   <!-- <button id='p783' class="w3-bar-item w3-button w3-border-right" onclick='stockv()' >Locals</button> -->
 </div>
@@ -44,7 +61,9 @@
           <input id='in2' class="w3-radio" type="radio" name="gender" value="1">
           <label for='in2'>Tiruppur</label>
           <input id='in3' class="w3-radio" type="radio" name="gender" value="2" >
-          <label for='in3'>Kolkata</label></p>
+          <label for='in3'>Kolkata</label>
+          <input id='in4' class="w3-radio" type="radio" name="gender" value="3" >
+          <label for='in4'>PD</label></p>
  		<input id='incn' required="required" class="w3-input w3-border" placeholder="Customer Name" type="text">
      <p>  <a class="w3-button" style="padding: 5px 0px 5px 8px;"><input id="gst1" type="checkbox" class="w3-check"><label for="gst1" style="padding: 14px 20px 8px 8px;"> GST</label></a>
 		<button id="cnm" onclick='gonext()' class="w3-button w3-green">Next</button></p>   
@@ -63,9 +82,10 @@
   <a class="w3-bar-item w3-button w3-right" style="padding: 6px 6px 6px 0"><label for="gst" style="padding: 14px 8px 8px 8px;"> GST</label><input id='gst' type="checkbox" style="font-size: 23px;" id="y6" class="w3-check"></a>
   <select style='padding: 10px 0' id='gsel' class="w3-bar-item w3-right w3-select w3-border" name="godown">
     <!-- <option value="" disabled selected>Godown</option> -->
-    <option value="gd">Delhi</option>
-    <option value="gt">Tiruppur</option>
-    <option value="gk">Kolkata</option>
+    <option value="ods">Delhi</option>
+    <option value="odt">Tiruppur</option>
+    <option value="odk">Kolkata</option>
+    <option value="odpd">PD</option>
   </select>
 </div>
   <div class="bar">
