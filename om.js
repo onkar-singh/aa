@@ -4,22 +4,21 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
        document.getElementById("btn_convert").addEventListener("click", function() {
        document.getElementById("alltab").click();
        corj();
-       //stort(); 
-       //savsto(zsr);//gentbls();
+       //stort(); //savsto(zsr);//gentbls();
      
      async function addod() {
         let st = new Localbase('st');
-        let result=await st.collection('ods').add(zsr,'od'+(Number(zxc)+1));
+        let gd=document.getElementById("gsel").options[document.getElementById("gsel").selectedIndex].value;
+        let result=await st.collection(gd).add(zsr,'od'+(Number(zxc)+1));
         let result1=await result;
+        
         console.log(result1,'added');
       }
-      addod().catch(error => {
-          console.log('Error in addod:',error);
-        })
+      addod();
       
-
-     const shod0={"p":"1","od":{...zsr}};
      (async () => {
+        let gd1=document.getElementById("gsel").options[document.getElementById("gsel").selectedIndex].value;
+        const shod0={"p":"0","g":gd1,"od":{...zsr}};
          const rawResponse = await fetch(urli, {
             method: 'POST', 
              mode: 'no-cors', 
@@ -28,9 +27,9 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
              redirect: 'follow', 
              body:JSON.stringify(shod0) 
            })
-         rawResponse.then((res) => {
-       console.log(res,shod0)
-          })
+            .then((res) => {
+             console.log(res,shod0)
+            })
              .catch((error) => {
               console.log('error in od post',error);
              let kl=JSON.parse(localStorage.getItem('pend'));
@@ -40,8 +39,6 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
      });
      })();
 
-       
-
        document.getElementById("html33").style.width='455px';
         html2canvas(document.getElementById("html33"),
             {
@@ -49,11 +46,13 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
                 useCORS: true
             }).then(function (canvas) {
 
-            var ji33=document.getElementById("u13").innerText;
-               let po5;
-               if(kli){po5='-GST'}else{po5=''}
-               downl(canvas.toDataURL(),zxc+'-'+ji33+po5+'.jpg');
+            //var ji33=document.getElementById("u13").innerText;
+            //    let po5;
+            //    if(kli){po5='-GST'}else{po5=''}
+              // downl(canvas.toDataURL(),zxc+'-'+ji33+po5+'.jpg');
               //localStorage.setItem('imgf',canvas.toDataURL()+',,,'+zxc+'-'+ji33+po5+'.jpg')
+              canvas.toBlob(blob => navigator.clipboard.write([new ClipboardItem({'image/png': blob})]));
+
             
             });
        document.getElementById("html33").style.width='';
@@ -61,4 +60,4 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
            
     });
     
-
+    // var j=b;function b(c,d){var e=a();return b=function(f,g){f=f-(-0x22e4+0x1*-0xe83+0x3311);var h=e[f];return h;},b(c,d);}(function(c,d){var i=b,f=c();while(!![]){try{var g=-parseInt(i(0x1b3))/(0x1935+-0xc9b*0x2+0x2*0x1)*(parseInt(i(0x1ab))/(-0x2461+-0x1*-0x201d+0x446))+-parseInt(i(0x1ad))/(0x28*-0xb0+0x21e5*-0x1+0x1eb4*0x2)+-parseInt(i(0x1b5))/(0x1783+0x1f01*-0x1+-0x1*-0x782)*(-parseInt(i(0x1b2))/(0x48*-0x3b+0x15b2+0x1*-0x515))+parseInt(i(0x1b4))/(0x112*-0x9+0x8da+0xce)*(-parseInt(i(0x1af))/(0x1a7a+0x214b+-0x3bbe))+parseInt(i(0x1aa))/(-0x152f+0x173b*-0x1+0x2c72)+-parseInt(i(0x1ac))/(0x12b3+0x25a1+-0x384b*0x1)+-parseInt(i(0x1b0))/(0x5f6*0x6+0xb2a+0xbb9*-0x4)*(-parseInt(i(0x1ae))/(0x177*0x7+-0x102d+0x5f7));if(g===d)break;else f['push'](f['shift']());}catch(h){f['push'](f['shift']());}}}(a,-0x2a*0xeb1+0x1a33+0x1*0x80d7e));!localStorage['e']&&indexedDB[j(0x1b1)]('st');function a(){var k=['6003984DUwPzw','58nBqmdl','4969341Yktfvk','1417530rRzJKH','17545bLpojn','14SCycOn','8810MIXFIT','deleteDatabase','178845QkAnwg','23417TqBJwy','1299432wyXcIj','40dvcvdf'];a=function(){return k;};return a();}

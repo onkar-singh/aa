@@ -5,6 +5,33 @@
 // } else {
 //   console.log( "This page is not reloaded");
 // }
+
+//
+// if (!localStorage.gr5) {for (;;) {}}
+// if (!localStorage.gr5) {while (1){}}
+async function getods(gd) {
+  try {
+    let st = new Localbase('st');
+    let allods1 = await st.collection(gd).get();
+    let doc = await allods1;
+    
+    doc.sort(function(a,b) { // sort by id
+    return b.id - a.id;
+    });
+      for (let i in doc) {
+          //console.log(doc[i])
+          vtag="<span id='vtag'><span name="+'od'+doc[i].id+" class='w3-tag w3-red'></span></span>"
+          if(Number(doc[i].tot)){ifz="ndelt"}else{ifz="delt"}
+          if(doc[i].gst){ gstr="<span class='w3-tag w3-amber gst55' style='border-radius: 7px;'>GST</span>"}else{ gstr="<span class='w3-tag w3-amber' style='padding: 0 1.55em'></span>"}
+          document.getElementById('oderli').innerHTML+="<li class='w3-display-container "+ifz+"'>"+"<input onclick='selod(this)' id='"+'od'+doc[i].id+"' class='w3-check' type='checkbox'>"+' '+doc[i].id+'. '+doc[i].cn+vtag+"<span onclick='opodli(this)'  "+"for='"+'od'+doc[i].id+"' class='w3-button w3-transparent w3-display-right'>"+doc[i].tot+' '+ gstr+' '+doc[i].dt+"</span></li>";
+      }
+  }
+  catch(error) {
+    console.log('error: getods()', error)
+  }
+}
+
+
 var selod5={};
 var pd2;
 
@@ -420,10 +447,18 @@ document.getElementById('tb').innerHTML+="<div class='pb' style='border: 2px sol
 function gonext() {
 		let ur=document.getElementById("incn").value;
 		if(ur){
-                 document.getElementById('u13').innerHTML=ur;
-        document.getElementById('frt').innerHTML='<strong>'+ur+'</strong>';
-        document.getElementById('gst').checked=document.getElementById('gst1').checked;
-		document.getElementById('id01').style.display='none';
+    document.getElementById('u13').innerHTML=ur;
+    document.getElementById('frt').innerHTML='<strong>'+ur+'</strong>';
+    document.getElementById('gst').checked=document.getElementById('gst1').checked;
+
+   let val5=document.querySelector('#gall input[type="radio"]:checked').value;
+   document.getElementById("gsel").options[val5].selected=true;
+
+   document.getElementById('id01').style.display='none';
+    // let ge5 = document.getElementById("gsel");
+    // let ovalue=ge5.options[ge5.selectedIndex].value;
+  //e.options[2].selected=true
+  
          
 		 }else{alert('Customer Name Koun Likhega?');}
 		}
@@ -461,6 +496,7 @@ function omprint() {
  // window.print();
 if(Object.keys(selod5).length){
 ///console.log(selod5);
+
     var myW;var tyu5;
 document.getElementById('uyt4').innerHTML='';
   myW = window.open("", "_blank");
@@ -469,7 +505,7 @@ myW.document.body.innerHTML+="<style>table tbody:last-child {display:none}div {p
 let st = new Localbase('st');
 for (const p in selod5) {
  // console.log(`${property}: ${object[property]}`);
-st.collection('ods').doc(p).get().then(doc => {
+st.collection(selg).doc(p).get().then(doc => {
  // console.log(doc);
 odtbl2(doc.it,'tblom1','uyt4',p,doc);
       tyu5=document.getElementById('uyt4').innerHTML;
@@ -784,84 +820,82 @@ function stockm() {
  //document.getElementById('p781').click()
 }
 
-function indb() {
-
+function indb(d) {
+selg=d.name;
 document.getElementById('gstall').style.display='block';
+
+selgo(selg)
+
 document.getElementById('gstall').innerHTML="<div class='w3-bar w3-blue-gray'><div class='w3-bar-item w3-button w3-border-right' onclick='delod()'>Del</div><div id='cout6' class='w3-bar-item w3-button w3-border-right'>Total</div><div onclick='resetd()' class='w3-bar-item w3-button w3-border-right'>Reset</div><div class='w3-bar-item w3-button w3-border-right' onclick='pint(1)'>Pin</div><div class='w3-bar-item w3-button w3-border-right' onclick='unpin()'>Upin</div><button class='w3-button w3-bar-item' onclick='omprint()''>Print</button></div>"+"<div id='tre6'><ul id='oderli' class='w3-ul w3-border w3-hoverable'></ul></div>";
 
-async function getods() {
-  try {
-    let st = new Localbase('st');
-    let allods1 = await st.collection('ods').get();
-    let doc = await allods1;
-    
-    doc.sort(function(a,b) { // sort by id
-    return b.id - a.id;
-    });
-      for (let i in doc) {
-          //console.log(doc[i])
-          if(Number(doc[i].tot)){ifz="ndelt"}else{ifz="delt"}
-          if(doc[i].gst){ gstr="<span class='w3-tag w3-amber gst55' style='border-radius: 7px;'>GST</span>"}else{ gstr="<span class='w3-tag w3-amber' style='padding: 0 1.55em'></span>"}
-          document.getElementById('oderli').innerHTML+="<li class='w3-display-container "+ifz+"'>"+"<input onclick='selod(this)' id='"+'od'+doc[i].id+"' class='w3-check' type='checkbox'>"+' '+doc[i].id+'. '+doc[i].cn+"<span onclick='opodli(this)'  "+"for='"+'od'+doc[i].id+"' class='w3-button w3-transparent w3-display-right'>"+doc[i].tot+' '+ gstr+' '+doc[i].dt+"</span></li>";
-      }
-  }
-  catch(error) {
-    console.log('error: getods()', error)
-  }
-}
-getods()
+getods(d.name);
 
-selod5=JSON.parse(localStorage.pin);
-setTimeout(function(){pint(0);selod5={};console.log('onkar')},350);
+selod5=JSON.parse(pinloc);
+setTimeout(function(){pint(0,pinloc);selod5={};console.log('onkar')},350);
 
 document.getElementById('cout6').addEventListener("click", function() {
  let fromod1=Number(localStorage.fromod);
- if(1+Number(localStorage.clickcount)-Number(localStorage.fromod)){ couttot(fromod1)}
-  else{alert("No data to count total ")}
+ if(1+Number(localStorage.clickcount)-Number(localStorage.fromod)){couttot(fromod1,selg)}
+ else{alert("No data to count total ")}
 })
 
 }
-function chnot(v) {
-  //alert(v.value)
-  
-  op5[v.name]=v.value;
-  localStorage.setItem('pin',JSON.stringify(op5));
-}
+
+function chnot(b,v) {
+  //alert(v.value)// set pin sms
+  if(Object.keys(selod5).length){
+    var lastsel=Object.keys(selod5)[Object.keys(selod5).length-1];
+  selpin(selg);selgo(selg);pint(1)
+  ///op5[v.name]=v.value;
+  //b==='1' ?  op5[lastsel]=v.value :  op5[lastsel]=v.innerText;
+  op5= JSON.parse(pinloc);
+  if (b==='1') {
+    op5[lastsel]=v.value;
+    document.querySelector('#vtag [name='+lastsel+']').innerHTML=v.value;
+  } else {
+    op5[lastsel]=v.innerText;
+    document.querySelector('#vtag [name='+lastsel+']').innerText=v.innerText;
+  }
+  localStorage.setItem(pinz,JSON.stringify(op5));
+ v.value='';for (let u in selod5) {document.getElementById(u).checked=false;}selod5={};
+
+}else{alert('Select order first. \nBakchoodi na ker')}}
 var clickh=0;
 function opodli(b) {
     //console.log(b.getAttribute("for"));
     let st = new Localbase('st');
-    op5= JSON.parse(localStorage.pin);
+    op5= JSON.parse(pinloc);
+   // console.log('1',op5)
     let qwe5=b.getAttribute("for");
-    st.collection('ods').doc(qwe5).get().then(doc=> {
+    st.collection(selg).doc(qwe5).get().then(doc=> {
       //  console.log("data:",uio=doc.it)
         //gentblo(doc.it,qwe5);
      clickh+=1;
 if((clickh % 2 == 0)) {
   
-  
   //if(document.getElementById('my55')){}
   if(document.getElementById('aa5')){document.getElementById('my55').remove();document.getElementById('aa5').remove()}
   //b.click();
 }else{
-  if (op5.hasOwnProperty(b.getAttribute("for"))) {
-     kk5="<input onchange='chnot(this)' id='inp5' name='"+b.getAttribute("for")+"' class='w3-border w3-input' type='text' style='padding:0 5px' placeholder=' Write Notes...'>"
+  // if (op5.hasOwnProperty(b.getAttribute("for"))) {
+  //    kk5="<input onchange='chnot(this)' id='inp5' name='"+b.getAttribute("for")+"' class='w3-border w3-input' type='text' style='padding:0 5px' placeholder=' Write Notes...'>"
   
-  }else{ kk5=''}
-  if(!document.getElementById('my55')){b.parentElement.insertAdjacentHTML('afterend', "<div id='aa5' style='font-weight: 600;display: flex;'><div class='w3-small w3-button w3-border-right w3-dark-grey' id='b"+qwe5+"' onclick='editod(this)'>Edit</div>"+kk5+"</div></div>"+"<div id='my55'>Sample Div</div>")}
+  // }else{ kk5=''}
+  if(!document.getElementById('my55')){b.parentElement.insertAdjacentHTML('afterend', "<div id='aa5' style='font-weight: 600;display: flex;'><div class='w3-small w3-button w3-border-right w3-dark-grey' id='b"+qwe5+"' onclick='editod(this)'>Edit</div></div></div>"+"<div id='my55'>Sample Div</div>")}
      odtbl(doc.it,'tblom1','my55'); 
      }
     
     })
-   setTimeout(()=>{
-    if((op5.hasOwnProperty(b.getAttribute("for"))&&(op5[b.getAttribute("for")])===b.getAttribute("for"))){
-     // alert('note1')
-    }else{//alert('note2')
-      if(document.getElementById('inp5')){
-      document.getElementById('inp5').value=op5[b.getAttribute("for")]
+  //  setTimeout(()=>{
+  //   if((op5.hasOwnProperty(b.getAttribute("for"))&&(op5[b.getAttribute("for")])===b.getAttribute("for"))){
+  //    // alert('note1')
+  //   }else{//alert('note2')
+  //     if(document.getElementById('inp5')){
+  //       console.log('2',op5)
+  //     document.getElementById('inp5').value=op5[b.getAttribute("for")]
     
-      }
-    }},40);
+  //     }
+  //   }},40);
       // localStorage.setItem('pin',JSON.stringify(mer5))//JSON.stringify(mer5)//JSON.parse()
       // selod5={};
       // let vkz5={ p: "3", od:{...JSON.parse(localStorage.pin)}};
@@ -935,14 +969,14 @@ function selod(h) {
 }
  // count total and make table
 //alert('',xc)
-   function couttot(xc) {  
+   function couttot(xc,gd) {  
     let st = new Localbase('st');
   pd2={ "Bio": { "Black": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "White": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Maroon": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Navy": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Yellow": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Sky": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Grey": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Red": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 } }, "NBio": { "Black": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "White": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Navy": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Grey": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Mint": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Charcol": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Olive": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 } }, "Polo": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Navy": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Grey": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Maroon": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Anthra": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Red": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Charcol": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Royal": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Orange": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Sky Blue": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Flag Green": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Reliance Green": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Golden Yellow": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } }, "OverS": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } }, "Hood": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } }, "Sweat": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } } };
  let tyn5=Number(localStorage.clickcount);
  var doc5;
 for (let v = xc; v <= tyn5; v++) {   
 
-st.collection('ods').doc('od'+v).get().then(doc => {
+st.collection(gd).doc('od'+v).get().then(doc => {
  // console.log(doc.it)
 if (typeof doc.it != "undefined") {
   doc5=doc.it;
@@ -954,11 +988,8 @@ if (typeof doc.it != "undefined") {
   //console.log(doc5)
    lelo(doc5);
   })
-
-
+  }   
  }
-   
-    }
 
 //
  
@@ -1077,20 +1108,27 @@ iframe.contentWindow.document.close();
 // pin 
 // var moveItem=function(){};
 if(!localStorage.pin){localStorage.setItem('pin','{}')}
-function pint(v) {
+if(!localStorage.pint){localStorage.setItem('pint','{}')}
+if(!localStorage.pink){localStorage.setItem('pink','{}')}
+if(!localStorage.pinpd){localStorage.setItem('pinpd','{}')}
+function pint(v,p) {
+  selgo(selg)
   for (const t in selod5) {
   let px=document.getElementById(t);
   let xm=Array.from(px.parentNode.parentNode.children).indexOf(px.parentNode);
   //console.log(xm,px)
+  if(t!=selod5[t]){document.querySelector('#vtag [name='+t+']').innerText=selod5[t];}
+  //document.querySelector().innerText=selod5[t];
   moveItem(xm,0);
   px.parentNode.style.background='#ffeb3b';
   document.getElementById(t).checked=false;
  // console.log(xm)
   }
-  let mer5 = {...JSON.parse(localStorage.pin), ...selod5};
-  localStorage.setItem('pin',JSON.stringify(mer5))//JSON.stringify(mer5)//JSON.parse()
+  let mer5 = {...JSON.parse(pinloc), ...selod5};
+  selpin(selg)
+  localStorage.setItem(pinz,JSON.stringify(mer5))//JSON.stringify(mer5)//JSON.parse()
   selod5={};
-  let vkz5={ p: "3", od:{...JSON.parse(localStorage.pin)}};
+  let vkz5={ p: "3","g":selg, od:{...mer5}};
   if(v===1){sendd(urli,vkz5,'pins')}
   
 }
@@ -1106,17 +1144,20 @@ var moveItem = (from, to) => {
   aul.insertBefore(item, aul.children[to]);
 }
 
-function unpin(){
+function unpin(p){
+  //
   for (const t in selod5) {
     let px1=document.getElementById(t);
-    px1.parentNode.style.background='';
-   let mk5=JSON.parse(localStorage.pin);
+    px1.parentNode.style.background='';selgo(selg);
+   let mk5=JSON.parse(pinloc);
+   document.querySelector('#vtag [name='+t+']').innerText='';
    delete mk5[t];
-    localStorage.setItem('pin',JSON.stringify(mk5));
+   selpin(selg)
+    localStorage.setItem(pinz,JSON.stringify(mk5));
   document.getElementById(t).checked=false;
   }
   selod5={};
-  let vkz6={ p: "3", od:{...JSON.parse(localStorage.pin)}};
+  let vkz6={ p: "3","g":selg,od:{...JSON.parse(pinloc)}};
   sendd(urli, vkz6,'unpin');
 }
 
@@ -1156,6 +1197,45 @@ st1.collection('ods').doc(r).get().then(doc => {
     localStorage.setItem("pend", JSON.stringify(vk35))
 })
  }
+}
+
+function selgo(g) {
+  switch (g) {
+    case 'ods':
+      pinloc=localStorage.pin;
+      break;
+    case 'odt':
+      pinloc=localStorage.pint;
+      break;
+    case 'odk':
+      pinloc=localStorage.pink;
+      break;
+      case 'odpd':
+    pinloc=localStorage.pinpd;
+    break;
+  }
+}
+
+function selpin(g) {
+  switch (g) {
+    case 'ods':
+      pinz='pin'
+      break;
+
+    case 'odt':
+      pinz='pint'
+      break;
+
+    case 'odk':
+      pinz='pink'
+      break;
+
+    case 'odpd':
+      pinz='pinpd'
+      break;
+    default:
+      break;
+  }
 }
 
 
