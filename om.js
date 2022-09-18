@@ -15,10 +15,10 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
         console.log(result1,'added');
       }
       addod();
-      
+      var shod0;
      (async () => {
         let gd1=document.getElementById("gsel").options[document.getElementById("gsel").selectedIndex].value;
-        const shod0={"p":"0","g":gd1,"od":{...zsr}};
+       shod0={"p":"0","g":gd1,"od":{...zsr}};
          const rawResponse = await fetch(urli, {
             method: 'POST', 
              mode: 'no-cors', 
@@ -51,8 +51,14 @@ var r=function(A,e){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
             //    if(kli){po5='-GST'}else{po5=''}
               // downl(canvas.toDataURL(),zxc+'-'+ji33+po5+'.jpg');
               //localStorage.setItem('imgf',canvas.toDataURL()+',,,'+zxc+'-'+ji33+po5+'.jpg')
-              canvas.toBlob(blob => navigator.clipboard.write([new ClipboardItem({'image/png': blob})]));
-
+              var imglastod=JSON.parse(localStorage.imglastod);
+              //console.log('zsr',zsr,'sho',shod1);
+              imglastod['cn']=shod0.od.id+'.'+shod0.od.cn;imglastod['im5']=canvas.toDataURL();
+              document.getElementById('lastodimg').src=canvas.toDataURL();
+              document.getElementById('lastodcn').innerHTML=shod0.od.id+'.'+shod0.od.cn;
+              localStorage.setItem('imglastod',JSON.stringify(imglastod));
+             // canvas.toBlob(blob => {});
+             
             
             });
        document.getElementById("html33").style.width='';

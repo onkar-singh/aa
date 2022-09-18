@@ -41,6 +41,8 @@ var od={};var zxc=0; if (localStorage.clickcount) {zxc=localStorage.clickcount;}
 var urli = "https://script.google.com/macros/s/"+localStorage.gr5+"/exec";
 var ods1={ "Bio": { "Black": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "White": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Maroon": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Navy": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Yellow": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Sky": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Grey": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Red": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 } }, "NBio": { "Black": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "White": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Navy": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Grey": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Mint": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Charcol": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 }, "Olive": { "36": 0, "38": 0, "40": 0, "42": 0, "44": 0, "46": 0 } }, "Polo": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Navy": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Grey": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Maroon": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Anthra": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Red": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Charcol": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Royal": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Orange": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Sky Blue": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Flag Green": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Reliance Green": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "Golden Yellow": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } }, "OverS": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } }, "Hood": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } }, "Sweat": { "Black": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 }, "White": { "XS": 0, "S": 0, "M": 0, "L": 0, "XL": 0, "XXL": 0 } } };
 if (!localStorage.pend2) {localStorage.setItem('pend2','{}');}
+
+if (!localStorage.imglastod) {localStorage.setItem('imglastod',JSON.stringify({cn:'',im5:''}));}
 //if (!localStorage.ods) {localStorage.setItem("ods", JSON.stringify(ods1));}
 if (!localStorage.fromod) {localStorage.setItem('fromod', '1');}
 var pki={"types":[{"type":"Bio","color":["Black","White","Maroon","Navy","Yellow","Sky","Grey","Red"],"size":[36,38,40,42,44,46],"price":155},{"type":"NBio","color":["Black","White","Navy","Grey","Mint","Charcol","Olive"],"size":[36,38,40,42,44,46],"price":105},{"type":"Polo","color":["Black","White","Navy","Grey","Maroon","Anthra","Red","Charcol","Royal","Orange","Sky Blue","Flag Green","Reliance Green","Golden Yellow"],"size":["XS","S","M","L","XL","XXL"],"price":190},{"type":"OverS","color":["Black","White"],"size":["XS","S","M","L","XL","XXL"],"price":190},{"type":"Hood","color":["Black","White"],"size":["XS","S","M","L","XL","XXL"],"price":190},{"type":"Sweat","color":["Black","White"],"size":["XS","S","M","L","XL","XXL"],"price":190}]};
@@ -1239,6 +1241,11 @@ function selpin(g) {
 }
 
 
+// set last image
+
+  let tt5=JSON.parse(localStorage.imglastod);
+  document.getElementById('lastodimg').src=tt5.im5;
+  document.getElementById('lastodcn').innerHTML=tt5.cn;
 
 
 

@@ -191,8 +191,15 @@ st.collection(selg).doc(pk8).set(zsr)
               // downl(canvas.toDataURL(),zxc+'-'+ji33+po5+'.jpg');
              // localStorage.setItem('imgf',canvas.toDataURL()+',,,'+zxc+'-'+ji33+po5+'.jpg')
             //imgzx=canvas.toDataURL();
-             canvas.toBlob(blob => navigator.clipboard.write([new ClipboardItem({'image/png': blob})]));
-        
+            // canvas.toBlob(blob => navigator.clipboard.write([new ClipboardItem({'image/png': blob})]));
+            var imglastod=JSON.parse(localStorage.imglastod);
+            //console.log('zsr',zsr,'sho',shod1);
+            imglastod['cn']=shod1.od.id+'.'+shod1.od.cn;imglastod['im5']=canvas.toDataURL();
+            document.getElementById('lastodimg').src=canvas.toDataURL();
+            document.getElementById('lastodcn').innerHTML=shod1.od.id+'.'+shod1.od.cn;
+            localStorage.setItem('imglastod',JSON.stringify(imglastod));
+           // canvas.toBlob(blob => {});
+       
             });
        document.getElementById("html33").style.width='';
        newc();document.getElementById('gst').checked=0;
@@ -216,3 +223,7 @@ async function moveod(gf,gt,idf) {
  await st.collection(gf).doc(idf).delete()
  await st.collection(gt).doc(idf).set(docft)
 }
+
+// document.getElementById('alltab').onclick=function() {
+//   html2canvas(document.querySelector("#html33")).then(canvas => canvas.toBlob(blob => navigator.clipboard.write([new ClipboardItem({'image/png': blob})])))
+// };
