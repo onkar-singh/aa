@@ -23,7 +23,7 @@ async function getods(gd) {
           vtag="<span id='vtag'><span name="+'od'+doc[i].id+" class='w3-tag w3-red'></span></span>"
           if(Number(doc[i].tot)){ifz="ndelt"}else{ifz="delt"}
           if(doc[i].gst){ gstr="<span class='w3-tag w3-amber gst55' style='border-radius: 7px;'>GST</span>"}else{ gstr="<span class='w3-tag w3-amber' style='padding: 0 1.55em'></span>"}
-          document.getElementById('oderli').innerHTML+="<li class='w3-display-container "+ifz+"'>"+"<input onclick='selod(this)' id='"+'od'+doc[i].id+"' class='w3-check' type='checkbox'>"+' '+doc[i].id+'. '+doc[i].cn+vtag+"<span onclick='opodli(this)'  "+"for='"+'od'+doc[i].id+"' class='w3-button w3-transparent w3-display-right'>"+doc[i].tot+' '+ gstr+' '+doc[i].dt+"</span></li>";
+          document.getElementById('oderli').innerHTML+="<li class='w3-display-container "+ifz+"'>"+"<input onclick='selod(this)' id='"+'od'+doc[i].id+"' class='w3-check' type='checkbox'>"+' '+doc[i].id+'. '+doc[i].cn+vtag+"<span onclick='opodli(this)'  "+"for='"+'od'+doc[i].id+"' class='w3-button w3-transparent w3-display-right'>"+doc[i].tot+' '+ gstr+' '+doc[i].dt.split('/20')[0]+"</span></li>";
       }
   }
   catch(error) {
@@ -774,7 +774,14 @@ zsr.id = (Number(zxc)+1);
 zsr.cn = document.getElementById('u13').innerText;
 zsr.tot = Number(document.getElementById('u23').innerText.split('-')[1]);
 zsr.gst = document.getElementById('gst').checked;
-zsr.dt = document.getElementById('u33').innerText.split(',')[0]; 
+//zsr.dt = document.getElementById('u33').innerText.split(',')[0]; 
+let d0 = new Date();
+let ye0 = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d0);
+let mo0 = new Intl.DateTimeFormat('en', { month: 'short' }).format(d0);
+let da0 = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d0);
+zsr.dt=`${da0}/${mo0}/${ye0}`;
+//zsr.dt=new Date().toLocaleDateString("en-US", {day:'numeric',month:'short',year: 'numeric'});
+//.split(' ').reverse().join(' ');
 zsr.it = od; 
  //console.log('json:',zsr)
  //var obj = {a: 123, b: "4 5 6"};
@@ -828,7 +835,7 @@ document.getElementById('gstall').style.display='block';
 
 selgo(selg)
 
-document.getElementById('gstall').innerHTML="<div class='w3-bar w3-blue-gray'><div class='w3-bar-item w3-button w3-border-right' onclick='delod()'>Del</div><div id='cout6' class='w3-bar-item w3-button w3-border-right'>Total</div><div onclick='resetd()' class='w3-bar-item w3-button w3-border-right'>Reset</div><div class='w3-bar-item w3-button w3-border-right' onclick='pint(1)'>Pin</div><div class='w3-bar-item w3-button w3-border-right' onclick='unpin()'>Upin</div><button class='w3-button w3-bar-item' onclick='omprint()''>Print</button></div>"+"<div id='tre6'><ul id='oderli' class='w3-ul w3-border w3-hoverable'></ul></div>";
+document.getElementById('gstall').innerHTML="<div class='w3-bar w3-blue-gray'><div class='w3-bar-item w3-button w3-border-right' onclick='delod()'>Del</div><div id='cout6' class='w3-bar-item w3-button w3-border-right'>Total</div><div onclick='resetd()' class='w3-bar-item w3-button w3-border-right'>Reset</div><button class='w3-button w3-bar-item w3-border-right' onclick='omprint()'>Print</button>"+"<div class='w3-dropdown-hover'> <button class='w3-button'>Status</button> <div class='w3-dropdown-content w3-bar-block w3-border'> <a href='#' onclick='unpin()' class='w3-bar-item w3-button'>None</a> <a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>Payment Pending</a> <a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>Under Production</a> <a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>Printing</a><a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>Part Quantity</a> <a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>Pending</a> <a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>In Transit</a> <input onchange='chnot(1,this)' id='inp5' name='od84' class='w3-border w3-bar-item' type='text' style='padding:5px' placeholder='Write other...'></div></div></div>"+"<div id='tre6'><ul id='oderli' class='w3-ul w3-hoverable'></ul></div>";
 
 getods(d.name);
 
@@ -851,7 +858,7 @@ function chnot(b,v) {
   ///op5[v.name]=v.value;
   //b==='1' ?  op5[lastsel]=v.value :  op5[lastsel]=v.innerText;
   op5= JSON.parse(pinloc);
-  if (b==='1') {
+  if (b===1) {
     op5[lastsel]=v.value;
     document.querySelector('#vtag [name='+lastsel+']').innerHTML=v.value;
   } else {

@@ -7,7 +7,7 @@ function resetd () {
     if (per1==="ok") {
       let fromod1=Number(localStorage.fromod);
       //sinsh(' Stock Not Updated from Order No '+':-'+(1+Number(localStorage.clickcount)),'2');
-        couttot(fromod1);
+        couttot(fromod1,selg);
         //const shod2={"p":"2","od":' Stock Not Updated from Order No '+':-'+(1+Number(localStorage.clickcount)};
         const shod2={"p":"2","od":{'Stock Not Updated from Order No':(1+Number(localStorage.clickcount))}};
         sendd(urli, shod2,'reset');
@@ -80,12 +80,13 @@ function delod () {
   }
 
 } else {alert('Bhai order select ker pahle !!')}}
-var pk8;
+var pk8;var oldod;
 function editod(tp) {
   let st = new Localbase('st');
   pk8=tp.id.split('b')[1];// order id od34
   st.collection(selg).doc(pk8).get().then(doc => {
     let ht=doc.cn;
+    oldod=doc;
 
     //console.log(ht)
     document.getElementById('frt').innerHTML="<strong>"+ht+"</strong>";
@@ -138,7 +139,7 @@ zsr.id = Number(id55);
 zsr.cn = document.getElementById('u13').innerText;
 zsr.tot = Number(tot55);
 zsr.gst = document.getElementById('gst').checked;
-zsr.dt = document.getElementById('u33').innerText.split(',')[0]; 
+zsr.dt = oldod.dt; 
 zsr.it = od; 
 
 const gsel=document.getElementById("gsel").value;
