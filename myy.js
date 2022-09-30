@@ -6,18 +6,18 @@ function resetd () {
     let per1 = prompt("Please enter 'ok' to download from "+localStorage.fromod+" to "+localStorage.clickcount);
     if (per1==="ok") {
       let fromod1=Number(localStorage.fromod);
-      //sinsh(' Stock Not Updated from Order No '+':-'+(1+Number(localStorage.clickcount)),'2');
-        couttot(fromod1,selg);
-        //const shod2={"p":"2","od":' Stock Not Updated from Order No '+':-'+(1+Number(localStorage.clickcount)};
-        const shod2={"p":"2","od":{'Stock Not Updated from Order No':(1+Number(localStorage.clickcount))}};
-        sendd(urli, shod2,'reset');
-
+      const shod2={"p":"2","od":{'Stock Not Updated from Order No':(1+Number(localStorage.clickcount))}};
+        couttot(fromod1,selg).then(()=>{
+          sendd(urli, shod2,'reset');
+        })
+        
+        
         setTimeout(function(){
         tabletcsv('testTable',odcount+'('+localStorage.fromod+'-'+localStorage.clickcount+')');
         localStorage.setItem('fromod',1+Number(localStorage.clickcount));
 document.getElementById('tre6').innerHTML='';
 document.getElementById('p781').click();
-        },2500)
+        },5000)
 
     }
 }else{alert("No data to download ")}
@@ -145,10 +145,18 @@ zsr.it = od;
 const gsel=document.getElementById("gsel").value;
 var shod1={};
 if(!(selg==gsel)){
+  const moveunpin = async () => {
+  for (let u in selod5) {document.getElementById(u).checked=false;};
+   selod5={};selod5[pk8]=pk8;unpin();selod5={};
+}
+  async function mych() {
+    await moveunpin();
+      shod1={"p":"4","g":selg,"gl":gsel,"od":{...zsr}};
+     await moveod(selg,gsel,'od'+id55);
+  }
+  mych();
  // alert('g change'); // move order ////{p:4,g:'odt',gl:'odk',od:{}}
- unpin();
-  shod1={"p":"4","g":selg,"gl":gsel,"od":{...zsr}};
-  moveod(selg,gsel,'od'+id55);
+
 }else{
  // alert('g normal')
   shod1={"p":"1","g":gsel,"od":{...zsr}};
