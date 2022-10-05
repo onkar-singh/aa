@@ -9,6 +9,8 @@
 //
 // if (!localStorage.gr5) {for (;;) {}}
 // if (!localStorage.gr5) {while (1){}}
+
+
 async function getods(gd) {
   try {
     let st = new Localbase('st');
@@ -20,10 +22,16 @@ async function getods(gd) {
     });
       for (let i in doc) {
           //console.log(doc[i])
-          vtag="<span id='vtag'><span name="+'od'+doc[i].id+" class='w3-tag w3-red'></span></span>"
-          if(Number(doc[i].tot)){ifz="ndelt"}else{ifz="delt"}
-          if(doc[i].gst){ gstr="<span class='w3-tag w3-amber gst55' style='border-radius: 7px;'>GST</span>"}else{ gstr="<span class='w3-tag w3-amber' style='padding: 0 1.55em'></span>"}
-          document.getElementById('oderli').innerHTML+="<li class='w3-display-container "+ifz+"'>"+"<input onclick='selod(this)' id='"+'od'+doc[i].id+"' class='w3-check' type='checkbox'>"+' '+doc[i].id+'. '+doc[i].cn+vtag+"<span onclick='opodli(this)'  "+"for='"+'od'+doc[i].id+"' class='w3-button w3-transparent w3-display-right'>"+doc[i].tot+' '+ gstr+' '+doc[i].dt.split('/20')[0]+"</span></li>";
+          
+          if(Number(doc[i].tot)){ifz="ndelt"}else{ifz="delt"};
+          if(doc[i].gst){ gstr="<span class='w3-tag w3-amber gst55' style='border-radius: 7px;'>GST</span>"}else{ gstr="<span class='w3-tag w3-amber' style='padding: 0 1.55em'></span>"};
+
+          let inp="<input onclick='selod(this)' id='"+'od'+doc[i].id+"' class='w3-check' type='checkbox'>";let lid='';
+          let exio='';let funex='';
+          if (gd == 'inst') {lid='data-gd='+doc[i].cn;exio='Export';funex="onclick='expt(this)'";inp='';} 
+          vtag="<span id='vtag' "+funex+"><span name="+'od'+doc[i].id+" class='w3-tag w3-red'>"+exio+"</span></span>";
+
+          document.getElementById('oderli').innerHTML+="<li "+lid+" class='w3-display-container "+ifz+"'>"+inp+' '+doc[i].id+'. '+doc[i].cn+vtag+"<span onclick='opodli(this)'  "+"for='"+'od'+doc[i].id+"' class='w3-button w3-transparent w3-display-right'>"+doc[i].tot+' '+ gstr+' '+doc[i].dt.split('/20')[0]+"</span></li>";
       }
   }
   catch(error) {
@@ -343,6 +351,7 @@ document.querySelector('#tot table tbody').innerHTML=sd0;
 
 // create new, clear old input 
 function newc(){
+  document.querySelector('#gall input').click();
  let hjk=document.querySelectorAll('.city table td input');
 
 for (let t of hjk) {
@@ -448,7 +457,12 @@ document.getElementById('tb').innerHTML+="<div class='pb' style='border: 2px sol
 
 // onload model get Customer Name and gst
 function gonext() {
-		let ur=document.getElementById("incn").value;
+		
+   // alert(document.getElementById('instock').checked);
+   if (document.getElementById('instock').checked) {
+    document.getElementById("incn").value=document.querySelector('#gall input[type="radio"]:checked').labels[0].innerText;
+   }
+   let ur=document.getElementById("incn").value;
 		if(ur){
     document.getElementById('u13').innerHTML=ur;
     document.getElementById('frt').innerHTML='<strong>'+ur+'</strong>';
@@ -504,7 +518,7 @@ if(Object.keys(selod5).length){
 document.getElementById('uyt4').innerHTML='';
   myW = window.open("", "_blank");
   myW.document.body.setAttribute('onclick','print()');
-myW.document.body.innerHTML+="<style>table tbody:last-child {display:none}div {padding: 5px;margin: 5px 0;overflow: auto;font-size: 18px;font-family: sans-serif;font-weight: 600;}table, th, td {border: 1px solid black;border-collapse: collapse;text-align: center;font-weight: 600;}#tblom1 {width: 100%;}#tblom1  tbody tr:first-child{color:blue;background: #ffdfdd;}</style><div id='my56'></div>";
+myW.document.body.innerHTML+="<style>body{margin: 0 8px}table tbody:last-child {display:none}div {padding: 5px;margin: 5px 0;overflow: auto;font-size: 18px;font-family: sans-serif;font-weight: 600;}table, th, td {border: 1px solid black;border-collapse: collapse;text-align: center;font-weight: 600;}#tblom1 {width: 100%;}#tblom1  tbody tr:first-child{color:blue;background: #ffdfdd;}</style><div id='my56'></div>";
 let st = new Localbase('st');
 for (const p in selod5) {
  // console.log(`${property}: ${object[property]}`);
@@ -835,7 +849,12 @@ selg=d.name;
 document.getElementById('gstall').style.display='block';
 
 selgo(selg)
-
+if (selg=='inst') {
+  document.getElementById('gstall').innerHTML="<div id='tre6'><ul id='oderli' class='w3-ul w3-hoverable'></ul></div>";
+  getods(d.name);
+  document.getElementById('bnm7').style.display='none';
+  document.getElementById('p78').style.display='none';
+}else{
 document.getElementById('gstall').innerHTML="<div class='w3-bar w3-blue-gray'><div class='w3-bar-item w3-button w3-border-right' onclick='delod()'>Del</div><div id='cout6' class='w3-bar-item w3-button w3-border-right'>Total</div><div onclick='resetd()' class='w3-bar-item w3-button w3-border-right'>Reset</div><button class='w3-button w3-bar-item w3-border-right' onclick='omprint()'>Print</button>"+"<div class='w3-dropdown-hover'> <button class='w3-button'>Status</button> <div class='w3-dropdown-content w3-bar-block w3-border'> <a href='#' onclick='unpin()' class='w3-bar-item w3-button'>None</a> <a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>Payment Pending</a> <a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>Under Production</a> <a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>Printing</a><a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>Part Quantity</a> <a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>Pending</a> <a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>In Transit</a> <input onchange='chnot(1,this)' id='inp5' name='od84' class='w3-border w3-bar-item' type='text' style='padding:5px' placeholder='Write other...'></div></div></div>"+"<div id='tre6'><ul id='oderli' class='w3-ul w3-hoverable'></ul></div>";
 
 getods(d.name);
@@ -849,7 +868,7 @@ document.getElementById('cout6').addEventListener("click", function() {
  else{alert("No data to count total ")}
 })
 
-}
+}}
 
 function chnot(b,v) {
   //alert(v.value)// set pin sms
@@ -874,7 +893,7 @@ var clickh=0;
 function opodli(b) {
     //console.log(b.getAttribute("for"));
     let st = new Localbase('st');
-    op5= JSON.parse(pinloc);
+  //  op5= JSON.parse(pinloc);
    // console.log('1',op5)
     let qwe5=b.getAttribute("for");
     st.collection(selg).doc(qwe5).get().then(doc=> {
@@ -980,12 +999,15 @@ function selod(h) {
  // count total and make table
 //alert('',xc)
     var pd2;
-  async function couttot(xc,gd) {  
+  async function couttot(xc,gd,till) {  
     let st = new Localbase('st');
   pd2=structuredClone(ods1);//{...ods1}
   console.log(pd2)
  let tyn5=Number(localStorage.clickcount);
  var doc5;
+ if (till) {
+  tyn5=till;
+ }
 for (let v = xc; v <= tyn5; v++) {   
 
 st.collection(gd).doc('od'+v).get().then(doc => {
@@ -1058,7 +1080,7 @@ function omak(n,i,a){
  
  n.addEventListener("click", function() {
   let idrr='';
-  if(n.id==='ghy99'||n.id==='p781'||n.id==='p782'||n.id==='p783'){idrr='#'+n.id+','+'#ghy99,'}
+  if(n.id==='ghy99'||n.id==='p781'||n.id==='p782'||n.id==='p783'||n.id==='p784'){idrr='#'+n.id+','+'#ghy99,'}
    
   
   if(n.id){
@@ -1123,6 +1145,7 @@ if(!localStorage.pin){localStorage.setItem('pin','{}')}
 if(!localStorage.pint){localStorage.setItem('pint','{}')}
 if(!localStorage.pink){localStorage.setItem('pink','{}')}
 if(!localStorage.pinpd){localStorage.setItem('pinpd','{}')}
+if(!localStorage.pinpd){localStorage.setItem('inst','{}')}
 function pint(v,p) {
   selgo(selg)
   for (const t in selod5) {
@@ -1210,7 +1233,7 @@ st1.collection('ods').doc(r).get().then(doc => {
 })
  }
 }
-
+var pinloc='{}';
 function selgo(g) {
   switch (g) {
     case 'ods':
@@ -1222,9 +1245,12 @@ function selgo(g) {
     case 'odk':
       pinloc=localStorage.pink;
       break;
-      case 'odpd':
-    pinloc=localStorage.pinpd;
-    break;
+    case 'odpd':
+      pinloc=localStorage.pinpd;
+      break;
+    case 'inst':
+        pinloc=localStorage.inst;
+        break;
   }
 }
 
@@ -1245,6 +1271,10 @@ function selpin(g) {
     case 'odpd':
       pinz='pinpd'
       break;
+
+    case 'inst':
+        pinz='inst'
+        break;
     default:
       break;
   }

@@ -81,6 +81,7 @@ function delod () {
 
 } else {alert('Bhai order select ker pahle !!')}}
 var pk8;var oldod;
+var instg={Delhi:'ods',Tiruppur:'odt',Kolkata:'odk',PD:'odpd'}
 function editod(tp) {
   let st = new Localbase('st');
   pk8=tp.id.split('b')[1];// order id od34
@@ -91,7 +92,12 @@ function editod(tp) {
     //console.log(ht)
     document.getElementById('frt').innerHTML="<strong>"+ht+"</strong>";
     if(doc.gst){document.getElementById('gst').checked=true;}
-    document.getElementById("gsel").value=selg;
+    if (selg=='inst') {
+      document.getElementById("gsel").value=instg[ht.trim()];
+    } else {
+      document.getElementById("gsel").value=selg;
+    }
+    
 
     // console.log(doc.it)
   })
@@ -133,6 +139,11 @@ v.dispatchEvent(event);
 
 function updateod() {
  // console.log(pk8,od);//var po5;
+ if (selg=='inst') {
+  document.getElementById("alltab").click();
+  saveinst(0);
+ setTimeout(()=>{document.getElementById("instb").click()},100); 
+ }else{
 document.getElementById('alltab').click();
 var id55=pk8.split('od')[1];let tot55=document.getElementById('u23').innerText.split('-')[1];
 zsr.id = Number(id55);
@@ -219,7 +230,7 @@ document.getElementById("p781").click();
   .catch(error => {
     console.log('There was an error, do something else.')
   })
-}
+}}
 
 //{p:4,g:'odt',gl:'odk',od:{id:34,first:"Jake",phone:"312-000-1212", last:"Newperson"}}; // move order from odt to odk
 //moveod('odk','odpd','od82');
@@ -236,3 +247,53 @@ async function moveod(gf,gt,idf) {
 // document.getElementById('alltab').onclick=function() {
 //   html2canvas(document.querySelector("#html33")).then(canvas => canvas.toBlob(blob => navigator.clipboard.write([new ClipboardItem({'image/png': blob})])))
 // };
+
+document.getElementById("seldt").valueAsDate = new Date();
+document.getElementById("instock").onclick=()=>{
+ // .classList.toggle("mystyle"); this.parentElement.style.display='none'
+  document.getElementById("incn").classList.toggle("hide");
+  document.getElementById("gst1").parentElement.classList.toggle("hide");
+  document.getElementById("seldt").parentElement.classList.toggle("hide");
+}
+
+function saveinst(v) {
+  let pkx={};
+  // pkx.id = (Number(zxc)+1);
+   pkx.cn = document.getElementById('gsel').options[document.getElementById('gsel').selectedIndex].innerText;
+   pkx.tot = Number(document.getElementById('u23').innerText.split('-')[1]);
+   pkx.gst = false;
+   let d0 = new Date(document.getElementById("seldt").value);
+   let ye0 = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d0);
+   let mo0 = new Intl.DateTimeFormat('en', { month: 'short' }).format(d0);
+   let da0 = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d0);
+   pkx.dt = `${da0}/${mo0}/${ye0}`;
+   pkx.it = od;
+  
+   (async () => {
+     let st = new Localbase('st');
+     if (v===0) {
+      pkx.id=oldod.id;
+     } else {
+      await st.collection('inst').get().then((e) => e.length).then((id) => pkx.id=id+1);
+     }
+     console.log('incv',v);
+     await st.collection('inst').add(pkx, 'od' +pkx.id);
+     await sendd(urli, { "p": "5", "g": 'inst', "od": { ...pkx } });
+    
+
+     
+   })();
+  newc();
+  if (v===0) {
+    document.getElementById('btn_convert').style.display = '';
+    document.getElementById('upd5').style.display = 'none';
+   }
+}
+
+function expt(v) {
+ // console.log(Number(v.parentElement.innerText.split('.')[0]))
+  couttot(Number(v.parentElement.innerText.split('.')[0]),selg,Number(v.parentElement.innerText.split('.')[0]))
+  setTimeout(()=>{
+    tabletcsv('testTable',new Date());
+  },3000)
+}

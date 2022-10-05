@@ -20,48 +20,57 @@
 <body onunload="">
   <div id="id01" class="w3-modal" style="display: block;">
     <div class="w3-modal-content w3-card-4">
-<!-- <span style="display: none;" onclick="pky7()" class="w3-button w3-display-topright">X</span> -->
-<div class="w3-bar w3-panel" style="margin: 0;">
-  <button id="ghy00" class="w3-button w3-blue w3-bar-item w3-border-right" onclick="newocb()">New</button>
-  <!-- <button id="full" class="w3-button w3-teal w3-right" onclick="openFullscreen(this)">Full</button> -->
-  <!-- <button id="oder" style="display: none" onclick="oderc(this)" class="w3-button w3-teal w3-left">Bulk</button> -->
-  <button id="ghy99" class="w3-button w3-blue w3-bar-item w3-border-right" onclick="stockm()">Orders</button>  
-  <button class="w3-button w3-blue w3-bar-item w3-border-right">G Total</button>
-  <div class="" style="padding: 0;">
-    <img id='lastodimg' style="width:65px;height:40px;opacity: 0.1" src="/cch">
-<span id='lastodcn' >dad</span>
-
-</div>
-  <!-- <button class='w3-button w3-blue w3-bar-item w3-border-right' onclick='omprint()''>Print</button> -->
-  <br>
-</div>
-<div id='p78' class="w3-bar w3-blue" style="display: none">
-  <button id='p781' name="ods" class="w3-bar-item w3-button w3-border-right" onclick="indb(this)">Delhi</button>
-  <button id='p782' name="odt" class="w3-bar-item w3-button w3-border-right" onclick="indb(this)">Tiruppur</button>
-  <button id='p783' name="odk" class="w3-bar-item w3-button w3-border-right" onclick="indb(this)">Kolkata</button>
-  <button id='p784' name="odpd" class="w3-bar-item w3-button w3-border-right" onclick="indb(this)">PD</button>
-
-  <!-- <button id='p782' class="w3-bar-item w3-button"  >Json</button> -->
-  <!-- <button id='p783' class="w3-bar-item w3-button w3-border-right" onclick='stockv()' >Locals</button> -->
-</div>
-      
+      <!-- <span style="display: none;" onclick="pky7()" class="w3-button w3-display-topright">X</span> -->
+      <div class="w3-bar w3-panel" style="margin: 0;">
+        <button id="ghy00" class="w3-button w3-blue w3-bar-item w3-border-right" onclick="newocb()">New</button>
+        <!-- <button id="full" class="w3-button w3-teal w3-right" onclick="openFullscreen(this)">Full</button> -->
+        <!-- <button id="oder" style="display: none" onclick="oderc(this)" class="w3-button w3-teal w3-left">Bulk</button> -->
+        <button id="ghy99" class="w3-button w3-blue w3-bar-item w3-border-right" onclick="stockm()">Out</button>
+        <button id="instb" name="inst" onclick="indb(this)" class="w3-button w3-blue w3-bar-item w3-border-right">In</button>
+        <div class="" style="padding: 0;">
+          <img id='lastodimg' style="width:65px;height:40px;opacity: 0.1" src="/cch">
+          <span id='lastodcn'>dad</span>
+  
+        </div>
+        <!-- <button class='w3-button w3-blue w3-bar-item w3-border-right' onclick='omprint()''>Print</button> -->
+        <br>
+      </div>
+      <div id='p78' class="w3-bar w3-blue" style="display: none">
+        <button id='p781' name="ods" class="w3-bar-item w3-button w3-border-right" onclick="indb(this)">Delhi</button>
+        <button id='p782' name="odt" class="w3-bar-item w3-button w3-border-right" onclick="indb(this)">Tiruppur</button>
+        <button id='p783' name="odk" class="w3-bar-item w3-button w3-border-right" onclick="indb(this)">Kolkata</button>
+        <button id='p784' name="odpd" class="w3-bar-item w3-button w3-border-right" onclick="indb(this)">PD</button>
+  
+        <!-- <button id='p782' class="w3-bar-item w3-button"  >Json</button> -->
+        <!-- <button id='p783' class="w3-bar-item w3-button w3-border-right" onclick='stockv()' >Locals</button> -->
+      </div>
+  
       <div id='gstall' class="" style="display: none;margin: 0.2em 0px;"></div>
-      
+  
       <div id='bnm7' class="w3-container">
-      <p id='gall'>
+        <a class="w3-button" style="padding: 0 0 0 2px;"><input id="instock" type="checkbox" class="w3-check"><label
+            for="instock" style="padding:5px;">In Stock - Purchase</label></a>
+        <p id='gall'>
           <input id='in1' class="w3-radio" type="radio" name="gender" value="0" checked>
           <label for='in1'>Delhi</label>
           <input id='in2' class="w3-radio" type="radio" name="gender" value="1">
           <label for='in2'>Tiruppur</label>
-          <input id='in3' class="w3-radio" type="radio" name="gender" value="2" >
+          <input id='in3' class="w3-radio" type="radio" name="gender" value="2">
           <label for='in3'>Kolkata</label>
-          <input id='in4' class="w3-radio" type="radio" name="gender" value="3" >
-          <label for='in4'>PD</label></p>
- 		<input id='incn' required="required" class="w3-input w3-border" placeholder="Customer Name" type="text">
-     <p>  <a class="w3-button" style="padding: 5px 0px 5px 8px;"><input id="gst1" type="checkbox" class="w3-check"><label for="gst1" style="padding: 14px 20px 8px 8px;"> GST</label></a>
-		<button id="cnm" onclick='gonext()' class="w3-button w3-green">Next</button></p>   
-		<p></p>
-	  </div>
+          <input id='in4' class="w3-radio" type="radio" name="gender" value="3">
+          <label for='in4'>PD</label>
+        </p>
+        <p class="hide">
+          <label for="seldt">Select Date:</label>
+          <input type="date" id="seldt">
+        </p>
+        <input id='incn' required="required" class="w3-input w3-border" placeholder="Customer Name" type="text">
+        <p> <a class="w3-button" style="padding: 5px 0px 5px 8px;"><input id="gst1" type="checkbox"
+              class="w3-check"><label for="gst1" style="padding: 14px 20px 8px 8px;"> GST</label></a>
+          <button id="cnm" onclick='gonext()' class="w3-button w3-green">Next</button>
+        </p>
+        <p></p>
+      </div>
     </div>
   </div>
   
