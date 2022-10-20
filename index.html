@@ -12,6 +12,7 @@
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 <div id="imgf"></div>
+<script src="vue.js"></script>
   <script src="localbase.min.js"></script>
 <!--   <script src="aawor/od44.json"></script> -->
 
@@ -27,6 +28,7 @@
         <!-- <button id="oder" style="display: none" onclick="oderc(this)" class="w3-button w3-teal w3-left">Bulk</button> -->
         <button id="ghy99" class="w3-button w3-blue w3-bar-item w3-border-right" onclick="stockm()">Out</button>
         <button id="instb" name="inst" onclick="indb(this)" class="w3-button w3-blue w3-bar-item w3-border-right">In</button>
+        <a href="pc.html" class="w3-button w3-blue w3-bar-item w3-border-right">₹</a>
         <div class="" style="padding: 0;">
           <img id='lastodimg' style="width:65px;height:40px;opacity: 0.1" src="/cch">
           <span id='lastodcn'>dad</span>
@@ -91,6 +93,10 @@
   </select>
 </div>
   <div class="bar">
+    <div class="w3-bar" style="padding: 0.4em;background: #8bc34a;">
+    <input type="number" id="tch" placeholder="Transport Charge">
+    <input type="number" id="och" placeholder="Other Charges">
+  </div>
   <div class="w3-bar w3-purple" style="font-weight: 500;">
     <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'type0')">Bio</button>
     <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'type1')">Nbio</button>
@@ -103,14 +109,15 @@
     
 <div id='html33'>
 <div id="odid" style="display:none" class="w3-xlarge w3-margin-left w3-quarter w3-tag" style="width: 100px;">2</div>
-<div id='tot' style="display:none"  class='w3-panel'>
-    <table class="w3-table-all w3-centered">
+<div id='tot' style="display:none;"  class='w3-panel'>
+  <div style="display: grid;">
+    <table>
     <thead>
-      <tr><th colspan="2">Own Knitted Blank Wears To 
+      <tr><th colspan="4">Own Knitted Blank Wears To 
         <div id="u13" class='nm' contenteditable="true">Customer Name</div>
         </th>
       </tr>
-      <tr class="w3-light-grey">
+      <tr class="w3-light-grey" style="display: none;">
         <th colspan="2" style="padding: 0;">
             <div id="u23" class="w3-left" style="margin-left: 2%;padding: 5px 0px;">Total-0</div>
             <div id="u33" style="float: right;padding: 5px 5px;">00/00/0000</div>
@@ -119,6 +126,7 @@
     </thead>
    <tbody> </tbody>
   </table>
+</div>
 </div>
     
   <div id="type0" class=" w3-border city">
@@ -169,7 +177,7 @@
   <script src="om.js"></script>
   <script src="w3.js"></script>
   <script>
-   if (!localStorage.gr5) {window.open(location.href);setTimeout(()=>{document.write('h')},50);setTimeout(()=>{for (;;) {}},100)}
+   //if (!localStorage.gr5) {window.open(location.href);setTimeout(()=>{document.write('h')},50);setTimeout(()=>{for (;;) {}},100)}
   </script>
 </html>
 

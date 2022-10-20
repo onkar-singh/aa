@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<title>Yeloooo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="om.css">
+<script src="vue.js"></script>
+
+<body>
+
+<style>table, th, td {border: 1px solid #000;border-collapse: collapse;}
+#pc tbody th,#pc table td {font-weight:500}
+</style>
+
+    <div id="price">
+       
+        <table id='pc' class='w3-table-all w3-centered'>
+            <thead>
+            <tr>
+                <th><a href='index.html' class='w3-button w3-red'>Back</a><button @click='edit(this)' class='w3-button w3-blue'>Edit</button></th>
+                <th><button @click='save' class='w3-button w3-blue'>Save</button></th>
+            </tr>
+
+            <tr >
+                <th>Sample Qt.</th>
+                <th>Sample Price</th>
+            </tr>
+            <tr>
+                <td @blur='pc.sqt = Number($event.target.innerText.match(/\d+/)[0])'>{{'< '+pc.sqt+' pcs'}}</td>
+                <td @blur='pc.sp = Number($event.target.innerText.match(/\d+/)[0])'>{{'+'+pc.sp+'₹/pc'}}</td>
+            </tr>
+            <tr >
+                <th>Product</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tr>
+                <th>Bio (36-42)</th>
+                <td @blur='pc.pc.Bio[0] = Number($event.target.innerText.match(/\d+/)[0])'>{{ pc.pc.Bio[0]+'₹' }}</td>
+            </tr>
+            <tr>
+                <th>Bio (44,46)</th>
+                <td @blur='pc.pc.Bio[1] = Number($event.target.innerText.match(/\d+/)[0])'>{{ pc.pc.Bio[1]+'₹' }}</td>
+            </tr>
+            <tr>
+                <th>Nbio (36-42)</th>
+                <td @blur='pc.pc.Nbio[0] = Number($event.target.innerText.match(/\d+/)[0])'>{{ pc.pc.Nbio[0]+'₹' }}</td>
+            </tr>
+            <tr>
+                <th>Nbio (44,46)</th>
+                <td @blur='pc.pc.Nbio[1] = Number($event.target.innerText.match(/\d+/)[0])'>{{ pc.pc.Nbio[1]+'₹' }}</td>
+            </tr>
+            <tr>
+                <th>OverS (S-XL)</th>
+                <td @blur='pc.pc.OverS[0] = Number($event.target.innerText.match(/\d+/)[0])'>{{ pc.pc.OverS[0]+'₹' }}</td>
+            </tr>
+            <tr>
+                <th>Polo (XS-XL)</th>
+                <td @blur='pc.pc.Polo[0] = Number($event.target.innerText.match(/\d+/)[0])'>{{ pc.pc.Polo[0]+'₹' }}</td>
+            </tr>
+            <tr>
+                <th>Polo (XXL)</th>
+                <td @blur='pc.pc.Polo[1] = Number($event.target.innerText.match(/\d+/)[0])'>{{ pc.pc.Polo[1]+'₹' }}</td>
+            </tr>
+            <tr>
+                <th>Hoodie (S-XL)</th>
+                <td @blur='pc.pc.Hoodie[0] = Number($event.target.innerText.match(/\d+/)[0])'>{{ pc.pc.Hoodie[0]+'₹' }}</td>
+            </tr>
+            <tr>
+                <th>Hoodie (XXL)</th>
+                <td @blur='pc.pc.Hoodie[1] = Number($event.target.innerText.match(/\d+/)[0])'>{{ pc.pc.Hoodie[1]+'₹' }}</td>
+            </tr>
+            <tr>
+                <th>Sweat (S-XL)</th>
+                <td @blur='pc.pc.Sweat[0] = Number($event.target.innerText.match(/\d+/)[0])'>{{ pc.pc.Sweat[0]+'₹' }}</td>
+            </tr>
+            <tr>
+                <th>Sweat (XXL)</th>
+                <td @blur='pc.pc.Sweat[1] = Number($event.target.innerText.match(/\d+/)[0])'>{{ pc.pc.Sweat[1]+'₹' }}</td>
+            </tr>
+        </table>
+
+       
+ </div>
+
+
+<div id='pk'>
+    <home></home>
+</div>
+
+
+
+<script type="module">
+
+if (!localStorage.pc) {localStorage.setItem('pc','{ "pc": { "Bio": [ 160, 165 ], "Nbio": [ 105, 110 ], "OverS": [ 210 ], "Polo": [ 185, 195 ], "Hoodie": [ 300, 310 ], "Sweat": [ 235, 245 ] }, "sqt": 20, "sp": 30 }')}
+let pc=JSON.parse(localStorage.pc);
+    
+const price = Vue.createApp({
+    data() {
+        return {
+            pc
+        }
+    },
+    methods: {
+    edit(e){
+        console.log(e)
+        document.querySelectorAll("#pc td").forEach((v)=>{
+            v.contentEditable=true;v.style.background="yellow";v.style.color='blue';
+        })
+    },
+    save(){
+        localStorage.setItem('pc',JSON.stringify(pc))
+        document.querySelectorAll("#pc td").forEach((v)=>{
+            v.contentEditable=false;v.style='';
+        })
+    }
+}
+         
+}).mount('#price')
+    
+ /////////////////////////////////////////////////////
+    
+    // const Foo = { template: '<div>foo</div>' }  
+    
+const app1 = Vue.createApp({})
+    
+    app1.component('home', {
+    data() {
+        return {
+            list: 'Hi'
+        }
+    },
+    template: `<h1 @click='fgfh'>{{list}}</h1>`,
+    methods: {
+        fgfh(){
+        alert('hgh')
+        },
+   
+    }})
+    
+    app1.mount('#pk')
+
+    
+    
+    
+    
+    
+    
+    
+    
+    // export default {
+//   data() {
+//     return {
+//       obj: {
+//         nested: { count: 0 },
+//         arr: ['foo', 'bar']
+//       }
+//     }
+//   },
+//   methods: {
+//     mutateDeeply() {
+//       // these will work as expected.
+//       this.obj.nested.count++
+//       this.obj.arr.push('baz')
+//     }
+//   }
+// }
+
+    ///id='pc.Bio[0]'
+// localstoreg   save,read,append
+</script>
+
+</body>
+
+</html>

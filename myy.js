@@ -297,3 +297,33 @@ function expt(v) {
     tabletcsv('testTable',new Date());
   },3000)
 }
+
+function pc(v,a,b,c) {
+  let prc=JSON.parse(localStorage.pc);
+
+  let svc='';let sva='';let svbc='';let svab='';let svpls1='';let svpls2='';
+  svbc= ((b+c)!=0) ? svbc=(b+c)+'×'+prc.pc[v][1] : svbc='';
+  svab= ((a+b)!=0) ? svab=(a+b)+'×'+prc.pc[v][0] : svab='';
+  svc = (c!=0) ? svc=c+'×'+prc.pc[v][1] : svc='';
+  sva = (a!=0) ? sva=a+'×'+prc.pc[v][0] : sva='';
+
+  svpls1 = ((a!=0) && ((b+c)!=0)) ? svpls1='+' : svpls1='';
+  svpls2 = ((c!=0) && ((a+b)!=0)) ? svpls2='+' : svpls2='';
+
+
+  if ((v=='Bio') || (v=='NBio')) { //console.log('BN')
+    let pj1=(a*prc.pc[v][0]+(b+c)*prc.pc[v][1]);
+    pctt+=pj1;
+    return "<td colspan='2'><b>"+(a+b+c)+' '+v+"</b><b class='sa2'>"+sva+svpls1+svbc+" = </b></td><td class='sb3'><b>"+pj1+'₹</b></td>'
+  }else if (v=='OverS') { //console.log('O')
+    let pj2=((a+b+c)*prc.pc[v][0]);
+    pctt+=pj2;
+    return "<td colspan='2'><b>"+(a+b+c)+' '+v+"</b><b class='sa2'>"+(a+b+c)+'×'+prc.pc[v][0]+" = </b></td><td class='sb3'><b>"+pj2+'₹</b></td>'
+  }else if ((v=='Polo') || (v=='Hood') || (v=='Sweat')) { //console.log('PHS')
+    let pj3=((a+b)*prc.pc[v][0]+c*prc.pc[v][1]);
+    pctt+=pj3;
+    return "<td colspan='2'><b>"+(a+b+c)+' '+v+"</b><b class='sa2'>"+svab+svpls2+svc+" = </b></td><td class='sb3'><b>"+pj3+'₹</b></td>'
+  }else{ //console.log('N')
+
+  }
+}

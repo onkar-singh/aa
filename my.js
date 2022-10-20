@@ -62,7 +62,7 @@ var pki={"types":[{"type":"Bio","color":["Black","White","Maroon","Navy","Yellow
 
 var intp;
 if((navigator.platform)==='iPhone'){intp="pattern='[0-9]*' type='text'";
-}else{intp="type='number'";}
+}else{intp="type='number'";}1
       
 //console.log('intp:',intp);
 
@@ -269,8 +269,14 @@ document.querySelectorAll("#"+tbid+" > thead > tr.w3-blue-grey > th")[xn].innerT
 }
 
 //// Display Total table
-var kli;
+var kli;var pctt;
 function tot() {
+let tch=document.getElementById('tch').value;let och=document.getElementById('och').value;
+let dptch='';let dpoch='';
+tch = (tch=='') ? tch=0 : tch=tch; och = (och=='') ? och=0 : och=och;
+dptch = (tch=='') ? dptch='display:none': dptch='';
+dpoch = (och=='') ? dpoch='display:none': dpoch='';
+
   kli=document.getElementById('gst').checked;
 let pw=new Date();
 document.getElementById('u13').innerText=document.getElementById('frt').innerText;   
@@ -279,7 +285,7 @@ document.getElementById('u33').innerHTML=pw.getDate()+"/"+(pw.getMonth()+1)+"/"+
 //document.getElementById('u33').innerHTML=pw.split(" ")[0]+':'+pw.split(":")[1];//+pw.slice(-2);
 document.getElementById('tot').style.display='';
 document.getElementById('odert').style.display='none';
- var tote=0;
+ var tote=0;pctt=0;
 let uy= document.querySelectorAll('.city thead tr:nth-child(1)');
 for (let v = 0; v < uy.length; v++) {
  uy[v].style.display='none';
@@ -288,31 +294,32 @@ for (let v = 0; v < uy.length; v++) {
 let tg=document.querySelectorAll('.city');
 var sd0='';let cot=0;
 for (let b = 0; b < tg.length; b++) {
-let sd2=document.querySelectorAll("#trth .w3-blue")[b].innerText;
+let sd2=document.querySelectorAll("#trth .w3-blue")[b].innerText.trim();
   let sd1=tg[b].querySelectorAll("thead > tr.w3-blue-grey > th");
   //console.log('ffffff',sd1);
-  var sd11=0;
+  let cta=0;let ctb=0;let ctc=0;
   for (let h = 1; h< sd1.length; h++) {
    let njh=sd1[h].innerText;
    let njh1=Number(njh);
-   sd11+=njh1;
-  }
-  if(sd11!=0){
-   tote+=sd11;
-    if(cot%2===0){
-       sd0+="<tr><td>"+sd2+"-"+sd11+"</td>";
-     // console.log('true',cot,"<tr><td>"+sd2+"-"+sd11+"</td>");
-    }else{
-      sd0+="<td>"+sd2+"-"+sd11+"</td></tr>";
-     // console.log('false',cot,"<td>"+sd2+"-"+sd11+"</td></tr>");
-    }
-    cot+=1;
- //  let un=document.getElementById('odert').innerText;
-   //console.log('ggggggg',cot,sd2,sd11);
+   tote+=njh1;
+   if (h<=4) {
+    cta+=njh1;
+   } else if(h==5) {
+     ctb=njh1;
+   }else if(h==6) {
+    ctc=njh1;
+  }}
+  let ctt=(cta+ctb+ctc);
+  if(ctt!=0){
+    sd0+="<tr>"+pc(sd2,cta,ctb,ctc)+"</tr>";
    
   }
 }//console.log(sd0);
-document.querySelector('#tot table tbody').innerHTML=sd0;
+let pctt1="<tr><td colspan='3'><div><b class='sa1 sc1'>"+tote+" PCS Total</b><b class='sa2'>"+pctt+'₹ + 5% Tax</b></div></td>'+'</tr>';
+let pctt2="<tr style="+dptch+"><td colspan='2'><b class='sa2'>Transport Charge -</b></td><td>"+"<b class='sb4'>"+tch+'₹'+'</b></td></tr>';
+let pctt3="<tr style="+dpoch+"><td colspan='2'><b class='sa2'>Other Charges -</b></td><td>"+"<b class='sb4'>"+och+'₹'+'</b></td></tr>';
+let pctt4="<tr><td colspan='2'><b class='sa2'>Total Amount -</b></td><td>"+"<b class='sb4 sc1'>"+Math.ceil(((Number(pctt)*0.05)+Number(pctt)+Number(tch)+Number(och))).toLocaleString('en-IN')+'₹'+'</b></td></tr>';
+document.querySelector('#tot table tbody').innerHTML=sd0+pctt1+pctt2+pctt3+pctt4;
  document.querySelector('#tot thead tr #u13').contentEditable=true;
  document.querySelector('#tot thead tr #u23').innerText='Total-'+tote;
 }
