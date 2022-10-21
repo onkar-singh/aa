@@ -75,10 +75,14 @@ tbody td input{font-weight: 600;}
 }
 
 table th .nm {
-    border: 1px solid;
+    border: 0.5px solid;
     display: inline-block;
-    padding: 0px 8px;
+    padding: 0px 6px;
 }
+
+#html33 th {padding: 5px!important;}
+#html33 td input{padding: 5px!important;}
+
 .w3-panel tbody tr {border: 1px solid #000;}
 
 span.w3-button.w3-display-topright {

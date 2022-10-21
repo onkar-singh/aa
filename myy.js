@@ -298,9 +298,9 @@ function expt(v) {
   },3000)
 }
 
-function pc(v,a,b,c) {
+function pc(v,a,b,c) { // a(36-42), b(44), c(46)
   let prc=JSON.parse(localStorage.pc);
-
+ 
   let svc='';let sva='';let svbc='';let svab='';let svpls1='';let svpls2='';
   svbc= ((b+c)!=0) ? svbc=(b+c)+'×'+prc.pc[v][1] : svbc='';
   svab= ((a+b)!=0) ? svab=(a+b)+'×'+prc.pc[v][0] : svab='';
@@ -310,20 +310,20 @@ function pc(v,a,b,c) {
   svpls1 = ((a!=0) && ((b+c)!=0)) ? svpls1='+' : svpls1='';
   svpls2 = ((c!=0) && ((a+b)!=0)) ? svpls2='+' : svpls2='';
 
-
+  let pj1=0;
   if ((v=='Bio') || (v=='NBio')) { //console.log('BN')
     let pj1=(a*prc.pc[v][0]+(b+c)*prc.pc[v][1]);
-    pctt+=pj1;
+    pctt+=pj1;pcwt+=(a+b+c)*Number(prc.wt[v]);
     return "<td colspan='2'><b>"+(a+b+c)+' '+v+"</b><b class='sa2'>"+sva+svpls1+svbc+" = </b></td><td class='sb3'><b>"+pj1+'₹</b></td>'
   }else if (v=='OverS') { //console.log('O')
-    let pj2=((a+b+c)*prc.pc[v][0]);
-    pctt+=pj2;
-    return "<td colspan='2'><b>"+(a+b+c)+' '+v+"</b><b class='sa2'>"+(a+b+c)+'×'+prc.pc[v][0]+" = </b></td><td class='sb3'><b>"+pj2+'₹</b></td>'
+    pj1=((a+b+c)*prc.pc[v][0]);
+    pctt+=pj1;pcwt+=(a+b+c)*Number(prc.wt[v]);
+    return "<td colspan='2'><b>"+(a+b+c)+' '+v+"</b><b class='sa2'>"+(a+b+c)+'×'+prc.pc[v][0]+" = </b></td><td class='sb3'><b>"+pj1+'₹</b></td>'
   }else if ((v=='Polo') || (v=='Hood') || (v=='Sweat')) { //console.log('PHS')
-    let pj3=((a+b)*prc.pc[v][0]+c*prc.pc[v][1]);
-    pctt+=pj3;
-    return "<td colspan='2'><b>"+(a+b+c)+' '+v+"</b><b class='sa2'>"+svab+svpls2+svc+" = </b></td><td class='sb3'><b>"+pj3+'₹</b></td>'
-  }else{ //console.log('N')
-
-  }
+    pj1=((a+b)*prc.pc[v][0]+c*prc.pc[v][1]);
+    pctt+=pj1;pcwt+=(a+b+c)*Number(prc.wt[v]);
+    return "<td colspan='2'><b>"+(a+b+c)+' '+v+"</b><b class='sa2'>"+svab+svpls2+svc+" = </b></td><td class='sb3'><b>"+pj1+'₹</b></td>'
+  }else{   }
+  
+  
 }
