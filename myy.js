@@ -332,3 +332,10 @@ function pc(v,a,b,c) { // a(36-42), b(44), c(46)
   
   
 }
+
+// sms 
+let sms='Hi Ankit, An update Transport charge aur Other charge ab se save hoga';
+if (!localStorage.sms) {localStorage.setItem('sms',sms);alert(sms);}
+else if((localStorage.sms!=sms)){
+alert(sms);localStorage.setItem('sms',sms);
+}
