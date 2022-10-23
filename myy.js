@@ -36,7 +36,7 @@ function delod () {
    let st = new Localbase('st');
    st.collection(selg).doc(r).get().then(doc => {
     od=doc.it;
-    var an5=doc;an5.tot=0;an5.it={};an5.gst=false;
+    var an5=doc;an5.tot=0;an5.it={};an5.gst=false;an5.tch=0;an5.och=0;
    
       
 (async () => {
@@ -89,7 +89,10 @@ function editod(tp) {
     let ht=doc.cn;
     oldod=doc;
 
-    //console.log(ht)
+   (oldod.tch) ? document.getElementById('tch').value=oldod.tch :'';
+   (oldod.och) ? document.getElementById('och').value=oldod.och :'';
+
+
     document.getElementById('frt').innerHTML="<strong>"+ht+"</strong>";
     if(doc.gst){document.getElementById('gst').checked=true;}
     if (selg=='inst') {
@@ -152,6 +155,8 @@ zsr.tot = Number(tot55);
 zsr.gst = document.getElementById('gst').checked;
 zsr.dt = oldod.dt; 
 zsr.it = od; 
+zsr.tch=Number(document.getElementById('tch').value)
+zsr.och=Number(document.getElementById('och').value)
 
 const gsel=document.getElementById("gsel").value;
 var shod1={};

@@ -322,10 +322,10 @@ let sd2=document.querySelectorAll("#trth .w3-blue")[b].innerText.trim();
    
   }
 }//console.log(sd0);
-let pctt1="<tr><td colspan='3'><div><b class='sa1 sc1'>"+tote+" PCS Total</b><b class='sa1 sc1' style='margin-left: 2px;background: #2e2effd6'>"+Math.ceil(pcwt)+"kg</b><b class='sa2'>"+pctt+'₹ + 5% Tax</b></div></td>'+'</tr>';
-let pctt2="<tr style="+dptch+"><td colspan='2'><b class='sa2'>Transport Charge -</b></td><td>"+"<b class='sb4'>"+tch+'₹'+'</b></td></tr>';
-let pctt3="<tr style="+dpoch+"><td colspan='2'><b class='sa2'>Other Charges -</b></td><td>"+"<b class='sb4'>"+och+'₹'+'</b></td></tr>';
-let pctt4="<tr><td colspan='2'><b style='font-size: 12px; font-weight: 500;'>"+dtt+dtt2+"</b><b class='sa2'>Total Amount -</b></td><td>"+"<b class='sb4 sc1'>"+Math.ceil(((Number(pctt)*0.05)+Number(pctt)+Number(tch)+Number(och))).toLocaleString('en-IN')+'₹'+'</b></td></tr>';
+let pctt1="<tr><td colspan='3' style='padding: 1px 4px 1px 2px!important'><div><b class='sc1'>"+tote+" PCS Total</b><b class='sc1' style='margin-left: 2px;background: #2e2effd6'>"+Math.ceil(pcwt)+"kg</b><b class='sa2'>"+pctt+'₹ + 5% Tax</b></div></td>'+'</tr>';
+let pctt2="<tr style="+dptch+"><td colspan='2'><b class='sa2'>Transport Charge -</b></td><td>"+"<b>"+tch+'₹'+'</b></td></tr>';
+let pctt3="<tr style="+dpoch+"><td colspan='2'><b class='sa2'>Other Charges -</b></td><td>"+"<b>"+och+'₹'+'</b></td></tr>';
+let pctt4="<tr><td colspan='2'><b style='font-size: 12px; font-weight: 500;'>"+dtt+dtt2+"</b><b class='sa2'>Total Amount -</b></td><td>"+"<b class='sc1'>"+Math.ceil(((Number(pctt)*0.05)+Number(pctt)+Number(tch)+Number(och))).toLocaleString('en-IN')+'₹'+'</b></td></tr>';
 document.querySelector('#tot table tbody').innerHTML=sd0+pctt1+pctt2+pctt3+pctt4;
  document.querySelector('#tot thead tr #u13').contentEditable=true;
  document.querySelector('#tot thead tr #u23').innerText='Total-'+tote;
@@ -814,6 +814,8 @@ zsr.dt=`${da0}/${mo0}/${ye0}`;
 //zsr.dt=new Date().toLocaleDateString("en-US", {day:'numeric',month:'short',year: 'numeric'});
 //.split(' ').reverse().join(' ');
 zsr.it = od; 
+zsr.tch=Number(document.getElementById('tch').value)
+zsr.och=Number(document.getElementById('och').value)
  //console.log('json:',zsr)
  //var obj = {a: 123, b: "4 5 6"};
 // var data5 = "text/json;charset=utf-8," + encodeURIComponent('od'+(Number(zxc)+1)+'='+JSON.stringify(zsr));
