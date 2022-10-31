@@ -67,7 +67,7 @@ function delod () {
 })
 
  st.collection(selg).doc(r).update({
-  tot: 0,it:{},gst:false
+  tot: 0,it:{},gst:false //,tch:0,och:0
 })
    .then(response => {
     selod5={};
@@ -339,3 +339,4 @@ if (!localStorage.sms) {localStorage.setItem('sms',sms);alert(sms);}
 else if((localStorage.sms!=sms)){
 alert(sms);localStorage.setItem('sms',sms);
 }
+
