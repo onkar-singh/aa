@@ -1,28 +1,19 @@
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+@charset "UTF-8"; :root {--bs-font-sans-serif: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; --bs-font-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)); --bs-body-font-family: var(--bs-font-sans-serif); --bs-body-font-size: 1rem; --bs-body-font-weight: 400; --bs-body-line-height: 1.5; --bs-body-color: #212529; --bs-body-bg: #fff } 
+body { margin: 0; font-family: var(--bs-body-font-family); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); line-height: var(--bs-body-line-height); color: var(--bs-body-color); text-align: var(--bs-body-text-align); background-color: var(--bs-body-bg); -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent }
+
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {-webkit-appearance: none;margin: 0;}
+
 #html33 #odid {display: none;}
+
 td {padding: 0!important;width: 60px;}
 td input{text-align: center;}
-#alltab{
-    
-    padding: 0.18em 0.5em;margin: 0px 0px;
-    
-}
-#alltab span div {    
-  border-radius: 10px;
-    width: 30px;
-    height: 3px;
-    background-color: white;
-    margin: 6px 0;}
+
+#alltab{padding: 0.18em 0.5em;margin: 0px 0px;}
+#alltab span div {border-radius: 10px;width: 30px;height: 3px;background-color: white;margin: 6px 0;}
 #alltab span:hover *{background-color:#9C27B0}
 
-:fullscreen{
-  background-color: #ffffff;
-}
+:fullscreen{background-color: #ffffff;}
+
 #oder,#full ,.w3-panel>.w3-button {margin: 0px;padding: 0.6em 1em;}
 * {touch-action: manipulation;}
 
@@ -33,11 +24,7 @@ table, th, td {border: 1px solid black;border-collapse: collapse;}
 tbody th {font-weight: 600;}
 tbody td input{font-weight: 600;}
 
-#tb .w3-quarter.w3-tag {
-    width: 100px;
-    margin: 15px 1.4% 0;
-    font-size: 1.4em;
-}
+#tb .w3-quarter.w3-tag {width: 100px;margin: 15px 1.4% 0;font-size: 1.4em;}
 
 @media print {
   body * {
@@ -74,35 +61,22 @@ tbody td input{font-weight: 600;}
     }
 }
 
-table th .nm {
-    border: 0.5px solid;
-    display: inline-block;
-    padding: 0px 6px;
-}
+table th .nm {border: 0.5px solid;display: inline-block;padding: 0px 6px;}
 
 #html33 th {padding: 5px!important;}
 #html33 td input{padding: 5px!important;}
 
 .w3-panel tbody tr {border: 1px solid #000;}
 
-span.w3-button.w3-display-topright {
-    position: fixed;
-    margin: 0 1.2em 0 0;
-}
+span.w3-button.w3-display-topright {position: fixed;margin: 0 1.2em 0 0;}
 
 .w3-modal-content.w3-card-4 {border-radius: 24px;}
-.w3-modal{
- -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
-}
+.w3-modal{-webkit-backdrop-filter: blur(5px);backdrop-filter: blur(5px);}
 #oderli li.w3-display-container {font-weight: 600;}
 
-   #tblom1 {width: 100%;}
+#tblom1 {width: 100%;}
 #tblom1  tbody tr:first-child{color:blue;background: #ffdfdd;}
- #tblom1 td {
-  text-align: center;
-  font-weight: 600;
-}
+#tblom1 td {text-align: center;font-weight: 600;}
 
 #tblom1 {
   -webkit-touch-callout: none; /* iOS Safari */
@@ -116,33 +90,23 @@ span.w3-button.w3-display-topright {
 
 .delt{color: #8fbc8f;}
 #vtag{width: fit-content;margin: 0 0em 0 2em;display: table;}
-#vtag .w3-tag{
-float: left;
-margin-left: 2px;
-padding: 0 3px 0 3px;
-line-height: 1;
-font-weight: 200;
-}
+#vtag .w3-tag{float: left;margin-left: 2px;padding: 0 3px 0 3px;line-height: 1;font-weight: 200;}
 
-.hide{
-  display: none;
-}
+.hide{display: none;}
 
 #tot td{border:none}
 .sa1{text-align: left!important;float: left;}
 
 .sa2{text-align: right!important;float: right;}
 
-
-/* .sb2{position: absolute;right: 16em;} */
 .sb3{width: 124px;}
-/* .sb5{width: 124px;} */
 
 #tot tr td b{font-weight:400}
-.sc1{
-background: #000;
-color: #fff;
-padding: 2px 4px;
-font-weight: 500!important;}
+.sc1{background: #000;color: #fff;padding: 2px 4px;font-weight: 500!important;}
 
-#st92{z-index: 1;min-width: 160px;position: absolute;background: #fff;color: #000;}}
+#st92{z-index: 1;min-width: 160px;position: absolute;background: #fff;color: #000;}
+
+#injk9 > #incn{float: left;width: 60vw;}
+#injk9 label {float: left;width: 5em;}
+
+#ptst b>b:before{content:'\2713';padding: 1px;font-family: none;background: #008000;color: #d2d5d2;border-radius: 50%;}

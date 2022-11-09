@@ -340,3 +340,101 @@ else if((localStorage.sms!=sms)){
 alert(sms);localStorage.setItem('sms',sms);
 }
 
+// on paste mobile no.
+function pastin(v){
+  if((v.value.includes('+91'))||(v.value.includes(' '))){
+  let nm=v.value.replace(/ /g,'');
+  if((nm.length==13)||nm.includes('+91')){
+    v.value=nm.split('+91')[1];
+   }else {
+   v.value=nm.slice(-10);
+  }
+}
+
+}
+
+// pincode check
+// https://api.postalpincode.in/pincode/272153
+function pincode(v) {
+  if(v.value.trim().length==6){
+    fetch('https://api.postalpincode.in/pincode/'+v.value.trim())
+   .then((response) => response.json())
+   .then((data) => {
+    if(data[0].Message!="No records found"){
+    console.log(data[0]);
+    let p=data[0].PostOffice[0];
+    let t=`${p.State}, ${p.Region}, ${p.District}`; //${p.Region}${p.Division}, 
+    document.getElementById('ptplace').innerHTML=t;
+  }else{
+    document.getElementById('ptplace').innerHTML="<b style='color:red'>"+data[0].Message+"</b>";
+  }
+  });
+  }
+  
+}
+
+// GST state code and Verify
+
+function gststc(v) { //let text = "07BBNPG0866M2Z7";g.match(/^([0][1-9]|[1-2][0-9]|[3][0-7])([a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}[1-9a-zA-Z]{1}[zZ]{1}[0-9a-zA-Z]{1})+$/g)
+  let g=v.value.replace(/ /g,'').trim().toUpperCase();
+ // console.log(`hi ${g}`);
+if((g.length==15)&&(checksum(g))){
+
+document.getElementById('ptst').innerHTML="<b style='color:#008001'>"+g.substr(0, 2)+'-'+gststate[Number(g.substr(0, 2))]+" <b></b>"+"</b>";
+// fetch('https://services.gst.gov.in/services/api/search/goodservice?gstin='+g)
+// .then((r) => r.json())
+// .then((data) => {
+// if(data['bzgddtls']){document.getElementById('ptst').innerHTML="Ok"}
+// if(data['errorCode']){document.getElementById('ptst').innerHTML="<b style='color:red'>Error!</b>";}
+// })
+
+}else if((g.length<15)){
+  document.getElementById('ptst').innerHTML="<b style='color:red'>Error! less than 15 character</b>";
+}else if((g.length>15)){
+  document.getElementById('ptst').innerHTML="<b style='color:red'>Error! more than 15 character</b>";
+}else{
+  document.getElementById('ptst').innerHTML="<b style='color:red'>Ohhh! Something Wrong</b>";
+}
+
+}
+
+function checksum(g){
+  let regTest = /\d{2}[A-Z]{5}\d{4}[A-Z]{1}[A-Z\d]{1}[Z]{1}[A-Z\d]{1}/.test(g)
+   if(regTest){
+      let a=65,b=55,c=36;
+      return Array['from'](g).reduce((i,j,k,g)=>{ 
+         p=(p=(j.charCodeAt(0)<a?parseInt(j):j.charCodeAt(0)-b)*(k%2+1))>c?1+(p-c):p;
+         return k<14?i+p:j==((c=(c-(i%c)))<10?c:String.fromCharCode(c+b));
+      },0); 
+  }
+  return regTest
+}
+
+//End GST state code and Verify
+
+// address
+function address(v) {
+//   let p1=document.getElementById('ptp');
+//   p1.value=v.value.match(/(\d{6})/g);
+//  // p1.value=v.value.match(/\D[1-9][0-9]{5}\s|\s[1-9][0-9]{5}\s|\S[1-9][0-9]{5}$|[1-9][0-9]{5}$/g)[0].match(/\d+/g);
+
+//   p1.dispatchEvent(new Event('input'));
+}
+
+// add party button
+function addpt() {
+  let p9=document.querySelector('#injk9 label');
+  (p9.innerHTML==="+ Add")?p9.innerHTML='<b style=" font-size: 18px; position: absolute; margin: 0 0 0 -7px; ">×</b>':p9.innerHTML='+ Add';
+  document.querySelector('#injk9 label').classList.toggle('w3-teal');
+  document.getElementById('ptd').classList.toggle('w3-show');
+  document.getElementById('instaa').classList.toggle('w3-hide');
+  document.getElementById('gall').classList.toggle('w3-hide');
+  document.getElementById('gstaa').classList.toggle('w3-hide');
+  document.getElementById('cnm1').classList.toggle('w3-show');
+  document.getElementById('cnm').classList.toggle('w3-hide');
+}
+
+// save and next
+document.getElementById('cnm1').addEventListener('click', (v) => {
+  console.log('hi')
+})
