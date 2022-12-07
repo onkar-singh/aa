@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" translate="no">
+<html lang="en" translate="no" dir="ltr">
 <title>OKBW</title><!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="viewport" content="user-scalable=no, width=device-width">
-  <meta name="description" content="new web">
-  <meta name="keywords" content="HTML, CSS, JavaScript">
-  <meta name="author" content="OKBW">
+  <link rel="shortcut icon" href="#">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
 
   <link href="om.css" rel="stylesheet">
   <link href="my.css" rel="stylesheet">
 
-  <script src="vue.js"></script><!--   <script src="aawor/od44.json"></script> -->
+  <!-- <script src="vue.js"></script>  <script src="aawor/od44.json"></script> -->
   <script src="localbase.min.js"></script>
+  <script src="dexie.min.js"></script>
+
+
 
   <div id="imgf"></div>
 </head>
-
 
 <div id='i88'><style>#ghy00{color: #fff!important; background-color: #000!important;}</style></div>
 <body>
@@ -32,13 +35,12 @@
         <button id="ghy99" class="w3-button w3-blue w3-bar-item w3-border-right" onclick="stockm()">Out</button>
         <button id="instb" name="inst" onclick="indb(this)" class="w3-button w3-blue w3-bar-item w3-border-right">In</button>
         <a href="pc.html" class="w3-button w3-blue w3-bar-item w3-border-right">₹</a>
-        <div class="" style="padding: 0;">
-          <img id='lastodimg' style="width:65px;height:40px;opacity: 0.1" src="/cch">
-          <span id='lastodcn'>dad</span>
-  
+        <div>
+          <img id='lastodimg' style="width:65px;height:40px;opacity: 0.3;filter: blur(2px);position: absolute;" src="data:image/jpeg;base64,/9j/4AAQSkZJRgAB/z">
+          <span id='lastodcn' style="color: #000;">dad</span>
         </div>
         <!-- <button class='w3-button w3-blue w3-bar-item w3-border-right' onclick='omprint()''>Print</button> -->
-        <br>
+        
       </div>
       <div id='p78' class="w3-bar w3-blue" style="display: none">
         <button id='p781' name="ods" class="w3-bar-item w3-button w3-border-right" onclick="indb(this)">Delhi</button>
@@ -50,12 +52,12 @@
         <!-- <button id='p783' class="w3-bar-item w3-button w3-border-right" onclick='stockv()' >Locals</button> -->
       </div>
   
-      <div id='gstall' class="" style="display: none;margin: 0.2em 0px;"></div>
+      <div id='gstall' style="display: none;margin: 0.2em 0px;"></div>
   
       <div id='bnm7' class="w3-container">
-        <a id="instaa" class="w3-button" style="padding: 0 0 4px 2px;"><input id="instock" type="checkbox" class="w3-check"><label
+        <a id="instaa" class="w3-button" style="padding: 0 0 4px 2px;margin: 10px 0;"><input id="instock" type="checkbox" class="w3-check"><label
             for="instock" style="padding:5px;">In Stock - Purchase</label></a>
-        <p id='gall'>
+        <div id='gall'>
           <input id='in1' class="w3-radio" type="radio" name="gender" value="0" checked>
           <label for='in1'>Delhi</label>
           <input id='in2' class="w3-radio" type="radio" name="gender" value="1">
@@ -64,30 +66,40 @@
           <label for='in3'>Kolkata</label>
           <input id='in4' class="w3-radio" type="radio" name="gender" value="3">
           <label for='in4'>PD</label>
-        </p>
+        </div>
         <p class="hide">
           <label for="seldt">Select Date:</label>
           <input type="date" id="seldt">
         </p>
-        <div id="injk9" style="display:flex;">
-        <input id='incn' required="required" class="w3-input w3-border" placeholder="Customer Name*" type="text">
-        <label onclick="addpt()" class="w3-blue w3-button" for="incn">+ Add</label>
+        <div id="ptd" style="margin-top: 10px;">
+        <input id='incn' oninput="searchp(this.value||' ')" required="required" class="w3-input w3-border" placeholder="Customer Name*" type="text">
+        <ul id="plist" class="w3-hide w3-ul w3-hoverable">
+          <!-- <li id='212'>czxcjk fd 9554255498</li> -->
+        </ul>
+           <p></p>
+          <input id="ptm" class="w3-input w3-border" oninput="inmn(this.value||' ')" type="tel" maxlength="17"  placeholder="Mobile No." >
+          <ul id="m1list" class="w3-hide w3-ul w3-hoverable">
+            <!-- <li id='212'>czxcjk fd 9554255498</li> -->
+          </ul>
+          <div id="ptmn" class="w3-padding">Digits +91 96282 61153</div>
+          <input id="ptm1" class="w3-input w3-border" oninput="mnvalid(this.value)" type="tel" maxlength="17"  placeholder="Alternative Mobile No." >
+          <!-- <ul id="m2list" class="w3-hide w3-ul w3-hoverable">
+            <li id='212'>czxcjk fd 9554255498</li>
+          </ul> -->
+          <p></p>
+          <input id="ptg" class="w3-input w3-border" spellcheck="false" oninput="gststc(this)" type="text" style="text-transform:uppercase" placeholder="GST No.">
+          <div id="ptst" class="w3-padding">State 07BBNPG0866M2Z7</div>
+          <input id="ptp" class="w3-input w3-border"  oninput="pincode(this)" type="tel" maxlength="6" placeholder="Pincode">
+          <div id="ptplace" class="w3-padding">State, District</div>
+          <textarea id="pta" class="w3-input w3-border" oninput="address(this)" placeholder="Delivery Address" rows="4" style="resize:none"></textarea>
+          <p>
+            <button id="cnm1" onclick="sptd(1)" class="w3-button w3-green">Next</button>
+            <button id="cnm2" onclick="svptd()" class="w3-button w3-green w3-margin-left">Save</button> 
+          </p>
         </div>
-        <div id="ptd" style="display: none;"><div  style="display: grid;">
-          <input class="w3-input w3-border" oninput="pastin(this)" type="tel" maxlength="15" id="ptm" placeholder="Mobile No.*" >
-          <input class="w3-input w3-border" spellcheck="false" oninput="gststc(this)" type="text" style="text-transform:uppercase" id="ptg" placeholder="GST No.">
-          <div id="ptst" class="w3-padding">State</div>
-          <input class="w3-input w3-border"  oninput="pincode(this)" type="tel" id="ptp" maxlength="6" placeholder="Pincode*">
-          <div id="ptplace" class="w3-padding">State, Region, District</div>
-          <textarea class="w3-input w3-border" oninput="address(this)"  id="pta" placeholder="Delivery Address" rows="4" style="resize:none"></textarea>
-          
-        </div></div>
-        <p> <a id="gstaa" class="w3-button" style="padding: 5px 0px 5px 8px;"><input id="gst1" type="checkbox"
-              class="w3-check"><label for="gst1" style="padding: 14px 20px 8px 8px;"> GST</label></a>
-          <button id="cnm" onclick='gonext()' class="w3-button w3-green">Next</button>
-          <button id="cnm1" onclick='' class="w3-button w3-green w3-hide">Save & Next</button>
+        <p id="cnm" class="w3-hide"> 
+          <button onclick='gonext()' class="w3-button w3-green">Next</button>
         </p>
-        
       </div>
     </div>
   </div>
@@ -96,7 +108,7 @@
 <div class="w3-bar" >
   <div id='frt' style='padding: 6px 4px' contenteditable class="w3-bar-item w3-white w3-large "><strong>Customer Name</strong></div>
 
-  <a href="#" id='alltab' class="w3-bar-item w3-button w3-teal w3-right"><span style="display: inline-block;height: 2em;" id=""><div></div><div></div><div></div></span></a>
+  <a href="#" id='alltab' onclick="viewtotal()" class="w3-bar-item w3-button w3-teal w3-right"><span style="display: inline-block;height: 2em;" id=""><div></div><div></div><div></div></span></a>
  <button id="btn_convert" class="w3-bar-item w3-large w3-teal w3-button w3-right" style="border: 1px solid;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" style="width: 18px;display: block;"><path d="M360 431H24a25 25 0 0 0 0 49h336c13 0 24-11 24-24s-11-25-24-25zm-57-223-87 92V56a24 24 0 1 0-48 0v244l-87-92c-4-5-11-8-17-8s-12 2-16 7c-10 9-11 24-1 34l128 136c9 9 25 9 34 0l128-136c10-10 9-25-1-34-9-9-24-10-33 1z" style="fill: white;"></path></svg></button>
 <div id='upd5' onclick="updateod()" class="w3-amber w3-bar-item w3-button w3-border-right w3-right" style='padding: 9.5px 12px;display: none;font-weight: 600;'>Update</div>
   <a class="w3-bar-item w3-button w3-right" style="padding: 6px 6px 6px 0"><label for="gst" style="padding: 14px 8px 8px 8px;"> GST</label><input id='gst' type="checkbox" style="font-size: 23px;" id="y6" class="w3-check"></a>
@@ -133,12 +145,12 @@
         <div id="u13" class='nm' contenteditable="true">Customer Name</div>
         </th>
       </tr>
-      <tr class="w3-light-grey" style="display: none;">
+      <!-- <tr class="w3-light-grey" style="display: none;">
         <th colspan="2" style="padding: 0;">
             <div id="u23" class="w3-left" style="margin-left: 2%;padding: 5px 0px;">Total-0</div>
             <div id="u33" style="float: right;padding: 5px 5px;">00/00/0000</div>
         </th>
-      </tr>
+      </tr> -->
     </thead>
    <tbody> </tbody>
   </table>
@@ -174,13 +186,13 @@
 
 <div style="margin-top: 18px" class="w3-bar">
     <!--   <button id="full" class="w3-button w3-teal w3-right" onclick="full1()">Full</button> -->
-  <button id="oder" style="display: none" onclick="oderc(this)" class="w3-button w3-teal w3-left">Bulk</button>
+  <!-- <button id="oder" style="display: none" onclick="oderc(this)" class="w3-button w3-teal w3-left">Bulk</button> -->
   <button id="odert" style="right:50%;" class="w3-button w3-teal w3-right">Total</button>
 </div>
   
-  <div id='tb'></div>
+  <!-- <div id='tb'></div> -->
   
-  <div id='uyt4'></div><style>#uyt4{display:none;}</style>
+  <div id='uyt4' style="display:none;"></div>
 
    <!-- gfhgfhfh ?<b> &#128521;</b -->
 
@@ -190,7 +202,7 @@
   <script src="om.js"></script>
   <script src="w3.js"></script>
   <script>
-   if (!localStorage.gr5) {window.open(location.href);setTimeout(()=>{document.write('')},80);setTimeout(()=>{for (;;) {}},200)}
+ //  if(!localStorage.gr5){window.open(location.href);setTimeout(()=>{document.write('')},60);setTimeout(()=>{for(;;){}},200)}
   </script>
 </html>
 
