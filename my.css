@@ -142,3 +142,28 @@ ul#plist li,ul#m1list li {padding: 5px 8px;color: #fff;background:#483d8b}
   border-radius: 7px;
   
 }
+
+#oderli li b {
+  font-weight: inherit;
+}
+
+.ptds{
+  margin-top: 0px!important;
+  display: block;
+  background: #fff9;
+  padding: 20px 2px;
+  position: absolute;
+}
+
+.crop {
+  width: 100px;
+  height: 5vh;
+  overflow: hidden;
+}
+#lastodimg{
+  width: 70px;
+  height: 500vh;
+  opacity: 0.4;
+  margin: -75px 0 0 -60px;
+  filter: contrast(0.5);
+}

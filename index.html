@@ -35,9 +35,9 @@
         <button id="ghy99" class="w3-button w3-blue w3-bar-item w3-border-right" onclick="stockm()">Out</button>
         <button id="instb" name="inst" onclick="indb(this)" class="w3-button w3-blue w3-bar-item w3-border-right">In</button>
         <a href="pc.html" class="w3-button w3-blue w3-bar-item w3-border-right">₹</a>
-        <div>
-          <img id='lastodimg' style="width:65px;height:40px;opacity: 0.3;filter: blur(2px);position: absolute;" src="data:image/jpeg;base64,/9j/4AAQSkZJRgAB/z">
-          <span id='lastodcn' style="color: #000;">dad</span>
+        <div class="crop">
+          <img id='lastodimg' src="data:image/jpeg;base64,/9j/4AAQSkZJRgAB/z">
+          <span id='lastodcn' style="color: #000;float: left;">dad</span>
         </div>
         <!-- <button class='w3-button w3-blue w3-bar-item w3-border-right' onclick='omprint()''>Print</button> -->
         
@@ -94,7 +94,8 @@
           <textarea id="pta" class="w3-input w3-border" oninput="address(this)" placeholder="Delivery Address" rows="4" style="resize:none"></textarea>
           <p>
             <button id="cnm1" onclick="sptd(1)" class="w3-button w3-green">Next</button>
-            <button id="cnm2" onclick="svptd()" class="w3-button w3-green w3-margin-left">Save</button> 
+            <span id="cnm2" onclick="svptd()" class="w3-button w3-green w3-margin-left">Save</span> 
+            <span id="cnm3" onclick="gr()" class="w3-button w3-green w3-margin-left">Close</span> 
           </p>
         </div>
         <p id="cnm" class="w3-hide"> 

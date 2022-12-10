@@ -1,5 +1,5 @@
 // fn(localStorage.gr52) {for (;;) {}while (1){}}
-
+var doc=document,zzz=(s,o=doc)=>o.querySelectorAll(s),zz=(s,o=doc)=>o.querySelector(s),zc=console.log.bind(doc);
 // get all ods list
 async function getods(gd) {
   try {
@@ -16,7 +16,7 @@ async function getods(gd) {
           if (gd == 'inst') {lid='data-gd='+i.cn;exio='Export CSV';funex="onclick='expt(this)'";inp='';} 
           vtag="<span id='vtag' "+funex+"><span name="+'od'+i.id+">"+exio+"</span></span>";
 
-          document.getElementById('oderli').innerHTML+="<li "+lid+" class='w3-display-container "+ifz+"'>"+inp+' '+i.id+'. '+i.cn+vtag+"<span onclick='opodli(this)'  "+"for='"+'od'+i.id+"'>"+i.tot+' '+ gstr+' '+i.dt.split('/20')[0]+"</span></li>";
+          document.getElementById('oderli').innerHTML+="<li "+lid+" class='w3-display-container "+ifz+"'>"+inp+' '+"<b onclick='goadd("+i.id+")'>"+i.id+'. '+i.cn+'</b>'+vtag+"<span onclick='opodli(this)'  "+"for='"+'od'+i.id+"'>"+i.tot+' '+ gstr+' '+i.dt.split('/20')[0]+"</span></li>";
       }
     // let st = new Localbase('st');
     // let allods1 = await st.collection(gd).get();
@@ -352,7 +352,7 @@ document.getElementById('id01').style.display='block';
  document.getElementById('tch').value='';
  document.getElementById('och').value='';
  od={}; zsr={};//ods={};
- ptd={};
+ ptd={};selg='';
 }
 
 // clickCounter for customer id
@@ -635,17 +635,20 @@ if (selg=='inst') {
   document.getElementById('p78').style.display='none';
 }else{
 document.getElementById('gstall').innerHTML="<div class='w3-blue-gray' style='display:flex'><div class='w3-bar-item w3-button w3-border-right' onclick='delod()'>Del</div><div id='cout6' class='w3-bar-item w3-button w3-border-right'>Total</div><div onclick='resetd()' class='w3-bar-item w3-button w3-border-right'>Reset</div><button class='w3-button w3-bar-item w3-border-right' onclick='omprint()'>Print</button>"+"<div id='st91' class='w3-dropdown-hover'> <button class='w3-button w3-border-right'>Status</button><div id='st92' class='w3-hide w3-bar-block w3-border'> <a href='#' onclick='unpin()' class='w3-bar-item w3-button'>None</a> <a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>Payment Pending</a> <a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>Under Production</a> <a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>Printing</a><a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>Part Quantity</a> <a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>Pending</a> <a href='#' onclick='chnot(0,this)' class='w3-bar-item w3-button'>In Transit</a> <input onchange='chnot(1,this)' id='inp5' name='od84' class='w3-border w3-bar-item' type='text' style='padding:5px;display:none' placeholder='Write other...'></div></div>"+"<button onclick='printadd()' class='w3-button'>DTDC</button>"+"</div>"+"<div id='tre6'><ul id='oderli' class='w3-ul w3-hoverable'></ul></div>";
+// status toggle
 document.getElementById('st91').addEventListener('click', (v) => {
-  document.getElementById('st92').classList.toggle('w3-show');
+  document.getElementById('st92').classList.toggle('w3-show'); 
 })
+// count total
+document.getElementById('cout6').addEventListener("click", function() {
+  let fromod1=Number(localStorage.fromod);
+  if(1+Number(zxc)-Number(localStorage.fromod)){couttot(fromod1,selg)}
+  else{alert("No data to count total ")}
+ })
+
 getods(d.name);
 selod5=JSON.parse(pinloc);
 setTimeout(function(){pint(0,pinloc);selod5={};console.log('onkar')},350);
-document.getElementById('cout6').addEventListener("click", function() {
- let fromod1=Number(localStorage.fromod);
- if(1+Number(zxc)-Number(localStorage.fromod)){couttot(fromod1,selg)}
- else{alert("No data to count total ")}
-})
 }}
 
 function chnot(b,v) {
@@ -905,14 +908,19 @@ if(!localStorage.pinpd){localStorage.setItem('inst','{}')}
 
 function pint(v,p) {
   selgo(selg);const aul=document.getElementById('oderli');
+  let od='a'+selg.slice(-1);
   for (const t in selod5) {
-  let px=document.getElementById(t);
+  let px=document.getElementById(t);let pxn=px.parentNode;
   //console.log(xm,px)
+  db.pt.where(selg).equals(od+t.match(/\d+/g)[0]).each((v)=>{
+    !!v.add||(pxn.style.color='blue')
+   // console.log(t,'fgf')
+  })
   if(t!=selod5[t]){aul.querySelector('#vtag [name='+t+']').innerText=selod5[t];}
   //document.querySelector().innerText=selod5[t];
   let lipnode=aul.querySelectorAll('#oderli li'); // current all li node
   // let xm=Array.from(px.parentNode.parentNode.children).indexOf(px.parentNode);
-   let xm=Array.from(lipnode).indexOf(px.parentNode);
+   let xm=Array.from(lipnode).indexOf(pxn);
   //moveItem(xm,0);
   const items = [...lipnode];
   if (0 > items.length - 1 || 0 < 0) return;
@@ -921,7 +929,7 @@ function pint(v,p) {
   aul.removeChild(item);
   aul.insertBefore(item, aul.children[0]);
 
-  px.parentNode.style.background='#ffeb3b';
+  pxn.style.background='#ffeb3b';
   px.checked=false;
  // console.log(xm)
   }

@@ -569,7 +569,7 @@ function svptd() {
       await db.pt.update(oldid, ptd)
      })();
   }
-  newocb();
+  selg||newocb();selg&&gr();
   ptods=[];ptid=0;
 }
 
@@ -598,16 +598,16 @@ function genid(v,i,b='a'){
 // print address
 function printadd() {
   if(Object.keys(selod5).length){
-  let htmladd='<style>body{margin: 0; padding: 0;color: #000; background: #fff;}@media print {#pbr{page-break-after: always;display: block;}}.p2 span {font-weight: 400;}.p1{font-size: 35px;font-weight: initial;}.p2{font-size: 25px;}.p2 div{font-weight:bold}</style>';
+  let htmladd='<style>body{margin: 0; padding: 0;color: #000; background: #fff;}@media print {@page{size: A4;margin: 0;}h1,b,div,br,span {page-break-after: avoid;page-break-inside:avoid;}.slip {border-width:0px 1px 1px 1px;border-style: dashed;}body{ column-count: 2; -webkit-column-count: 2; -moz-column-count: 2;}#pbr{page-break-after: always;display: block;}}.p2 span {font-weight: 400;}.p1{font-size: 30px;font-weight: initial;}.p2{font-size: 20px;}.p2 div{font-weight:bold}h1.p1 {padding-top: 0;margin-top: 0;}</style>';
   Object.keys(selod5).forEach(function (v,i) {
       (async()=> { // get party address
       let od='a'+selg.slice(-1)+v.match(/\d+/g)[0];//'as63'
       let cadd,radd;
-      await db.pt.where('ods').equals(od).toArray((v)=>{
-      cadd='<h1 class="p1"><b>To </b>- '+v[0].cn+', '+v[0].mn1+', '+v[0].mn1+'<br>'+v[0].add+', '+v[0].pin+'</span></h1>';
-      radd='<h1><span class="p2"><div><b>Return address if not delivered</b><br></div><span>Own Knitted, 9336695049</span><br><span>F-120, Shutter wali gali, near Gujjar chowk, Khanpur Delhi, 110062</span></span></h1>';
+      await db.pt.where(selg).equals(od).toArray((v)=>{
+      cadd='<div class="slip"><h1 class="p1"><b>To </b>- '+v[0].cn+', '+v[0].mn1+', '+v[0].mn2+'<br>'+v[0].add+', '+v[0].pin+'</span></h1>';
+      radd='<h1><span class="p2"><div><b>Return address if not delivered</b><br></div><span>Own Knitted, 9336695049</span><br><span>F-120, Shutter wali gali, near Gujjar chowk, Khanpur Delhi, 110062</span></span></h1></div>';
       });
-let om='<hr style="border-top: 2px dashed #000;padding: 0;margin: 0;">';
+let om='';
       if (!((i+1)%3)) {
           om='<span id="pbr"></span>';
       }
@@ -619,9 +619,9 @@ let om='<hr style="border-top: 2px dashed #000;padding: 0;margin: 0;">';
   setTimeout(() => {
     let myWindow = window.open();
     myWindow.document.write(htmladd);myWindow.document.body.setAttribute('onclick','print()');
-    myWindow.document.body.addEventListener("click", () => {setTimeout(() => {
-      myWindow.close();
-    }, 500); });
+    // myWindow.document.body.addEventListener("click", () => {setTimeout(() => {
+    //   myWindow.close();
+    // }, 500); });
   }, 10);
   }else{
     alert('Select order first');
@@ -665,4 +665,39 @@ function download(imgurl,imgnm){
     doc.write("<a id='link55' target='_blank' href='"+link+"' download='"+name+"'>Download</a>");
     doc.getElementById('link55').click();
     setTimeout(()=> iframe.remove(), 3000);
+    }
+
+    // close button add detail 
+    function gr() {
+      document.getElementById('bnm7').classList.toggle("w3-show");  //display block
+      document.getElementById('ptd').classList.toggle("w3-modal"); 
+      document.getElementById('ptd').classList.toggle("ptds"); 
+      document.getElementById('instaa').classList.toggle("hide");
+      document.getElementById('gall').classList.toggle("hide");
+     // document.getElementById('tre6').classList.toggle("hide");//display none
+     // document.getElementById('cnm3').classList.toggle("hide");
+    }
+    //
+    function goadd(b) {
+      let od='a'+selg.slice(-1)+b //'as63'
+      ptid=0,ptods={};
+      console.log(b,ptods,ptid,'a');
+      db.pt.where(selg).equals(od).each((v)=>{ 
+        gr();document.getElementById('id01').scrollTop=0;
+        document.getElementById('incn').value=v.cn;
+        document.getElementById('ptm').value=v.mn1;
+        document.getElementById('ptm1').value=v.mn2??'';
+        
+          let k1=document.getElementById('ptg');
+          k1.value=v.gst??'';
+          (k1.value)?k1.dispatchEvent(new Event('input')):document.getElementById('ptst').innerText='State 07BBNPG0866M2Z7';
+         
+          let k2=document.getElementById('ptp');
+          k2.value=v.pin??'';
+          (k2.value)?k2.dispatchEvent(new Event('input')):document.getElementById('ptplace').innerText='State, District';
+  
+        document.getElementById('pta').value=v.add??'';
+        ptods=v.ods;ptid=v.id;
+        console.log(v,'b');
+      })
     }
