@@ -44,7 +44,7 @@ async function getods(gd) {
   }
 }
  let db = new Dexie("party");db.version(2).stores({pt: "id,cn,mn1,mn2,*ods"});
-var selod5={};var zsr={};
+var selod5={};var zsr={};let selg;
 //var om=document.getElementById("tb").innerHTML;
 var od={};var zxc=0; if(localStorage.clickcount) {zxc=localStorage.clickcount;}
 //if (!localStorage.gstc) {localStorage.setItem("gstc", "{}");}
@@ -539,6 +539,7 @@ function newocb() {
  document.getElementById('gstall').innerHTML='';
  newc();
  document.getElementById('in1').checked=true;
+ ptods=[];ptid=0;
  // new date today
  todaydate();
 }

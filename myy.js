@@ -527,12 +527,12 @@ function getptd(e) {
     });
   })();
 //  e.path[0].parentElement.classList.toggle('w3-show'); 
-  e.path[0].parentElement.innerHTML='';
+  e.target.parentElement.innerHTML='';
 }
 
 // make party details obj
 // let ptd={id:'a0k1l6h12',cn:'',mn1:'',mn2:'',gst:'',pin:'',add:'',ods:['as102','as33','ak508']};
-var ptd={};let prc=JSON.parse(localStorage.pc);
+var ptd={};let prc=JSON.parse(localStorage.pc);let cid='';
 function sptd(v){
   prc=JSON.parse(localStorage.pc);
   ptd={id:ptid,cn:'',mn1:'',gst:'',add:'',ods:ptods};
@@ -548,17 +548,21 @@ function sptd(v){
   ptd.gst=ptg;
   ptd.pin=pinc;
   ptd.add=pta;
+  if(selg&&ptd.add){document.getElementById('od'+cid).parentNode.style.color='';}
+  else{document.getElementById('od'+cid).parentNode.style.color='#00f';}
  // ptd.ods.push(Number(localStorage.clickcount)+Number(ptcounter()));
   let vn = (ptg) ? (true && document.getElementById('q000')): true;
   if(cn && vn){
     console.log(ptd);
     if (v==1) {gonext();} // save and next 
-  }else{ alert('Something wroug! Check all details.\n⚠️ Timepass mat ker')}
+    return true
+  }else{ alert('Something wroug! Check all details.\n⚠️ Timepass mat ker');return false}
 }
+
 
 // save party details and gen. id
 function svptd() {
-  sptd();let oldid=ptd.id;
+  let oldid=ptd.id;
   ptd.id=ptid||genid(ptcounter(),1);console.log('save party details',ptd);
   if (!oldid) {
     (async()=> { // save party details
@@ -675,12 +679,13 @@ function download(imgurl,imgnm){
       document.getElementById('instaa').classList.toggle("hide");
       document.getElementById('gall').classList.toggle("hide");
      // document.getElementById('tre6').classList.toggle("hide");//display none
-     // document.getElementById('cnm3').classList.toggle("hide");
+      document.getElementById('cnm3').classList.toggle("hide");
+      document.getElementById('cnm1').classList.toggle("hide");
     }
     //
     function goadd(b) {
       let od='a'+selg.slice(-1)+b //'as63'
-      ptid=0,ptods={};
+      ptid=0,ptods={};cid=b;
       console.log(b,ptods,ptid,'a');
       db.pt.where(selg).equals(od).each((v)=>{ 
         gr();document.getElementById('id01').scrollTop=0;
