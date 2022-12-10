@@ -548,8 +548,9 @@ function sptd(v){
   ptd.gst=ptg;
   ptd.pin=pinc;
   ptd.add=pta;
-  if(selg&&ptd.add){document.getElementById('od'+cid).parentNode.style.color='';}
-  else{document.getElementById('od'+cid).parentNode.style.color='#00f';}
+ // if(selg&&cid[1]&&(v!=1)){
+    if(ptd.add&&cid&&(v!=1)){document.getElementById('od'+cid).parentNode.style.color='';}
+  else if(cid&&(v!=1)){document.getElementById('od'+cid).parentNode.style.color='#00f';}
  // ptd.ods.push(Number(localStorage.clickcount)+Number(ptcounter()));
   let vn = (ptg) ? (true && document.getElementById('q000')): true;
   if(cn && vn){
@@ -716,7 +717,7 @@ function download(imgurl,imgnm){
     //
     function goadd(b) {
       let od='a'+selg.slice(-1)+b //'as63'
-      ptid=0,ptods={};cid=b;
+      ptid=0,ptods={};
       console.log(b,ptods,ptid,'a');
       db.pt.where(selg).equals(od).each((v)=>{ 
         gr();document.getElementById('id01').scrollTop=0;
@@ -733,7 +734,7 @@ function download(imgurl,imgnm){
           (k2.value)?k2.dispatchEvent(new Event('input')):document.getElementById('ptplace').innerText='State, District';
   
         document.getElementById('pta').value=v.add??'';
-        ptods=v.ods;ptid=v.id;
+        ptods=v.ods;ptid=v.id;cid=b;
         console.log(v,'b');
       })
     }
