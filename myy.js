@@ -600,18 +600,50 @@ function genid(v,i,b='a'){
 }
 
 // print address
+// function printadd() {
+//   if(Object.keys(selod5).length){
+//   let htmladd='<style>body{margin: 0; padding: 0;color: #000; background: #fff;}@media print {@page{size: A4;margin: 0;}h1,b,div,br,span {page-break-after: avoid;page-break-inside:avoid;}.slip {border-width:0px 1px 1px 1px;border-style: dashed;}body{ column-count: 2; -webkit-column-count: 2; -moz-column-count: 2;}#pbr{page-break-after: always;display: block;}}.p2 span {font-weight: 400;}.p1{font-size: 30px;font-weight: initial;}.p2{font-size: 20px;}.p2 div{font-weight:bold}h1.p1 {padding-top: 0;margin-top: 0;}</style>';
+//   Object.keys(selod5).forEach(function (v,i) {
+//       (async()=> { // get party address
+//       let od='a'+selg.slice(-1)+v.match(/\d+/g)[0];//'as63'
+//       let cadd,radd;
+//       await db.pt.where(selg).equals(od).toArray((v)=>{
+//       cadd='<div class="slip"><h1 class="p1"><b>To </b>- '+v[0].cn+', '+v[0].mn1+', '+v[0].mn2+'<br>'+v[0].add+', '+v[0].pin+'</span></h1>';
+//       radd='<h1><span class="p2"><div><b>Return address if not delivered</b><br></div><span>Own Knitted, 9336695049</span><br><span>F-120, Shutter wali gali, near Gujjar chowk, Khanpur Delhi, 110062</span></span></h1></div>';
+//       });
+// let om='';
+//       if (!((i+1)%3)) {
+//           om='<span id="pbr"></span>';
+//       }
+//       htmladd+=cadd+radd+om;
+//   })();
+//   for (const t in selod5) {document.getElementById(t).checked=false;}
+//   })
+//   selod5={};
+//   setTimeout(() => {
+//     let myWindow = window.open();
+//     myWindow.document.write(htmladd);myWindow.document.body.setAttribute('onclick','print()');
+//     // myWindow.document.body.addEventListener("click", () => {setTimeout(() => {
+//     //   myWindow.close();
+//     // }, 500); });
+//   }, 10);
+//   }else{
+//     alert('Select order first');
+//   }
+// }
+// print address
 function printadd() {
   if(Object.keys(selod5).length){
-  let htmladd='<style>body{margin: 0; padding: 0;color: #000; background: #fff;}@media print {@page{size: A4;margin: 0;}h1,b,div,br,span {page-break-after: avoid;page-break-inside:avoid;}.slip {border-width:0px 1px 1px 1px;border-style: dashed;}body{ column-count: 2; -webkit-column-count: 2; -moz-column-count: 2;}#pbr{page-break-after: always;display: block;}}.p2 span {font-weight: 400;}.p1{font-size: 30px;font-weight: initial;}.p2{font-size: 20px;}.p2 div{font-weight:bold}h1.p1 {padding-top: 0;margin-top: 0;}</style>';
+  let htmladd='<style>a{text-decoration: none;color: black;}body{margin: 0; padding: 0;color: #000; background: #fff;}@media print {#pbr{page-break-after: always;display: block;}}.p2 span {font-weight: 400;}.p1{font-size: 32px!important;font-weight: initial;}.p2{font-size: 22px!important;}.p2 div{font-weight:bold}</style>';
   Object.keys(selod5).forEach(function (v,i) {
       (async()=> { // get party address
       let od='a'+selg.slice(-1)+v.match(/\d+/g)[0];//'as63'
       let cadd,radd;
-      await db.pt.where(selg).equals(od).toArray((v)=>{
-      cadd='<div class="slip"><h1 class="p1"><b>To </b>- '+v[0].cn+', '+v[0].mn1+', '+v[0].mn2+'<br>'+v[0].add+', '+v[0].pin+'</span></h1>';
-      radd='<h1><span class="p2"><div><b>Return address if not delivered</b><br></div><span>Own Knitted, 9336695049</span><br><span>F-120, Shutter wali gali, near Gujjar chowk, Khanpur Delhi, 110062</span></span></h1></div>';
+      await db.pt.where('ods').equals(od).toArray((v)=>{
+      cadd='<h1 class="p1"><b>To </b>- '+v[0].cn+', '+v[0].mn1+', '+v[0].mn2+'<br>'+v[0].add+', '+v[0].pin+'</span></h1>';
+      radd='<h1><span class="p2"><div><b>Return address if not delivered</b><br></div><span>Own Knitted, 9336695049</span><br><span>F-120, Shutter wali gali, near Gujjar chowk, Khanpur Delhi, 110062</span></span></h1>';
       });
-let om='';
+let om='<hr style="border-top: 2px dashed #000;padding: 0;margin: 0;">';
       if (!((i+1)%3)) {
           om='<span id="pbr"></span>';
       }
@@ -621,17 +653,16 @@ let om='';
   })
   selod5={};
   setTimeout(() => {
-    let myWindow = window.open();
-    myWindow.document.write(htmladd);myWindow.document.body.setAttribute('onclick','print()');
-    // myWindow.document.body.addEventListener("click", () => {setTimeout(() => {
-    //   myWindow.close();
-    // }, 500); });
-  }, 10);
+    let myWindow = window.open("", "_blank");let body1=myWindow.document.body;
+    body1.setAttribute('onclick','print()');
+    body1.innerHTML+=htmladd;//body.setAttribute('onclick','print()');
+    myWindow.print();
+    myWindow.close();
+  }, 100);
   }else{
     alert('Select order first');
   }
-}
-  
+} 
 // function download(link,name) {
 // let iframe = document.createElement("iframe");
 // iframe.style.display = 'none';
