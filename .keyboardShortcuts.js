@@ -33,6 +33,10 @@ tot() - if old odprice available in order obj then oldprice(save in localstorage
 send unpin and update order data combine
 send pin and new order data combine
 
+share api Navigator.share() share text,image
+
+copy to clipboard
+
 
 
 -----------------------------------------------------------------

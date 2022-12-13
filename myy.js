@@ -204,7 +204,13 @@ st.collection(selg).doc(pk8).set(shod1.od)
             document.getElementById('lastodimg').src=canvas.toDataURL();
             document.getElementById('lastodcn').innerHTML=shod1.od.id+'.'+shod1.od.cn;
             localStorage.setItem('imglastod',JSON.stringify(imglastod));
-           // canvas.toBlob(blob => {});
+            canvas.toBlob(async (blob) => {
+              odimgbob=blob;
+              console.log(blob);
+              await navigator.clipboard.write([new ClipboardItem({ "image/png": blob})])
+              .then(function () { console.log('copied');})
+              .catch(function (error) { console.log(error); });
+              });
             });
             html33.style.width='';
        newc();document.getElementById('gst').checked=0;
@@ -574,6 +580,8 @@ function svptd() {
       await db.pt.update(oldid, ptd)
      })();
   }
+  zc(ptd,'hiiiiiii');
+  sendd(urli,{ "p": "10", "g": 'ptds', "od": {},ptd},'Party Details ')
   selg||newocb();selg&&gr();
   ptods=[];ptid=0;
 }

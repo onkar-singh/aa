@@ -27,6 +27,7 @@ document.getElementById("btn_convert").addEventListener("click", function () {
      }
 
     //corj();
+    zc(ptd,'hiii76868iiii');
     zsr.id = (Number(zxc)+1);
     zsr.cn = document.getElementById('u13').innerText;
     zsr.tot = Number(total);
@@ -37,7 +38,7 @@ document.getElementById("btn_convert").addEventListener("click", function () {
     zsr.tch=Number(document.getElementById('tch').value);
     zsr.och=Number(document.getElementById('och').value);
     
-    let shod0={ "p": "0", "g": gd, "od": { ...zsr, "pc":{...odprice}} };
+    let shod0={ "p": "0", "g": gd, "od": { ...zsr, "pc":{...odprice}},ptd };
     (async ()=> {
       let st = new Localbase('st');
       await st.collection(gd).add(shod0.od, 'od' + (Number(zxc)+1)).then((res) => {
@@ -98,8 +99,13 @@ document.getElementById("btn_convert").addEventListener("click", function () {
       document.getElementById('lastodimg').src = canvas.toDataURL();
       document.getElementById('lastodcn').innerHTML = shod0.od.id+'.'+shod0.od.cn;
       localStorage.setItem('imglastod', JSON.stringify(imglastod));
-      // canvas.toBlob(blob => {});
-    });
+      canvas.toBlob(async (blob) => {
+        odimgbob=blob;
+      await navigator.clipboard.write([new ClipboardItem({ "image/png": blob})])
+      .then(function () { console.log('copied'); })
+      .catch(function (error) { console.log(error); });
+      });
+  });
     html33.style.width ='';
   newc(); clickCounter();ptods=[];ptid=0;document.getElementById('gst').checked = 0;
   }
