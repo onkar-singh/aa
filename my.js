@@ -673,10 +673,15 @@ function chnot(b,v) {
 var clickh=0;
 function opodli(b) {
     //console.log(b.getAttribute("for"));
-    let st = new Localbase('st');
   //  op5= JSON.parse(pinloc);
    // console.log('1',op5)
     let qwe5=b.getAttribute("for");
+    let od='a'+selg.slice(-1)+qwe5.match(/\d+/g)[0];
+    db.pt.where(selg).equals(od).first((v)=>{
+      console.log(v.id);
+      genlink(genid(v.id,3),v.cn);
+    })
+    let st = new Localbase('st');
     st.collection(selg).doc(qwe5).get().then(doc=> {
       //  console.log("data:",uio=doc.it)
         //gentblo(doc.it,qwe5);

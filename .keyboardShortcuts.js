@@ -15,6 +15,8 @@ my.js
 om.js
 
 
+del od from party details
+
 -----------------------------------------------------------------
 out order list optimise
  remove inline css class
@@ -36,6 +38,7 @@ send pin and new order data combine
 share api Navigator.share() share text,image
 
 copy to clipboard
+
 
 
 

@@ -204,13 +204,13 @@ st.collection(selg).doc(pk8).set(shod1.od)
             document.getElementById('lastodimg').src=canvas.toDataURL();
             document.getElementById('lastodcn').innerHTML=shod1.od.id+'.'+shod1.od.cn;
             localStorage.setItem('imglastod',JSON.stringify(imglastod));
-            canvas.toBlob(async (blob) => {
-              odimgbob=blob;
-              console.log(blob);
-              await navigator.clipboard.write([new ClipboardItem({ "image/png": blob})])
-              .then(function () { console.log('copied');})
-              .catch(function (error) { console.log(error); });
-              });
+            // canvas.toBlob(async (blob) => {
+              // odimgbob=blob;
+              // console.log(blob);
+              // await navigator.clipboard.write([new ClipboardItem({ "image/png": blob})])
+              // .then(function () { console.log('copied');})
+              // .catch(function (error) { console.log(error); });
+              // });
             });
             html33.style.width='';
        newc();document.getElementById('gst').checked=0;
@@ -598,16 +598,28 @@ function ptcounter() {
 }
 
 function genid(v,i,b='a'){ 
-  let id1=new Date().toLocaleDateString('en-GB', {day : '2-digit',month : '2-digit',year : '2-digit'}).split('/').reverse().join('');
-  let id2=Number(id1+v.padStart(3, '0')); // base 10 id2=221026(date)+001(count)
+  let id2;let id1;
+  if(i==1){
+  id1=new Date().toLocaleDateString('AZ', {day : '2-digit',month : '2-digit',year : '2-digit'}).split('-').join('');
+  id2=Number(id1+v.padStart(3, '0')); // base 10 id2=221026(date)+001(count)
+  }else{
+    id2=Number(v);
+  }
   let id3=id2.toString(32).padStart(6, '0'); // base 32
   let s = 0;while (id2) {s += id2 % 10;id2 = Math.floor(id2 / 10);}
   let p5=(i==1) ? Number(id1+v.padStart(3, '0')) :
   (i==2) ? b+id3+s :
-  (i==3) ? btoa(b+id3+s) : '';
+  (i==3) ? [...btoa(btoa(b+id3+s))].reverse().join('') : '';
   return p5
 }
 
+function genlink(id,cn) { // http://www.ownknitted.com/bill#3VEVNFTTqRGcaRVW
+  let url1="www.ownknitted.com/bill#"+id;
+  let txt1="\n\n"+cn+", download your bills from here👆";
+  navigator.clipboard.writeText(url1+txt1);
+  //return url1
+}
+//genlink(genid(v,3))
 // print address
 // function printadd() {
 //   if(Object.keys(selod5).length){
@@ -648,7 +660,7 @@ function printadd() {
       (async()=> { // get party address
       let od='a'+selg.slice(-1)+v.match(/\d+/g)[0];//'as63'
       let cadd,radd;
-      await db.pt.where('ods').equals(od).toArray((v)=>{
+      await db.pt.where(selg).equals(od).toArray((v)=>{
       cadd='<h1 class="p1"><b>To </b>- '+v[0].cn+', '+v[0].mn1+', '+v[0].mn2+'<br>'+v[0].add+', '+v[0].pin+'</span></h1>';
       radd='<h1><span class="p2"><div><b>Return address if not delivered</b><br></div><span>Own Knitted, 9336695049</span><br><span>F-120, Shutter wali gali, near Gujjar chowk, Khanpur Delhi, 110062</span></span></h1>';
       });

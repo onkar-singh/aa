@@ -12,6 +12,7 @@ document.getElementById("btn_convert").addEventListener("click", function () {
     // let ptd={id:'a',cn:'',mn1:'',mn2:'',gst:'',add:'',ods:['as102','as33','ak508']};
     let oldid=ptd.id;
     ptd.id=ptd.id||genid(ptcounter(),1);
+    genlink(genid(ptd.id,3),ptd.cn);
     ptd.ods.push('a'+gd.slice(-1)+(Number(zxc)+1));
      console.log(ptd);
      if (!oldid) {
@@ -99,12 +100,12 @@ document.getElementById("btn_convert").addEventListener("click", function () {
       document.getElementById('lastodimg').src = canvas.toDataURL();
       document.getElementById('lastodcn').innerHTML = shod0.od.id+'.'+shod0.od.cn;
       localStorage.setItem('imglastod', JSON.stringify(imglastod));
-      canvas.toBlob(async (blob) => {
-        odimgbob=blob;
-      await navigator.clipboard.write([new ClipboardItem({ "image/png": blob})])
-      .then(function () { console.log('copied'); })
-      .catch(function (error) { console.log(error); });
-      });
+      // canvas.toBlob(async (blob) => {
+      //   odimgbob=blob;
+      // await navigator.clipboard.write([new ClipboardItem({ "image/png": blob})])
+      // .then(function () { console.log('copied'); })
+      // .catch(function (error) { console.log(error); });
+      // });
   });
     html33.style.width ='';
   newc(); clickCounter();ptods=[];ptid=0;document.getElementById('gst').checked = 0;
