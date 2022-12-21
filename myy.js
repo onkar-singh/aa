@@ -600,7 +600,7 @@ function ptcounter() {
 function genid(v,i,b='a'){ 
   let id2;let id1;
   if(i==1){
-  id1=new Date().toLocaleDateString('AZ', {day : '2-digit',month : '2-digit',year : '2-digit'}).split('-').join('');
+  id1=new Date().toLocaleDateString('en-GB', {day : '2-digit',month : '2-digit',year : '2-digit'}).split('/').reverse().join('');
   id2=Number(id1+v.padStart(3, '0')); // base 10 id2=221026(date)+001(count)
   }else{
     id2=Number(v);
