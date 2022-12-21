@@ -12,7 +12,7 @@ document.getElementById("btn_convert").addEventListener("click", function () {
     // let ptd={id:'a',cn:'',mn1:'',mn2:'',gst:'',add:'',ods:['as102','as33','ak508']};
     let oldid=ptd.id;
     ptd.id=ptd.id||genid(ptcounter(),1);
-    genlink(genid(ptd.id,3),ptd.cn);
+    //genlink(genid(ptd.id,3),ptd.cn);
     ptd.ods.push('a'+gd.slice(-1)+(Number(zxc)+1));
      console.log(ptd);
      if (!oldid) {
