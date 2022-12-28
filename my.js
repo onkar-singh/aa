@@ -355,7 +355,21 @@ document.getElementById('id01').style.display='block';
  ptd={};selg='';
 }
 
+
 // clickCounter for customer id
+// function clickCounter() {
+//   let ck5=localStorage.clickcount;
+//   if (ck5) {
+//     let gh=Number(ck5)+1;
+//     localStorage.clickcount = gh;zxc=gh;
+//   } else {
+//     localStorage.clickcount = 1;zxc=1
+//   }
+// }
+
+if (!localStorage.clickcount) {localStorage.setItem('clickcount','1');zxc=1}
+
+// // clickCounter for customer id
 function clickCounter() {
   if (localStorage.clickcount) {
     localStorage.clickcount = Number(localStorage.clickcount)+1;
@@ -679,7 +693,7 @@ function opodli(b) {
     let od='a'+selg.slice(-1)+qwe5.match(/\d+/g)[0];
     db.pt.where(selg).equals(od).first((v)=>{
       console.log(v.id);
-     // genlink(genid(v.id,3),v.cn);
+      genlink(genid(v.id,3),v.cn);
     })
     let st = new Localbase('st');
     st.collection(selg).doc(qwe5).get().then(doc=> {

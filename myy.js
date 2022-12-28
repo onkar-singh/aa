@@ -311,11 +311,11 @@ function pc(v,a,b,c) { // v(type) a(36-42), b(44), c(46)
 }
 
 // sms 
-let sms='Hi Ankit, An update Transport charge aur Other charge ab se save hoga';
-if (!localStorage.sms) {localStorage.setItem('sms',sms);alert(sms);}
-else if((localStorage.sms!=sms)){
-alert(sms);localStorage.setItem('sms',sms);
-}
+// let sms='Hi Ankit, An update Transport charge aur Other charge ab se save hoga';
+// if (!localStorage.sms) {localStorage.setItem('sms',sms);alert(sms);}
+// else if((localStorage.sms!=sms)){
+// alert(sms);localStorage.setItem('sms',sms);
+// }
 
 // favicon set emoji
 if (localStorage.gr5) {
@@ -323,8 +323,8 @@ if (localStorage.gr5) {
   cfa.height = 64;cfa.width = 64;
   let ctx = cfa.getContext("2d");
   ctx.font = "64px serif";
-  ctx.fillText("👕", 0, 64); 
-  //ctx.fillText("🇮🇳", 0, 64); 
+  //ctx.fillText("👕", 0, 64); 
+  ctx.fillText("🇮🇳", 0, 64); 
   //ctx.fillText("❤️", 0, 64);
   //document.querySelector('link[rel="icon"]').href= cfa.toDataURL();
   document.querySelector('link[rel="shortcut icon"]').href= cfa.toDataURL();
@@ -601,7 +601,7 @@ function genid(v,i,b='a'){
   let id2;let id1;
   if(i==1){
   id1=new Date().toLocaleDateString('en-GB', {day : '2-digit',month : '2-digit',year : '2-digit'}).split('/').reverse().join('');
-  id2=Number(id1+v.padStart(3, '0')); // base 10 id2=221026(date)+001(count)
+  id2=Number(id1+v.padStart(3, '0'));
   }else{
     id2=Number(v);
   }
@@ -612,11 +612,11 @@ function genid(v,i,b='a'){
   (i==3) ? [...btoa(btoa(b+id3+s))].reverse().join('') : '';
   return p5
 }
-
-function genlink(id,cn) { // http://www.ownknitted.com/bill#3VEVNFTTqRGcaRVW
+//genlink(genid(ptd.id,3),ptd.cn);
+async function genlink(id,cn) { // http://www.ownknitted.com/bill#3VEVNFTTqRGcaRVW
   let url1="www.ownknitted.com/bill#"+id;
   let txt1="\n\n"+cn+", download your bills from here👆";
-  navigator.clipboard.writeText(url1+txt1);
+ await copy(url1+txt1);
   //return url1
 }
 //genlink(genid(v,3))
@@ -758,3 +758,50 @@ function download(imgurl,imgnm){
         console.log(v,'b');
       })
     }
+
+
+    function copy(text) {
+      return new Promise((resolve, reject) => {
+          if (typeof navigator !== "undefined" && typeof navigator.clipboard !== "undefined" && navigator.permissions !== "undefined") {
+              const type = "text/plain";
+              const blob = new Blob([text], { type });
+              const data = [new ClipboardItem({ [type]: blob })];
+              navigator.permissions.query({name: "clipboard-write"}).then((permission) => {
+                  if (permission.state === "granted" || permission.state === "prompt") {
+                      navigator.clipboard.write(data).then(resolve, reject).catch(reject);
+                  }
+                  else {
+                      reject(new Error("Permission not granted!"));
+                  }
+              });
+          }
+          else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+              var textarea = document.createElement("textarea");
+              textarea.textContent = text;
+              textarea.style.position = "fixed";
+              textarea.style.width = '2em';
+              textarea.style.height = '2em';
+              textarea.style.padding = 0;
+              textarea.style.border = 'none';
+              textarea.style.outline = 'none';
+              textarea.style.boxShadow = 'none';
+              textarea.style.background = 'transparent';
+              document.body.appendChild(textarea);
+              textarea.focus();
+              textarea.select();
+              try {
+                  document.execCommand("copy");
+                  document.body.removeChild(textarea);
+                  resolve();
+              }
+              catch (e) {
+                  document.body.removeChild(textarea);
+                  reject(e);
+              }
+          }
+          else {
+              reject(new Error("None of copying methods are supported by this browser!"));
+          }
+      });
+      
+  }

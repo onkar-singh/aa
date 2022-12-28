@@ -42,7 +42,8 @@ document.getElementById("btn_convert").addEventListener("click", function () {
     let shod0={ "p": "0", "g": gd, "od": { ...zsr, "pc":{...odprice}},ptd };
     (async ()=> {
       let st = new Localbase('st');
-      await st.collection(gd).add(shod0.od, 'od' + (Number(zxc)+1)).then((res) => {
+      //await st.collection(gd).add(shod0.od, 'od' + (Number(zxc)+1)).then((res) => {
+        await st.collection(gd).add(shod0.od, 'od' + (Number(zxc)+1)).then((res) => {
         console.log(res, 'added')
         selgo(gd);    //  pinloc    
         let paz = JSON.parse(pinloc);
@@ -108,7 +109,11 @@ document.getElementById("btn_convert").addEventListener("click", function () {
       // });
   });
     html33.style.width ='';
-  newc(); clickCounter();ptods=[];ptid=0;document.getElementById('gst').checked = 0;
+  newc();
+  // clickCounter();
+  let chj=Number(zxc)+1; localStorage.clickcount=chj; zxc=chj;
+
+  ptods=[];ptid=0;document.getElementById('gst').checked = 0;
   }
 });
 
