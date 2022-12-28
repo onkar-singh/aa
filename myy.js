@@ -614,9 +614,23 @@ function genid(v,i,b='a'){
 }
 //genlink(genid(ptd.id,3),ptd.cn);
 async function genlink(id,cn) { // http://www.ownknitted.com/bill#3VEVNFTTqRGcaRVW
-  let url1="www.ownknitted.com/bill#"+id;
-  let txt1="\n\n"+cn+", Save this link, and download all your bills here👆";
- await copy(url1+txt1);
+//   let url1="www.ownknitted.com/bill#"+id;
+//   let txt1="\n\n"+cn+", Save this link, and download all your bills here👆";
+//  await copy(url1+txt1);
+    // document.querySelector('.jkjxxx').id=id;
+    // document.querySelector('.jkjxxx').setAttribute('name',cn);
+    document.querySelector('.jkjxxx').addEventListener('click', async () => {
+      try {
+        const shareData = {
+          title: 'Link',
+          url: 'https://www.ownknitted.com/bill#'+id,
+          text: '\n\n'+cn+', Save this link, and download all your bills here👆'
+        }
+        await navigator.share(shareData);
+      } catch (err) {
+        console.log(err);
+      }
+    });
   //return url1
 }
 //genlink(genid(v,3))
@@ -760,18 +774,21 @@ function download(imgurl,imgnm){
     }
 
 
-    function copy(text) {
-     // let input = document.createElement("input");
-      //input.style.opacity = "0";
-      //input.style.position = "fixed";
-      let input =document.getElementById('jkj');
-      if(input){
-      input.value = text;
-      document.getElementById('jkj')
-      input.focus();
-      input.setSelectionRange(0, input.value.length);
-      }
-    }
+    // function copyx(v) {
+
+    //   let url1="www.ownknitted.com/bill#"+v.id;
+    //   let txt1="\n\n"+v.name+", Save this link, and download all your bills here👆";
+    //  (async () => {
+    //     try {
+    //       await navigator.share(url1+txt1);
+    //     } catch (err) {
+    //       console.log(err);
+    //     }
+    //   })()
+    // }
+
+
+
   //   function copy(text) {
   //     return new Promise((resolve, reject) => {
   //         if (typeof navigator !== "undefined" && typeof navigator.clipboard !== "undefined" && navigator.permissions !== "undefined") {
