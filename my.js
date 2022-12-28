@@ -691,10 +691,7 @@ function opodli(b) {
    // console.log('1',op5)
     let qwe5=b.getAttribute("for");
     let od='a'+selg.slice(-1)+qwe5.match(/\d+/g)[0];
-    db.pt.where(selg).equals(od).first((v)=>{
-      console.log(v.id);
-      genlink(genid(v.id,3),v.cn);
-    })
+
     let st = new Localbase('st');
     st.collection(selg).doc(qwe5).get().then(doc=> {
       //  console.log("data:",uio=doc.it)
@@ -708,7 +705,7 @@ if((clickh % 2 == 0)) {
   // if (op5.hasOwnProperty(b.getAttribute("for"))) {
   //    kk5="<input onchange='chnot(this)' id='inp5' name='"+b.getAttribute("for")+"' class='w3-border w3-input' type='text' style='padding:0 5px' placeholder=' Write Notes...'>"
   // }else{ kk5=''}
-  if(!document.getElementById('my55')){b.parentElement.insertAdjacentHTML('afterend', "<div id='aa5' style='font-weight: 600;display: flex;'><div class='w3-small w3-button w3-border-right w3-dark-grey' id='b"+qwe5+"' onclick='editod(this)'>Edit</div></div></div>"+"<div id='my55'>Sample Div</div>")}
+  if(!document.getElementById('my55')){b.parentElement.insertAdjacentHTML('afterend', "<div id='aa5' style='font-weight: 600;display: flex;'><div class='w3-small w3-button w3-border-right w3-dark-grey' id='b"+qwe5+"' onclick='editod(this)'>Edit</div><textarea rows='1' id='jkj' type='text' class='w3-input'></textarea></div></div>"+"<div id='my55'>Sample Div</div>")}
      odtbl(doc.it,'tblom1','my55'); 
      }
     })
@@ -725,6 +722,10 @@ if((clickh % 2 == 0)) {
       // localStorage.setItem('pin',JSON.stringify(mer5))//JSON.stringify(mer5)//JSON.parse()
       // selod5={};
       // let vkz5={ p: "3", od:{...JSON.parse(localStorage.pin)}};
+      db.pt.where(selg).equals(od).first((v)=>{
+        console.log(v.id);
+        genlink(genid(v.id,3),v.cn);
+      })
 }
 
 // table gen for oder
