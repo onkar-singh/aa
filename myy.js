@@ -624,7 +624,7 @@ async function genlink(id,cn) { // http://www.ownknitted.com/bill#3VEVNFTTqRGcaR
         const shareData = {
           title: 'Link',
           url: 'https://www.ownknitted.com/bill#'+id,
-          text: '\n\n'+cn+', Save this link, and download all your bills here👆'
+          text: cn+', save this link and download all your bills here👇\n'
         }
         await navigator.share(shareData);
       } catch (err) {
