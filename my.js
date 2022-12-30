@@ -235,6 +235,7 @@ function tot() {
 odprice={};
 let dtt=date.slice(0,6);
 let tch=document.getElementById('tch').value;let och=document.getElementById('och').value;
+let dis=document.getElementById('dis').value;
 let dptch='';let dpoch='';
 tch = (tch=='') ? tch=0 : tch=tch; och = (och=='') ? och=0 : och=och;
 dptch = (tch=='') ? dptch='display:none': dptch='';
@@ -281,8 +282,9 @@ let sd2=document.querySelectorAll("#trth .w3-blue")[b].innerText.trim();
 let pctt1="<tr><td colspan='3' style='padding: 1px 4px 1px 2px!important'><div><b class='sc1'>"+total+" PCS Total</b><b class='sc1' style='margin-left: 2px;background: #2e2effd6'>"+Math.ceil(pcwt)+"kg</b><b class='sa2'>"+pctt+'₹ + 5% Tax</b></div></td>'+'</tr>';
 let pctt2="<tr style="+dptch+"><td colspan='2'><b class='sa2'>Transport Charge -</b></td><td>"+"<b>"+tch+'₹'+'</b></td></tr>';
 let pctt3="<tr style="+dpoch+"><td colspan='2'><b class='sa2'>Other Charges -</b></td><td>"+"<b>"+och+'₹'+'</b></td></tr>';
-let pctt4="<tr><td colspan='2'><b style='font-size: 12px; font-weight: 500;'>"+dtt+dtt2+"</b><b class='sa2'>Total Amount -</b></td><td>"+"<b class='sc1'>"+Math.ceil(((Number(pctt)*0.05)+Number(pctt)+Number(tch)+Number(och))).toLocaleString('en-IN')+'₹'+'</b></td></tr>';
-document.querySelector('#tot table tbody').innerHTML=sd0+pctt1+pctt2+pctt3+pctt4;
+let pctt5=dis&&("<tr><td colspan='2'><b class='sa2'>Discount -</b></td><td>"+"<b>"+dis+'₹'+'</b></td></tr>');
+let pctt4="<tr><td colspan='2'><b style='font-size: 12px; font-weight: 500;'>"+dtt+dtt2+"</b><b class='sa2'>Total Amount -</b></td><td>"+"<b class='sc1'>"+Math.ceil(((Number(pctt)*0.05)+Number(pctt)+Number(tch)+Number(och)-Number(dis))).toLocaleString('en-IN')+'₹'+'</b></td></tr>';
+document.querySelector('#tot table tbody').innerHTML=sd0+pctt1+pctt2+pctt3+pctt5+pctt4;
  //document.querySelector('#tot thead tr #u13').contentEditable=true;
  //document.querySelector('#tot thead tr #u23').innerText='Total-'+tote;
 }

@@ -38,6 +38,7 @@ document.getElementById("btn_convert").addEventListener("click", function () {
     zsr.it = od; 
     zsr.tch=Number(document.getElementById('tch').value);
     zsr.och=Number(document.getElementById('och').value);
+    zsr.dis=Number(document.getElementById('dis').value);
     
     let shod0={ "p": "0", "g": gd, "od": { ...zsr, "pc":{...odprice}},ptd };
     (async ()=> {

@@ -35,7 +35,7 @@ function delod () {
    let st = new Localbase('st');
    st.collection(selg).doc(r).get().then(doc => {
     od=doc.it;
-    an5=doc;an5.tot=0;an5.it={};an5.gst=false;an5.tch=0;an5.och=0;an5.pc={};
+    an5=doc;an5.tot=0;an5.it={};an5.gst=false;an5.tch=0;an5.och=0;an5.dis=0;an5.pc={};
     shod11={"p":"1","g":selg,"od":{...an5}};
     sendd(urli,shod11,'del order');
 // (async () => {
@@ -75,7 +75,8 @@ function delod () {
 } else {alert('Bhaii, Pahle order select ker le !!')}}
 
 var pk8;var oldod;
-var instg={Delhi:'ods',Tiruppur:'odt',Kolkata:'odk',PD:'odpd'}
+var instg={Delhi:'ods',Tiruppur:'odt',Kolkata:'odk',PD:'odpd'};
+
 function editod(tp) {
   let st = new Localbase('st');
   pk8=tp.id.split('b')[1];// order id od34
@@ -85,6 +86,7 @@ function editod(tp) {
 
    (oldod.tch) ? document.getElementById('tch').value=oldod.tch :'';
    (oldod.och) ? document.getElementById('och').value=oldod.och :'';
+   (oldod.dis) ? document.getElementById('dis').value=oldod.dis :'';
 
     document.getElementById('frt').innerHTML="<strong>"+ht+"</strong>";
     if(doc.gst){document.getElementById('gst').checked=true;}
@@ -148,8 +150,9 @@ zsr.tot = Number(total);
 zsr.gst = document.getElementById('gst').checked;
 zsr.dt = oldod.dt; 
 zsr.it = od; 
-zsr.tch=Number(document.getElementById('tch').value)
-zsr.och=Number(document.getElementById('och').value)
+zsr.tch=Number(document.getElementById('tch').value);
+zsr.och=Number(document.getElementById('och').value);
+zsr.dis=Number(document.getElementById('dis').value);
 
 const gsel=document.getElementById("gsel").value;
 let shod1={};
@@ -433,8 +436,7 @@ function gststc(v) { //let text = "07BBNPG0866M2Z7";g.match(/^([0][1-9]|[1-2][0-
     // })
   } else if ((g.length == 2)) {
     document.getElementById('ptst').innerHTML = "<b style='color:blue'>"+gststate[Number(g.substr(0, 2))]+"</b>";
-  }
-  else if ((g.length < 15)) {
+  }else if ((g.length < 15)) {
     document.getElementById('ptst').innerHTML = "<b style='color:blue'>Error! less than 15 character</b>";
   } else if ((g.length > 15)) {
     document.getElementById('ptst').innerHTML = "<b style='color:blue'>Error! more than 15 character</b>";
