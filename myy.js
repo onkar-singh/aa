@@ -431,7 +431,10 @@ function gststc(v) { //let text = "07BBNPG0866M2Z7";g.match(/^([0][1-9]|[1-2][0-
     // if(data['bzgddtls']){document.getElementById('ptst').innerHTML="Ok"}
     // if(data['errorCode']){document.getElementById('ptst').innerHTML="<b style='color:red'>Error!</b>";}
     // })
-  } else if ((g.length < 15)) {
+  } else if ((g.length == 2)) {
+    document.getElementById('ptst').innerHTML = "<b style='color:blue'>"+gststate[Number(g.substr(0, 2))]+"</b>";
+  }
+  else if ((g.length < 15)) {
     document.getElementById('ptst').innerHTML = "<b style='color:blue'>Error! less than 15 character</b>";
   } else if ((g.length > 15)) {
     document.getElementById('ptst').innerHTML = "<b style='color:blue'>Error! more than 15 character</b>";
@@ -558,8 +561,9 @@ function sptd(v){
     if(ptd.add&&cid&&(v!=1)){document.getElementById('od'+cid).parentNode.style.color='';}
   else if(cid&&(v!=1)){document.getElementById('od'+cid).parentNode.style.color='#00f';}
  // ptd.ods.push(Number(localStorage.clickcount)+Number(ptcounter()));
-  let vn = (ptg) ? (true && document.getElementById('q000')): true;
-  if(cn && vn){
+ let vn = (ptg) ? (true && document.getElementById('q000')): true;
+
+  if((cn && vn)||(ptg.length==2)){
     console.log(ptd);
     if (v==1) {gonext();} // save and next 
     return true
@@ -623,8 +627,8 @@ async function genlink(id,cn) { // http://www.ownknitted.com/bill#3VEVNFTTqRGcaR
       try {
         const shareData = {
           title: 'Link',
-          url: 'https://www.ownknitted.com/bill#'+id,
-          text: cn+', save this link and download all your bills here👇\n'
+          text: cn+', save this link and download all your bills here👇\n',
+          url: 'https://www.ownknitted.com/bill#'+id
         }
         await navigator.share(shareData);
       } catch (err) {
