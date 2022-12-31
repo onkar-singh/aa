@@ -39,7 +39,7 @@ share api Navigator.share() share text,image
 
 copy to clipboard
 
-convert blob to file
+convert blob to file to share
 
 
 

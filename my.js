@@ -353,6 +353,11 @@ document.getElementById('id01').style.display='block';
  document.getElementById('incn').value='';
  document.getElementById('tch').value='';
  document.getElementById('och').value='';
+ document.getElementById('dis').value='';
+ document.getElementById('ctp').value='';
+ document.getElementById('ctq').value='';
+ document.getElementById('chp').value='';
+ document.getElementById('chq').value='';
  od={}; zsr={};//ods={};
  ptd={};selg='';
 }

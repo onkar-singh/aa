@@ -39,6 +39,22 @@ document.getElementById("btn_convert").addEventListener("click", function () {
     zsr.tch=Number(document.getElementById('tch').value);
     zsr.och=Number(document.getElementById('och').value);
     zsr.dis=Number(document.getElementById('dis').value);
+    let ct=document.getElementById('ctp');
+    let ch=document.getElementById('chp');
+    if (ct.value) {
+      zsr.c=[,,,,];
+      zsr.c[0]=Number(ct.value);
+      let ctq=Number(document.getElementById('ctq').value);
+      zsr.c[1]=ctq;
+      zsr.tot=zsr.tot+ctq;
+    }
+    if (ch.value) {
+      zsr.c||(zsr.c=[,,,,]);
+      zsr.c[2]=Number(ch.value);
+      let chq= Number(document.getElementById('chq').value);
+      zsr.c[3]=chq;
+      zsr.tot=zsr.tot+chq;
+    }
     
     let shod0={ "p": "0", "g": gd, "od": { ...zsr, "pc":{...odprice}},ptd };
     (async ()=> {

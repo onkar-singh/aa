@@ -35,7 +35,7 @@ function delod () {
    let st = new Localbase('st');
    st.collection(selg).doc(r).get().then(doc => {
     od=doc.it;
-    an5=doc;an5.tot=0;an5.it={};an5.gst=false;an5.tch=0;an5.och=0;an5.dis=0;an5.pc={};
+    an5=doc;an5.tot=0;an5.it={};an5.gst=false;an5.tch=0;an5.och=0;an5.dis=0;an5.c=[,,,,];an5.pc={};
     shod11={"p":"1","g":selg,"od":{...an5}};
     sendd(urli,shod11,'del order');
 // (async () => {
@@ -87,6 +87,16 @@ function editod(tp) {
    (oldod.tch) ? document.getElementById('tch').value=oldod.tch :'';
    (oldod.och) ? document.getElementById('och').value=oldod.och :'';
    (oldod.dis) ? document.getElementById('dis').value=oldod.dis :'';
+   if(oldod.c){
+    if (oldod.c[0]) {
+    document.getElementById('ctp').value=oldod.c[0];
+    document.getElementById('ctq').value=oldod.c[1];
+    }
+    if (oldod.c[2]) {
+      document.getElementById('chp').value=oldod.c[2];
+      document.getElementById('chq').value=oldod.c[3];
+    }
+  }
 
     document.getElementById('frt').innerHTML="<strong>"+ht+"</strong>";
     if(doc.gst){document.getElementById('gst').checked=true;}
@@ -153,6 +163,22 @@ zsr.it = od;
 zsr.tch=Number(document.getElementById('tch').value);
 zsr.och=Number(document.getElementById('och').value);
 zsr.dis=Number(document.getElementById('dis').value);
+let ct=document.getElementById('ctp');
+let ch=document.getElementById('chp');
+if (ct.value) {
+  zsr.c=[,,,,];
+  zsr.c[0]=Number(ct.value);
+  let ctq=Number(document.getElementById('ctq').value);
+  zsr.c[1]=ctq;
+  zsr.tot=zsr.tot+ctq;
+}
+if (ch.value) {
+  zsr.c||(zsr.c=[,,,,]);
+  zsr.c[2]=Number(ch.value);
+  let chq= Number(document.getElementById('chq').value);
+  zsr.c[3]=chq;
+  zsr.tot=zsr.tot+chq;
+}
 
 const gsel=document.getElementById("gsel").value;
 let shod1={};
